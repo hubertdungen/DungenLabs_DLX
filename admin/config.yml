@@ -1,0 +1,120 @@
+# ============================================================
+# Painel do catalogo DL X (Decap CMS).
+#
+# Gravar aqui faz commit em data/shop.json no GitHub, o que
+# dispara um rebuild no Netlify. Nao ha base de dados nem
+# servidor: o repositorio E o catalogo.
+#
+# A autenticacao usa a app OAuth do GitHub, servida pelas
+# funcoes em netlify/functions/. Ver README para as variaveis.
+# ============================================================
+
+backend:
+  name: github
+  repo: hubertdungen/DungenLabs_DLX
+  branch: main
+  base_url: https://dlx.dungenlabs.com
+  auth_endpoint: api/auth
+  commit_messages:
+    update: 'catalogue: update {{collection}}'
+
+media_folder: images/products
+public_folder: /images/products
+
+locale: en
+
+collections:
+  - name: shop
+    label: Shop
+    files:
+      - name: catalogue
+        label: Catalogue
+        file: data/shop.json
+        format: json
+        description: >-
+          Categories and products for dlx.dungenlabs.com. Drag rows to reorder —
+          the order here is the order on the site.
+        fields:
+          - label: Currency
+            name: currency
+            widget: select
+            options: [EUR, GBP, USD]
+            default: EUR
+
+          - label: Categories
+            name: categories
+            widget: list
+            label_singular: Category
+            summary: '{{fields.title}}'
+            fields:
+              - { label: ID (slug, used in links), name: id, widget: string, pattern: ['^[a-z0-9-]+$', 'lowercase letters, numbers and hyphens only'] }
+              - { label: Title, name: title, widget: string }
+              - { label: Summary, name: summary, widget: text }
+              - { label: Image, name: image, widget: image, media_folder: ../images/categories, public_folder: /images/categories }
+              - { label: Image alt text, name: imageAlt, widget: string, hint: 'Describe the image for screen readers and search.' }
+              - label: Tile size
+                name: layout
+                widget: select
+                options: [standard, wide, tall]
+                default: standard
+
+          - label: Products
+            name: products
+            widget: list
+            label_singular: Product
+            summary: '{{fields.title}} — {{fields.status}}'
+            fields:
+              - { label: ID (slug, used in links), name: id, widget: string, pattern: ['^[a-z0-9-]+$', 'lowercase letters, numbers and hyphens only'] }
+              - { label: Title, name: title, widget: string }
+              - { label: Eyebrow label, name: stageLabel, widget: string, default: 'DL X', required: false }
+              - { label: Categories, name: categoryIds, widget: list, field: { label: Category ID, name: id, widget: string }, hint: 'Must match a category ID above.' }
+
+              - label: Availability
+                name: status
+                widget: select
+                options:
+                  - { label: In stock, value: in-stock }
+                  - { label: Made to order, value: made-to-order }
+                  - { label: Coming soon, value: coming-soon }
+                  - { label: Sold out, value: sold-out }
+                default: made-to-order
+
+              - { label: Price, name: price, widget: number, value_type: float, required: false, hint: 'Leave empty to show "Price on request".' }
+              - { label: Short summary, name: summary, widget: text }
+              - { label: Full description, name: description, widget: text }
+
+              - { label: Main image, name: mainImage, widget: image }
+              - { label: Main image alt text, name: mainImageAlt, widget: string }
+              - { label: Card image, name: cardImage, widget: image, required: false, hint: 'Shown in the grid. Defaults to the main image.' }
+              - { label: Card image alt text, name: cardImageAlt, widget: string, required: false }
+
+              - label: Gallery
+                name: gallery
+                widget: list
+                required: false
+                summary: '{{fields.alt}}'
+                fields:
+                  - { label: Image, name: src, widget: image }
+                  - { label: Alt text, name: alt, widget: string }
+                  - { label: Width, name: ratio, widget: select, options: [wide, square], default: wide }
+
+              - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
+
+              - label: Specifications
+                name: specs
+                widget: list
+                required: false
+                summary: '{{fields.label}}: {{fields.value}}'
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Value, name: value, widget: string }
+
+              - { label: Card checkout URL, name: checkoutUrl, widget: string, required: false, hint: 'Stripe Payment Link. Empty = shows an email enquiry button instead.' }
+              - { label: Crypto checkout URL, name: cryptoCheckoutUrl, widget: string, required: false, hint: 'NOWPayments or Coinbase Commerce link. Optional.' }
+
+              - label: Tile size
+                name: layout
+                widget: select
+                options: [standard, wide, tall, featured]
+                default: standard
+              - { label: Featured, name: featured, widget: boolean, required: false, default: false }

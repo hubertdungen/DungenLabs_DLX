@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Technical pattern placeholder">
+  <defs>
+    <pattern id="edots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#1d4a54"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="#12373F"/>
+  <rect width="1200" height="900" fill="url(#edots)"/>
+  <path d="M0 0 L420 0 L200 900 L0 900 Z" fill="#0e2c33" opacity="0.7"/>
+  <g stroke="#EB826C" stroke-width="3" fill="none" opacity="0.9">
+    <path d="M640 300 h220 M640 300 l-60 200 a70 70 0 0 0 66 92 h188 a70 70 0 0 0 66 -92 l-60 -200"/>
+    <path d="M596 470 h268"/>
+    <circle cx="700" cy="530" r="12" fill="#EB826C" stroke="none" opacity="0.6"/>
+    <circle cx="770" cy="560" r="18" fill="#EB826C" stroke="none" opacity="0.4"/>
+    <circle cx="830" cy="524" r="9" fill="#EB826C" stroke="none" opacity="0.7"/>
+  </g>
+  <text x="600" y="720" text-anchor="middle" fill="#cfe0e2" font-family="Orbitron, Arial, sans-serif" font-size="34" letter-spacing="10">EXPERIMENTAL</text>
+  <text x="600" y="768" text-anchor="middle" fill="#7f9ba1" font-family="Inter, Arial, sans-serif" font-size="22" letter-spacing="3">SHORT RUNS FROM R&amp;D</text>
+</svg>

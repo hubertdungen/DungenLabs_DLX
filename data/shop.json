@@ -1,0 +1,208 @@
+{
+  "currency": "EUR",
+  "categories": [
+    {
+      "id": "tabletop",
+      "title": "Tabletop & Gaming",
+      "summary": "Rugged storage and playfield hardware for card and board games.",
+      "image": "images/products/mtg-box-render-open.png",
+      "imageAlt": "Rugged printed deck box open, holding sleeved cards and tokens",
+      "layout": "wide"
+    },
+    {
+      "id": "workshop",
+      "title": "Workshop & Desk",
+      "summary": "Printer upgrades, mounts and bench utilities from the DL X bench.",
+      "image": "images/categories/placeholder-workshop.svg",
+      "imageAlt": "Technical pattern placeholder for the workshop category",
+      "layout": "standard"
+    },
+    {
+      "id": "experimental",
+      "title": "Experimental",
+      "summary": "Short runs and prototypes released straight out of R&D.",
+      "image": "images/categories/placeholder-experimental.svg",
+      "imageAlt": "Technical pattern placeholder for the experimental category",
+      "layout": "standard"
+    }
+  ],
+  "products": [
+    {
+      "id": "mtg-commander-box-windowed",
+      "title": "Commander Deck Box — Windowed",
+      "stageLabel": "DL X / Tabletop",
+      "categoryIds": [
+        "tabletop"
+      ],
+      "status": "made-to-order",
+      "price": 39.9,
+      "summary": "Rugged 120+ card deck box with a windowed lid and captive hinge.",
+      "description": "A field-case take on the Commander deck box. The windowed lid shows the top of the stack without opening the case, while the chamfered shell, corner bumpers and recessed panels come straight from the DungenLabs hardware language. Printed to order in engineering polymer, with a captive printed hinge and a friction latch that holds through transport.",
+      "mainImage": "images/products/mtg-box-render-open.png",
+      "mainImageAlt": "Windowed rugged deck box open, showing sleeved cards and tokens",
+      "cardImage": "images/products/mtg-box-render-open.png",
+      "cardImageAlt": "Windowed rugged deck box, three-quarter view",
+      "mediaRatio": "wide",
+      "detailRatio": "wide",
+      "gallery": [
+        {
+          "src": "images/products/mtg-box-render-alt.png",
+          "alt": "Alternate render of the rugged deck box",
+          "ratio": "wide"
+        },
+        {
+          "src": "images/products/mtg-box-sketch-views.jpg",
+          "alt": "Design sketch showing closed, sectioned and hinge views",
+          "ratio": "wide"
+        },
+        {
+          "src": "images/products/mtg-box-sketch-detail.jpg",
+          "alt": "Detail sketch of the latch and hinge geometry",
+          "ratio": "wide"
+        }
+      ],
+      "tags": [
+        "FDM",
+        "120+ cards",
+        "Captive hinge",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Capacity",
+          "value": "120+ sleeved cards, plus token bay"
+        },
+        {
+          "label": "Outer size",
+          "value": "77.6 × 107.6 × 113 mm"
+        },
+        {
+          "label": "Card fit",
+          "value": "63 × 88 mm, 0.45 mm clearance"
+        },
+        {
+          "label": "Walls",
+          "value": "2.8 mm wall, 3 mm floor"
+        },
+        {
+          "label": "Material",
+          "value": "PETG or ASA, matte finish"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "featured",
+      "featured": true
+    },
+    {
+      "id": "mtg-commander-box-basic",
+      "title": "Commander Deck Box — Basic",
+      "stageLabel": "DL X / Tabletop",
+      "categoryIds": [
+        "tabletop"
+      ],
+      "status": "made-to-order",
+      "price": 34.9,
+      "summary": "The solid-lid version of the rugged 120+ card Commander box.",
+      "description": "Same shell, same hinge, same latch — without the lid window. The closed lid gives a fully enclosed case for transport and a larger surface for custom engraving. Printed to order in engineering polymer.",
+      "mainImage": "images/products/mtg-box-render-alt.png",
+      "mainImageAlt": "Solid-lid rugged deck box, three-quarter view",
+      "cardImage": "images/products/mtg-box-render-alt.png",
+      "cardImageAlt": "Solid-lid rugged deck box",
+      "mediaRatio": "wide",
+      "detailRatio": "wide",
+      "gallery": [
+        {
+          "src": "images/products/mtg-box-render-open.png",
+          "alt": "Shell and interior layout shared with the windowed version",
+          "ratio": "wide"
+        },
+        {
+          "src": "images/products/mtg-box-sketch-views.jpg",
+          "alt": "Design sketch showing closed, sectioned and hinge views",
+          "ratio": "wide"
+        }
+      ],
+      "tags": [
+        "FDM",
+        "120+ cards",
+        "Engravable",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Capacity",
+          "value": "120+ sleeved cards, plus token bay"
+        },
+        {
+          "label": "Outer size",
+          "value": "77.6 × 107.6 × 113 mm"
+        },
+        {
+          "label": "Card fit",
+          "value": "63 × 88 mm, 0.45 mm clearance"
+        },
+        {
+          "label": "Walls",
+          "value": "2.8 mm wall, 3 mm floor"
+        },
+        {
+          "label": "Material",
+          "value": "PETG or ASA, matte finish"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard"
+    },
+    {
+      "id": "vesa-adapter-hp27",
+      "title": "VESA Adapter — HP 27fwa",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "coming-soon",
+      "price": null,
+      "summary": "Bolt-on VESA 100 plate for monitors that ship without a mount.",
+      "description": "A rigid adapter that gives the HP 27fwa a standard VESA 100 pattern, so it can go on an arm or wall mount. Geometry is done and printed; photography and pricing are still pending before it goes on sale.",
+      "mainImage": "images/categories/placeholder-workshop.svg",
+      "mainImageAlt": "Placeholder artwork for an unphotographed product",
+      "cardImage": "images/categories/placeholder-workshop.svg",
+      "cardImageAlt": "Placeholder artwork for an unphotographed product",
+      "mediaRatio": "wide",
+      "detailRatio": "wide",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "VESA 100",
+        "In preparation"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "HP 27fwa"
+        },
+        {
+          "label": "Pattern",
+          "value": "VESA 100 × 100"
+        },
+        {
+          "label": "Status",
+          "value": "Awaiting photography and pricing"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard"
+    }
+  ]
+}
