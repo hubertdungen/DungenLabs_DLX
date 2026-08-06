@@ -1,0 +1,9 @@
+{
+  "name": "dungenlabs-dlx",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DL X shop — static site with Netlify Functions for checkout",
+  "dependencies": {
+    "stripe": "^17.5.0"
+  }
+}

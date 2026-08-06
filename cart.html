@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart | DL X</title>
+  <meta name="description" content="Review your DL X order and pay by card or crypto.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#12373F">
+  <link rel="icon" type="image/svg+xml" href="/images/brand/dlx-mark-light.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles-dlx.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand brand-dlx" href="/" aria-label="DL X home">
+        <img class="brand-mark-dlx" src="/images/brand/dlx-mark-dark.svg" alt="" width="68" height="46">
+        <span class="brand-name">DL X</span>
+      </a>
+      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="/">Home</a>
+        <a href="/shop.html">Shop</a>
+        <a class="nav-cta" href="https://dungenlabs.com">DungenLabs</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="dlx-doc" id="main">
+    <div class="section-inner">
+      <p class="eyebrow">Cart</p>
+      <h1>Review your order</h1>
+
+      <p class="dlx-cancelled" id="cart-cancelled" hidden>Payment was cancelled — nothing was charged, and your cart is untouched.</p>
+
+      <div class="cart-page" id="cart-page">
+        <p class="cart-empty">Loading…</p>
+      </div>
+
+      <div class="cart-checkout" id="cart-checkout" hidden>
+        <div class="cart-total"><span>Subtotal</span><strong id="cart-page-total">—</strong></div>
+        <p class="cart-note">Shipping is added at the payment step: €4.90 within Portugal, €11.90 elsewhere in the EU.</p>
+
+        <div class="cart-pay">
+          <button class="button" type="button" data-checkout="/api/checkout">Pay by card</button>
+          <button class="button secondary" type="button" data-checkout="/api/crypto-checkout">Pay with crypto</button>
+        </div>
+
+        <p class="cart-note">Card payments run on Stripe. Crypto accepts Bitcoin, Ethereum, Litecoin, Monero and several hundred others — you pick the coin on the payment page. Neither stores card or wallet details on this site.</p>
+        <p class="checkout-status" id="checkout-status" role="alert"></p>
+
+        <p class="cart-note">Prefer to be quoted first, or need engraving or a custom colour? <a href="/order.html">Send an order request</a> instead.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>DL X</strong>
+        <p>Research, development and proprietary products. A division of DungenLabs, Lisbon.</p>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <a href="mailto:info@dungenlabs.com">info@dungenlabs.com</a>
+        <a href="/shipping.html">Shipping &amp; returns</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/cart.js" defer></script>
+  <script src="/cart-page.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800"
+     role="img" aria-label="Technical drawing of the DL X Commander deck box: front elevation and section, dimensioned in millimetres">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="rgba(235,130,108,0.10)" stroke-width="1"/>
+    </pattern>
+    <style>
+      .shell  { fill: #0e2c33; stroke: rgba(244,248,248,0.85); stroke-width: 2; }
+      .lid    { fill: #16424c; stroke: rgba(244,248,248,0.85); stroke-width: 2; }
+      .bumper { fill: rgba(235,130,108,0.16); stroke: #EB826C; stroke-width: 1.5; }
+      .groove { stroke: rgba(244,248,248,0.28); stroke-width: 3; stroke-linecap: round; }
+      .hinge  { stroke: #EB826C; stroke-width: 3; stroke-linecap: round; }
+      .latch  { fill: #EB826C; }
+      .cavity { fill: rgba(5,6,6,0.5); stroke: rgba(244,248,248,0.35);
+                 stroke-width: 1.5; stroke-dasharray: 7 5; }
+      .cards  { fill: rgba(235,130,108,0.13); stroke: #EB826C; stroke-width: 1.5; }
+      .card-edge { stroke: rgba(235,130,108,0.55); stroke-width: 1; }
+      .dim line   { stroke: rgba(244,248,248,0.4); stroke-width: 1; }
+      .dim text   { fill: #F4F8F8; font-family: Orbitron, Arial, sans-serif;
+                     font-size: 15px; letter-spacing: 0.06em; }
+      .callout line   { stroke: rgba(244,248,248,0.4); stroke-width: 1; }
+      .callout circle { fill: #EB826C; }
+      .callout text   { fill: #F4F8F8; font-family: Orbitron, Arial, sans-serif;
+                         font-size: 15px; }
+      .caption { fill: rgba(244,248,248,0.55); font-family: Orbitron, Arial, sans-serif;
+                  font-size: 14px; letter-spacing: 0.22em; }
+      .stamp   { fill: rgba(244,248,248,0.4); font-family: Orbitron, Arial, sans-serif;
+                  font-size: 13px; letter-spacing: 0.2em; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="800" fill="#12373F"/>
+  <rect width="1280" height="800" fill="url(#grid)"/>
+
+  <path class="shell" d="M226.0,226.0 L504.4,226.0 L520.4,242.0 L520.4,606.0 L504.4,622.0 L226.0,622.0 L210,606.0 L210,242.0 Z"/>
+  <path class="lid" d="M226.0,170 L504.4,170 L520.4,186.0 L520.4,210.0 L504.4,226.0 L226.0,226.0 L210,210.0 L210,186.0 Z"/>
+  <rect class="bumper" x="210" y="242.0" width="32.0" height="364.0"/>
+  <rect class="bumper" x="488.4" y="242.0" width="32.0" height="364.0"/>
+  <line class="groove" x1="256.0" y1="471.52" x2="474.4" y2="471.52"/>
+  <line class="groove" x1="256.0" y1="482.52" x2="474.4" y2="482.52"/>
+  <line class="groove" x1="256.0" y1="493.52" x2="474.4" y2="493.52"/>
+  <line class="hinge" x1="216" y1="226.0" x2="514.4" y2="226.0"/>
+  <rect class="latch" x="349.2" y="219.0" width="32" height="22" rx="2"/>
+
+  <g class="dim">
+    <line x1="210" y1="144" x2="520.4" y2="144"/>
+    <line x1="210" y1="138" x2="210" y2="150"/>
+    <line x1="520.4" y1="138" x2="520.4" y2="150"/>
+    <text x="365.2" y="134" text-anchor="middle">77.6 mm</text>
+  </g>
+
+  <g class="dim">
+    <line x1="180" y1="170" x2="180" y2="622.0"/>
+    <line x1="174" y1="170" x2="186" y2="170"/>
+    <line x1="174" y1="622.0" x2="186" y2="622.0"/>
+    <text x="170" y="396.0" text-anchor="middle"
+          transform="rotate(-90 170 396.0)">113 mm</text>
+  </g>
+
+  <g class="dim">
+    <line x1="550.4" y1="170" x2="550.4" y2="226.0"/>
+    <line x1="544.4" y1="170" x2="556.4" y2="170"/>
+    <line x1="544.4" y1="226.0" x2="556.4" y2="226.0"/>
+    <text x="540.4" y="198.0" text-anchor="middle"
+          transform="rotate(-90 540.4 198.0)">lid 14</text>
+  </g>
+  <text class="caption" x="365.2" y="666.0" text-anchor="middle">FRONT ELEVATION</text>
+  <path class="shell" d="M776.0,226.0 L1174.4,226.0 L1190.4,242.0 L1190.4,606.0 L1174.4,622.0 L776.0,622.0 L760,606.0 L760,242.0 Z"/>
+  <path class="lid" d="M776.0,170 L1174.4,170 L1190.4,186.0 L1190.4,210.0 L1174.4,226.0 L776.0,226.0 L760,210.0 L760,186.0 Z"/>
+  <rect class="cavity" x="771.2" y="226.0" width="408.0" height="384.0"/>
+  <rect class="cards" x="781.2" y="258.0" width="388.0" height="352.0"/>
+  <line class="card-edge" x1="783.2" y1="264.0" x2="783.2" y2="604.0"/>
+  <line class="card-edge" x1="800.6545454545455" y1="264.0" x2="800.6545454545455" y2="604.0"/>
+  <line class="card-edge" x1="818.1090909090909" y1="264.0" x2="818.1090909090909" y2="604.0"/>
+  <line class="card-edge" x1="835.5636363636364" y1="264.0" x2="835.5636363636364" y2="604.0"/>
+  <line class="card-edge" x1="853.0181818181818" y1="264.0" x2="853.0181818181818" y2="604.0"/>
+  <line class="card-edge" x1="870.4727272727273" y1="264.0" x2="870.4727272727273" y2="604.0"/>
+  <line class="card-edge" x1="887.9272727272728" y1="264.0" x2="887.9272727272728" y2="604.0"/>
+  <line class="card-edge" x1="905.3818181818182" y1="264.0" x2="905.3818181818182" y2="604.0"/>
+  <line class="card-edge" x1="922.8363636363637" y1="264.0" x2="922.8363636363637" y2="604.0"/>
+  <line class="card-edge" x1="940.290909090909" y1="264.0" x2="940.290909090909" y2="604.0"/>
+  <line class="card-edge" x1="957.7454545454545" y1="264.0" x2="957.7454545454545" y2="604.0"/>
+  <line class="card-edge" x1="975.2" y1="264.0" x2="975.2" y2="604.0"/>
+  <line class="card-edge" x1="992.6545454545455" y1="264.0" x2="992.6545454545455" y2="604.0"/>
+  <line class="card-edge" x1="1010.1090909090909" y1="264.0" x2="1010.1090909090909" y2="604.0"/>
+  <line class="card-edge" x1="1027.5636363636363" y1="264.0" x2="1027.5636363636363" y2="604.0"/>
+  <line class="card-edge" x1="1045.0181818181818" y1="264.0" x2="1045.0181818181818" y2="604.0"/>
+  <line class="card-edge" x1="1062.4727272727273" y1="264.0" x2="1062.4727272727273" y2="604.0"/>
+  <line class="card-edge" x1="1079.9272727272728" y1="264.0" x2="1079.9272727272728" y2="604.0"/>
+  <line class="card-edge" x1="1097.3818181818183" y1="264.0" x2="1097.3818181818183" y2="604.0"/>
+  <line class="card-edge" x1="1114.8363636363638" y1="264.0" x2="1114.8363636363638" y2="604.0"/>
+  <line class="card-edge" x1="1132.290909090909" y1="264.0" x2="1132.290909090909" y2="604.0"/>
+  <line class="card-edge" x1="1149.7454545454545" y1="264.0" x2="1149.7454545454545" y2="604.0"/>
+
+  <g class="dim">
+    <line x1="760" y1="144" x2="1190.4" y2="144"/>
+    <line x1="760" y1="138" x2="760" y2="150"/>
+    <line x1="1190.4" y1="138" x2="1190.4" y2="150"/>
+    <text x="975.2" y="134" text-anchor="middle">107.6 mm</text>
+  </g>
+
+  <g class="dim">
+    <line x1="771.2" y1="640.0" x2="1179.2" y2="640.0"/>
+    <line x1="771.2" y1="634.0" x2="771.2" y2="646.0"/>
+    <line x1="1179.2" y1="634.0" x2="1179.2" y2="646.0"/>
+    <text x="975.2" y="630.0" text-anchor="middle">inner 102 mm</text>
+  </g>
+
+  <g class="dim">
+    <line x1="1220.4" y1="226.0" x2="1220.4" y2="610.0"/>
+    <line x1="1214.4" y1="226.0" x2="1226.4" y2="226.0"/>
+    <line x1="1214.4" y1="610.0" x2="1226.4" y2="610.0"/>
+    <text x="1210.4" y="418.0" text-anchor="middle"
+          transform="rotate(-90 1210.4 418.0)">inner 96</text>
+  </g>
+
+  <g class="callout">
+    <line x1="765.6" y1="256.0" x2="714" y2="220.0"/>
+    <circle cx="765.6" cy="256.0" r="3"/>
+    <text x="710" y="216.0" text-anchor="end">wall 2.8 mm</text>
+  </g>
+  <text class="caption" x="975.2" y="666.0" text-anchor="middle">SECTION — 120+ SLEEVED CARDS</text>
+
+  <text class="stamp" x="60" y="72">DL X — COMMANDER DECK BOX</text>
+  <text class="stamp" x="60" y="96" opacity="0.7">DIMENSIONS IN MILLIMETRES · V1</text>
+  <line x1="60" y1="112" x2="420" y2="112" stroke="#EB826C" stroke-width="2"/>
+  <text class="stamp" x="1220" y="760" text-anchor="end">PETG / ASA · FDM</text>
+</svg>

@@ -2,6 +2,11 @@
   publish = "."
   functions = "netlify/functions"
 
+# O catalogo tem de viajar com as funcoes: e de la que saem os precos
+# cobrados, nunca do carrinho que o browser envia.
+[functions]
+  included_files = ["data/shop.json"]
+
 # ------------------------------------------------------------------
 # Cabecalhos de seguranca — espelham os do dungenlabs.com.
 # O checkout usa Stripe Payment Links (navegacao normal por <a href>),
@@ -42,6 +47,21 @@
 [[redirects]]
   from = "/api/callback"
   to = "/.netlify/functions/callback"
+  status = 200
+
+[[redirects]]
+  from = "/api/checkout"
+  to = "/.netlify/functions/create-checkout"
+  status = 200
+
+[[redirects]]
+  from = "/api/crypto-checkout"
+  to = "/.netlify/functions/create-crypto-checkout"
+  status = 200
+
+[[redirects]]
+  from = "/cart"
+  to = "/cart.html"
   status = 200
 
 [[redirects]]

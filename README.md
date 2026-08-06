@@ -59,24 +59,58 @@ To edit by hand instead, change `data/shop.json` and push — same result.
 | `layout` | Tile size in the mosaic: `standard`, `wide`, `tall`, `featured`. |
 | `categoryIds` | Must match a category `id`. A product can sit in several. |
 
-## Checkout
+## Cart and checkout
 
-Stripe **Payment Links**, not the Stripe SDK. Each product's buy button is a
-plain link to a checkout page hosted by Stripe.
+```
+shop.html ──add──▶ localStorage ──▶ cart.html
+                                      │
+                                      ├─▶ POST /api/checkout ────────▶ Stripe Checkout
+                                      ├─▶ POST /api/crypto-checkout ─▶ NOWPayments
+                                      └─▶ /order.html ───────────────▶ Netlify Forms
+```
 
-This matters for two reasons: no API key ever reaches the browser, and the
-Content-Security-Policy in `netlify.toml` stays as tight as the main site's —
-no `script-src` or `connect-src` exception is needed for payments.
+**Prices are never trusted from the browser.** The cart in `localStorage` holds
+only product ids, quantities and a colour choice. Both checkout functions call
+`priceCart()` in `netlify/functions/_catalogue.js`, which looks every line up in
+`data/shop.json` server-side and rejects anything that does not check out —
+unknown id, product not on sale, no published price, malformed quantity. A
+tampered cart cannot change what is charged; at worst the shopper sees a wrong
+subtotal until checkout corrects it.
 
-To list a product for sale:
+`data/shop.json` reaches the functions through `included_files` in
+`netlify.toml`. If that entry is removed, checkout fails closed with
+*"shop.json not found"* rather than falling back to client prices.
 
-1. Stripe Dashboard → Payment Links → create a link for the product.
-2. Set its success URL to `https://dlx.dungenlabs.com/thank-you.html`.
-3. Paste the link into `checkoutUrl`, via `/admin` or the JSON.
+**Card** — Stripe Checkout Session, created server-side. The secret key stays in
+Netlify's environment. Shipping is a Stripe shipping option (€4.90 Portugal,
+€11.90 rest of EU) so the address and rate are collected on Stripe's page.
 
-Cost is per-sale commission only, with no monthly fee. The same pattern works
-for crypto via NOWPayments or Coinbase Commerce — create a link, paste it into
-`cryptoCheckoutUrl`, and a second button appears.
+**Crypto** — NOWPayments invoice: Bitcoin, Ethereum, Litecoin, Monero and
+several hundred others, with the coin chosen on the payment page. NOWPayments
+does not collect a shipping address, so the EU rate is included in the invoice
+total and the difference refunded for domestic orders — stated on `cart.html`.
+
+**Quote request** — `/order.html`, a Netlify Form. This is the path for
+engraving, custom colours or anything needing a conversation first. It is also
+the automatic fallback: if `STRIPE_SECRET_KEY` is missing the function replies
+`503` with `{"fallback": "/order.html"}` and the shopper is redirected there, so
+an unconfigured payment provider never produces a dead button.
+
+Both providers charge per-sale commission with no monthly fee.
+
+## Where orders arrive
+
+There is no orders database, by design — each provider already has one:
+
+| Channel | Where to look |
+|---|---|
+| Card payments | Stripe Dashboard → Payments. The colour choice is in the session metadata. |
+| Crypto payments | NOWPayments Dashboard → Payments, matched by the `DLX-…` order id. |
+| Quote requests | Netlify → Forms → `dlx-order`, with email notifications. |
+
+`/admin` manages the catalogue. It deliberately does not show orders: giving the
+CMS token access to customer data would widen what a stolen admin session is
+worth, and every provider above already has a better view of it.
 
 ## Deployment
 
@@ -89,9 +123,14 @@ CMS login — the public site works without them.
 
 | Variable | Source | Notes |
 |---|---|---|
-| `GITHUB_OAUTH_CLIENT_ID` | GitHub → Settings → Developer settings → OAuth Apps | |
+| `STRIPE_SECRET_KEY` | Stripe Dashboard → Developers → API keys | Card checkout. Without it, buyers fall back to `/order.html` |
+| `NOWPAYMENTS_API_KEY` | NOWPayments → Settings → API keys | Crypto checkout. Same fallback |
+| `GITHUB_OAUTH_CLIENT_ID` | GitHub → Settings → Developer settings → OAuth Apps | CMS login |
 | `GITHUB_OAUTH_CLIENT_SECRET` | Same app | Never commit this |
 | `GITHUB_OAUTH_SCOPE` | optional | Defaults to `public_repo`. See below. |
+
+Use Stripe's **test** key (`sk_test_…`) first — card `4242 4242 4242 4242`, any
+future expiry — and switch to the live key once an end-to-end order works.
 
 The OAuth app's *Authorization callback URL* must be
 `https://dlx.dungenlabs.com/api/callback`.

@@ -279,35 +279,49 @@ function createBuyPanel(product) {
     panel.append(list);
   }
 
-  const actions = createElement("div", "buy-actions");
   const sellable = product.status !== "coming-soon" && product.status !== "sold-out";
 
-  if (sellable && product.checkoutUrl) {
-    const card = createElement("a", "button", "Buy with card");
-    card.href = product.checkoutUrl;
-    card.rel = "noopener";
-    actions.append(card);
+  if (sellable) {
+    const colourRow = createElement("div", "buy-colour");
+    const colourLabel = createElement("label", "", "Colour");
+    colourLabel.htmlFor = `colour-${product.id}`;
+    const colour = document.createElement("select");
+    colour.id = `colour-${product.id}`;
+    ["Deep Teal", "Coral", "Matte Black", "Light Grey"].forEach((name) => {
+      const option = document.createElement("option");
+      option.textContent = name;
+      colour.append(option);
+    });
+    colourRow.append(colourLabel, colour);
+    panel.append(colourRow);
+
+    const actions = createElement("div", "buy-actions");
+
+    const add = createElement("button", "button", "Add to cart");
+    add.type = "button";
+    add.addEventListener("click", () => {
+      window.DLXCart?.add(product.id, 1, colour.value);
+      add.textContent = "Added ✓";
+      setTimeout(() => { add.textContent = "Add to cart"; }, 1400);
+      window.DLXCart?.open();
+    });
+
+    const request = createElement("a", "button secondary", "Request a quote");
+    request.href = `/order.html?product=${encodeURIComponent(product.id)}`;
+
+    actions.append(add, request);
+    panel.append(actions);
+    panel.append(createElement("p", "buy-note",
+      "Printed to order in Lisbon. Card and crypto accepted at checkout; shipping added there."));
+  } else {
+    const actions = createElement("div", "buy-actions");
+    const notify = createElement("a", "button", "Notify me");
+    notify.href = `mailto:info@dungenlabs.com?subject=${encodeURIComponent(`DL X — ${product.title}`)}`;
+    actions.append(notify);
+    panel.append(actions);
+    panel.append(createElement("p", "buy-note", "Not on sale yet — email to be told when it is."));
   }
 
-  if (sellable && product.cryptoCheckoutUrl) {
-    const crypto = createElement("a", "button secondary", "Pay with crypto");
-    crypto.href = product.cryptoCheckoutUrl;
-    crypto.rel = "noopener";
-    actions.append(crypto);
-  }
-
-  // Sem link de pagamento configurado, a encomenda passa pelo formulario:
-  // recolhe quantidade, cor e destino, e devolve um total com portes.
-  if (!actions.childElementCount) {
-    const order = createElement("a", "button", sellable ? "Order this item" : "Notify me");
-    order.href = sellable
-      ? `/order.html?product=${encodeURIComponent(product.id)}`
-      : `mailto:info@dungenlabs.com?subject=${encodeURIComponent(`DL X — ${product.title}`)}`;
-    actions.append(order);
-  }
-
-  panel.append(actions);
-  panel.append(createElement("p", "buy-note", "Printed to order in Lisbon. Shipping quoted at checkout."));
   return panel;
 }
 
