@@ -17,10 +17,17 @@ exports.handler = async (event) => {
   const host = event.headers.host;
   const state = crypto.randomBytes(16).toString("hex");
 
+  // `public_repo` chega para um repositorio publico e nao da ao token
+  // qualquer acesso aos repositorios privados da conta. So subir para
+  // `repo` (via GITHUB_OAUTH_SCOPE) se o repositorio for privado —
+  // e nesse caso o token passa a alcancar TODOS os privados, que e
+  // exactamente o que se quer evitar.
+  const scope = process.env.GITHUB_OAUTH_SCOPE || "public_repo";
+
   const authorizeUrl = new URL("https://github.com/login/oauth/authorize");
   authorizeUrl.searchParams.set("client_id", clientId);
   authorizeUrl.searchParams.set("redirect_uri", `${proto}://${host}/api/callback`);
-  authorizeUrl.searchParams.set("scope", "repo,user");
+  authorizeUrl.searchParams.set("scope", scope);
   authorizeUrl.searchParams.set("state", state);
 
   return {

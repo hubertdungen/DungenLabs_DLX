@@ -26,9 +26,15 @@ function renderBridge(status, payload, origin) {
 (function () {
   var message = ${JSON.stringify(message)};
   var origin = ${JSON.stringify(origin)};
-  function send() { window.opener.postMessage(message, origin); }
   if (!window.opener) { document.body.textContent = "No opener window — close this tab and retry."; return; }
-  window.addEventListener("message", send, { once: true });
+  // O token so sai para a janela que o pediu, e so depois de ela responder
+  // do mesmo origin: sem esta verificacao, qualquer pagina que abrisse este
+  // popup receberia um token de escrita no repositorio.
+  window.addEventListener("message", function handshake(event) {
+    if (event.origin !== origin) return;
+    window.removeEventListener("message", handshake);
+    window.opener.postMessage(message, origin);
+  });
   window.opener.postMessage("authorizing:github", origin);
 })();
 </script></body></html>`

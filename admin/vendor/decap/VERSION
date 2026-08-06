@@ -1,0 +1,16 @@
+decap-cms 3.15.1
+
+Origem: https://registry.npmjs.org/decap-cms/-/decap-cms-3.15.1.tgz (dist/)
+Copiado a 2026-08-06.
+
+Alojado localmente de proposito — ver o comentario em admin/index.html.
+Os .map foram deixados de fora.
+
+Para actualizar:
+
+    curl -sL -o decap.tgz https://registry.npmjs.org/decap-cms/-/decap-cms-<versao>.tgz
+    tar xzf decap.tgz
+    rm -f admin/vendor/decap/*.js
+    cp package/dist/*.decap-cms.js package/dist/decap-cms.js admin/vendor/decap/
+
+Confirmar depois que /admin abre e grava antes de fazer push.

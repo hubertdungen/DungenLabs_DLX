@@ -87,13 +87,57 @@ Netlify builds from `main`. There is no build step; `publish = "."`.
 Set in Netlify → Site configuration → Environment variables. Needed only for the
 CMS login — the public site works without them.
 
-| Variable | Source |
-|---|---|
-| `GITHUB_OAUTH_CLIENT_ID` | GitHub → Settings → Developer settings → OAuth Apps |
-| `GITHUB_OAUTH_CLIENT_SECRET` | Same app |
+| Variable | Source | Notes |
+|---|---|---|
+| `GITHUB_OAUTH_CLIENT_ID` | GitHub → Settings → Developer settings → OAuth Apps | |
+| `GITHUB_OAUTH_CLIENT_SECRET` | Same app | Never commit this |
+| `GITHUB_OAUTH_SCOPE` | optional | Defaults to `public_repo`. See below. |
 
 The OAuth app's *Authorization callback URL* must be
 `https://dlx.dungenlabs.com/api/callback`.
+
+## Security of the admin panel
+
+`/admin` can commit to this repository, so it is the most sensitive surface on
+the site. The decisions behind it:
+
+**Who can get in.** There is no separate password to leak. Authentication is
+GitHub OAuth, and Decap additionally requires the account to have write access
+to this repo — so access equals the repo's collaborator list. Removing someone
+from the repo removes their admin access, with nothing else to revoke.
+
+**Token scope.** `auth.js` requests `public_repo`, not `repo`. This matters:
+`repo` would grant the issued token read/write over *every* private repository
+on the account, so a token stolen from the browser would reach far beyond this
+site. `public_repo` cannot touch private repositories at all.
+
+> This is why the repo should stay **public**. If it is made private,
+> `GITHUB_OAUTH_SCOPE` has to be raised to `repo`, and that widened blast radius
+> is the real cost of privacy here — not the visibility of the source, which is
+> served to every visitor anyway.
+
+**Supply chain.** The Decap bundle is committed under `admin/vendor/decap/`
+rather than loaded from unpkg. A CDN serving the admin panel would be able to
+push code that commits to the repo on your behalf, and Subresource Integrity
+does not help because the bundle lazy-loads further chunks at runtime. Updating
+is a deliberate, reviewable commit — see `admin/vendor/decap/VERSION`.
+
+**CSRF on the OAuth flow.** `auth.js` issues a random `state` and stores it in a
+`HttpOnly; Secure; SameSite=Lax` cookie. `callback.js` refuses any callback whose
+`state` does not match, so a login cannot be initiated from somewhere else.
+
+**Token delivery.** The callback page posts the token only to the exact site
+origin, never `*`, and only after the opener has answered from that same origin.
+Without that check any page that opened the popup could collect a write token.
+
+**Isolation.** The admin's looser CSP — it needs inline styles and the GitHub
+API — applies only to `/admin/*`. The public site keeps the same strict policy
+as `dungenlabs.com`, and the shop needs no exception because checkout is a plain
+link rather than an embedded SDK.
+
+**No secrets in the browser.** The OAuth client secret lives only in Netlify's
+environment and is used only inside the function. No Stripe key is published,
+because Payment Links carry no key.
 
 ## Local preview
 

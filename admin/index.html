@@ -7,6 +7,10 @@
   <title>DL X — Catalogue admin</title>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js"></script>
+  <!-- O bundle do Decap e servido daqui, nao de um CDN. O painel tem
+       permissao de escrita no repositorio, por isso um CDN comprometido
+       seria um compromisso do catalogo: uma dependencia de terceiros em
+       runtime nao se justifica. Ver admin/vendor/decap/VERSION. -->
+  <script src="/admin/vendor/decap/decap-cms.js"></script>
 </body>
 </html>
