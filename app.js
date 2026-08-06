@@ -159,21 +159,51 @@ function animateTiles(previousRects) {
   });
 }
 
+/**
+ * Reconstroi o rasto de navegacao com os niveis anteriores clicaveis.
+ *
+ * O ultimo segmento e onde estamos, por isso fica como texto — so os
+ * anteriores sao botoes.
+ */
+function renderBreadcrumb(trail) {
+  breadcrumb.replaceChildren();
+
+  trail.forEach((step, index) => {
+    if (index > 0) breadcrumb.append(createElement("span", "crumb-sep", "/"));
+
+    if (step.target) {
+      const link = createElement("button", "crumb-link", step.label);
+      link.type = "button";
+      link.addEventListener("click", () => transition(step.target));
+      breadcrumb.append(link);
+    } else {
+      breadcrumb.append(createElement("span", "crumb-current", step.label));
+    }
+  });
+}
+
 function updateChrome({ mode, category, product }) {
   if (!viewTitle || !viewSummary || !breadcrumb) return;
 
   if (mode === "categories") {
     viewTitle.textContent = "Shop";
     viewSummary.textContent = "Proprietary hardware from the DL X bench, printed to order in Lisbon.";
-    breadcrumb.textContent = "Shop";
+    renderBreadcrumb([{ label: "Shop" }]);
   } else if (mode === "category" && category) {
     viewTitle.textContent = category.title;
     viewSummary.textContent = category.summary;
-    breadcrumb.textContent = `Shop / ${category.title}`;
+    renderBreadcrumb([
+      { label: "Shop", target: { mode: "categories", categoryId: null, productId: null } },
+      { label: category.title }
+    ]);
   } else if (mode === "product" && category && product) {
     viewTitle.textContent = product.title;
     viewSummary.textContent = product.summary;
-    breadcrumb.textContent = `Shop / ${category.title} / ${product.title}`;
+    renderBreadcrumb([
+      { label: "Shop", target: { mode: "categories", categoryId: null, productId: null } },
+      { label: category.title, target: { mode: "category", categoryId: category.id, productId: null } },
+      { label: product.title }
+    ]);
   }
 
   if (resetButton) resetButton.hidden = mode === "categories";
