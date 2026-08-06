@@ -5,7 +5,23 @@
  * do servidor (ver _catalogue.js). A chave secreta da Stripe fica nas
  * variaveis de ambiente do Netlify e nunca chega ao cliente.
  */
-const { priceCart } = require("./_catalogue");
+const { priceCart, loadCatalogue } = require("./_catalogue");
+
+/**
+ * O catalogo chega as funcoes por `included_files` no netlify.toml. Se
+ * essa entrada se perder, o checkout so falharia na primeira compra
+ * real — tarde de mais para dar por isso. Esta verificacao vai na
+ * resposta 503, que e publica mas nao revela nada: diz apenas se o
+ * ficheiro foi empacotado.
+ */
+function catalogueStatus() {
+  try {
+    const catalogue = loadCatalogue();
+    return `ok (${catalogue.products.length} products)`;
+  } catch (error) {
+    return `MISSING — ${error.message}`;
+  }
+}
 
 const SHIPPING = [
   { label: "Portugal — tracked", amount: 490, minDays: 2, maxDays: 4 },
@@ -35,7 +51,8 @@ exports.handler = async (event) => {
     // para o formulario de encomenda, que continua a funcionar.
     return reply(503, {
       error: "Card checkout is not configured yet.",
-      fallback: "/order.html"
+      fallback: "/order.html",
+      catalogue: catalogueStatus()
     });
   }
 
