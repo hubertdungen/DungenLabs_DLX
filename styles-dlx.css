@@ -9,19 +9,17 @@
 
 /* --- Assinatura DL X na navegacao ------------------------- */
 
+/* A .brand-mark da DL e uma caixa de 122x44 com o logotipo em background e
+   o texto empurrado para fora. Aqui a marca e um SVG, por isso repomos as
+   dimensoes equivalentes — o racio util da marca DL X e 1.473:1. */
 .brand-dlx {
   gap: 10px;
 }
 
 .brand-mark-dlx {
-  width: 34px;
-  height: 34px;
+  width: 68px;
+  height: 46px;
   display: block;
-}
-
-.brand-name .brand-x {
-  color: var(--coral);
-  margin-left: 2px;
 }
 
 /* --- Hero ------------------------------------------------- */
@@ -33,9 +31,28 @@
 }
 
 .dlx-hero-mark {
-  width: clamp(64px, 8vw, 88px);
+  width: clamp(150px, 17vw, 220px);
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 26px;
+  display: block;
+}
+
+/* --- Imagem do produto em destaque ------------------------
+   O .flagship-media da DL e um <div> com background-image. Aqui leva um
+   <img> com alt, por isso o fundo herdado sai e a imagem passa a
+   preencher a caixa sem ser esticada pela grelha. */
+
+.dlx-featured .flagship-media {
+  background: none;
+  overflow: hidden;
+  display: block;
+}
+
+.dlx-featured .flagship-media img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
   display: block;
 }
 
@@ -67,6 +84,32 @@
 
 .dlx-lineage .market-panel.is-current .eyebrow {
   color: var(--coral);
+}
+
+/* --- Grelha da loja ---------------------------------------
+   O Workbench e um arquivo: muitos cartoes pequenos a folhear. Uma loja
+   e o contrario — as pecas tem de se ver antes de alguem as comprar.
+   Mesma grelha de 12 colunas, mas linhas mais altas e cartoes mais
+   largos: 3 por linha em vez de 4.
+   ---------------------------------------------------------- */
+
+#shop-mosaic {
+  grid-auto-rows: 118px;
+}
+
+#shop-mosaic .span-standard {
+  grid-column: span 4;
+  grid-row: span 3;
+}
+
+#shop-mosaic .span-wide {
+  grid-column: span 8;
+  grid-row: span 3;
+}
+
+#shop-mosaic .span-tall {
+  grid-column: span 4;
+  grid-row: span 4;
 }
 
 /* --- Etiqueta de preco sobre o cartao --------------------- */
@@ -184,6 +227,109 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* --- Formulario de encomenda ------------------------------ */
+
+.dlx-order-form {
+  display: grid;
+  gap: 8px;
+  margin-top: 32px;
+  max-width: 620px;
+}
+
+.dlx-order-form label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-top: 12px;
+}
+
+.dlx-optional {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.dlx-order-form input,
+.dlx-order-form select,
+.dlx-order-form textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.dlx-order-form input:focus,
+.dlx-order-form select:focus,
+.dlx-order-form textarea:focus {
+  outline: 2px solid var(--coral);
+  outline-offset: 1px;
+  border-color: var(--coral);
+}
+
+.dlx-order-form input[readonly] {
+  background: var(--surface);
+  color: var(--muted);
+}
+
+.dlx-order-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.dlx-order-form .button {
+  margin-top: 22px;
+  justify-self: start;
+}
+
+.dlx-order-note {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Resumo do produto no topo do formulario. */
+.dlx-order-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.dlx-order-summary img {
+  width: 110px;
+  height: 82px;
+  object-fit: cover;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.dlx-order-summary strong {
+  display: block;
+  font-family: var(--font-digital);
+  color: var(--deep-teal);
+}
+
+.dlx-order-summary span {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Armadilha de spam: escondida de olhos e de leitores de ecra, mas
+   preenchivel por bots que ignoram o CSS. */
+.dlx-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /* --- Paginas de texto simples (envios, obrigado, 404) ----- */
 
 .dlx-doc {
@@ -208,6 +354,22 @@
 }
 
 @media (max-width: 900px) {
+  /* A grelha da DL passa a 6 colunas neste breakpoint. */
+  #shop-mosaic .span-standard {
+    grid-column: span 3;
+    grid-row: span 3;
+  }
+
+  #shop-mosaic .span-wide {
+    grid-column: span 6;
+    grid-row: span 3;
+  }
+
+  #shop-mosaic .span-tall {
+    grid-column: span 3;
+    grid-row: span 4;
+  }
+
   .buy-panel {
     grid-column: span 3;
     grid-row: span 5;
@@ -215,6 +377,18 @@
 }
 
 @media (max-width: 620px) {
+  /* E a 2 colunas aqui: cada produto ocupa a largura toda. */
+  #shop-mosaic {
+    grid-auto-rows: 132px;
+  }
+
+  #shop-mosaic .span-standard,
+  #shop-mosaic .span-wide,
+  #shop-mosaic .span-tall {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
   .buy-panel {
     grid-column: span 2;
     grid-row: span 4;

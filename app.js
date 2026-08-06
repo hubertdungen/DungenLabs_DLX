@@ -296,11 +296,14 @@ function createBuyPanel(product) {
     actions.append(crypto);
   }
 
-  // Sem link de pagamento configurado o produto continua utilizavel: cai no pedido por email.
+  // Sem link de pagamento configurado, a encomenda passa pelo formulario:
+  // recolhe quantidade, cor e destino, e devolve um total com portes.
   if (!actions.childElementCount) {
-    const enquire = createElement("a", "button", sellable ? "Request this item" : "Notify me");
-    enquire.href = `mailto:x@dungenlabs.com?subject=${encodeURIComponent(`DL X — ${product.title}`)}`;
-    actions.append(enquire);
+    const order = createElement("a", "button", sellable ? "Order this item" : "Notify me");
+    order.href = sellable
+      ? `/order.html?product=${encodeURIComponent(product.id)}`
+      : `mailto:info@dungenlabs.com?subject=${encodeURIComponent(`DL X — ${product.title}`)}`;
+    actions.append(order);
   }
 
   panel.append(actions);
@@ -405,6 +408,66 @@ function readHash() {
   return { mode: "categories", categoryId: null, productId: null };
 }
 
+/**
+ * Pagina de encomenda: preenche o produto a partir de ?product=<id>.
+ *
+ * O campo fica readonly em vez de hidden — quem encomenda tem de poder ver
+ * o que esta a pedir, e o valor vai a mesma no email do Netlify. Se o id
+ * nao existir no catalogo, o campo abre editavel para nao bloquear ninguem.
+ */
+async function initOrderForm() {
+  const field = document.querySelector("#order-product");
+  if (!field) return;
+
+  const productId = new URLSearchParams(window.location.search).get("product");
+  if (!productId) {
+    field.readOnly = false;
+    field.placeholder = "Which product?";
+    return;
+  }
+
+  let catalogue;
+  try {
+    const response = await fetch("/data/shop.json", { cache: "no-cache" });
+    catalogue = await response.json();
+  } catch (error) {
+    field.readOnly = false;
+    field.value = productId;
+    console.error("DL X order: failed to load catalogue", error);
+    return;
+  }
+
+  const product = catalogue.products.find((item) => item.id === productId);
+  if (!product) {
+    field.readOnly = false;
+    field.value = productId;
+    return;
+  }
+
+  field.value = product.title;
+
+  const heading = document.querySelector("#order-heading");
+  if (heading) heading.textContent = `Order — ${product.title}`;
+  document.title = `Order ${product.title} | DL X`;
+
+  const summary = document.querySelector("#order-summary");
+  const image = document.querySelector("#order-image");
+  const title = document.querySelector("#order-product-title");
+  const price = document.querySelector("#order-product-price");
+
+  if (summary && image && title && price) {
+    image.src = product.cardImage || product.mainImage;
+    image.alt = product.cardImageAlt || product.mainImageAlt || "";
+    title.textContent = product.title;
+    price.textContent = typeof product.price === "number"
+      ? `${new Intl.NumberFormat("en-IE", { style: "currency", currency: catalogue.currency || "EUR" }).format(product.price)} each, before shipping`
+      : "Price on request";
+    summary.hidden = false;
+  }
+}
+
+initOrderForm();
+
 async function init() {
   if (!mosaicRoot) return;
 
@@ -418,7 +481,7 @@ async function init() {
         key: "load-error",
         className: "project-copy-tile span-wide",
         title: "Catalogue unavailable",
-        summary: "The product list could not be loaded. Please refresh, or email x@dungenlabs.com.",
+        summary: "The product list could not be loaded. Please refresh, or email info@dungenlabs.com.",
         button: false
       })
     );

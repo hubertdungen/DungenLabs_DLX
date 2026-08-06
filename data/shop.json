@@ -13,8 +13,8 @@
       "id": "workshop",
       "title": "Workshop & Desk",
       "summary": "Printer upgrades, mounts and bench utilities from the DL X bench.",
-      "image": "images/categories/placeholder-workshop.svg",
-      "imageAlt": "Technical pattern placeholder for the workshop category",
+      "image": "images/products/adaptus-clamp.webp",
+      "imageAlt": "Printed clamp with threaded pressure screw on the bench",
       "layout": "standard"
     },
     {
@@ -162,6 +162,191 @@
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
       "layout": "standard"
+    },
+    {
+      "id": "qidi-ptfe-aligner",
+      "title": "PTFE Tube Aligner — QIDI Box",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "made-to-order",
+      "price": 14.9,
+      "summary": "Keeps the filament path straight where the QIDI Box feeds the printer.",
+      "description": "A two-part aligner for the PTFE run between a QIDI Box and the printer. It removes the tight bend that builds drag at the entry point, so retractions stay consistent and the tube stops walking out of its coupler. Printed to order and supplied as a fitted pair.",
+      "mainImage": "images/products/qidi-ptfe-aligner.webp",
+      "mainImageAlt": "Printed PTFE tube aligner parts for a QIDI Box filament path",
+      "cardImage": "images/products/qidi-ptfe-aligner.webp",
+      "cardImageAlt": "Printed PTFE tube aligner pair",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "QIDI Box",
+        "Filament path",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "QIDI Box filament path"
+        },
+        {
+          "label": "Supplied as",
+          "value": "Fitted pair"
+        },
+        {
+          "label": "Material",
+          "value": "PETG, matte finish"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard"
+    },
+    {
+      "id": "qidi-exhaust-elbow",
+      "title": "Exhaust Elbow Adapter — QIDI Plus 4",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "made-to-order",
+      "price": 18.9,
+      "summary": "Turns the Plus 4 exhaust through 90° so it can vent into ducting.",
+      "description": "An elbow that redirects the QIDI Plus 4 exhaust outlet, letting the extraction run along a wall or into flexible ducting instead of straight out the back. The internal profile keeps the section constant through the bend, so airflow is not choked at the turn.",
+      "mainImage": "images/products/qidi-exhaust-elbow.webp",
+      "mainImageAlt": "QIDI Plus 4 exhaust elbow adapter",
+      "cardImage": "images/products/qidi-exhaust-elbow.webp",
+      "cardImageAlt": "Exhaust elbow adapter for airflow routing",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "QIDI Plus 4",
+        "Airflow",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "QIDI Plus 4 exhaust outlet"
+        },
+        {
+          "label": "Turn",
+          "value": "90°, constant section"
+        },
+        {
+          "label": "Material",
+          "value": "ASA — handles warm exhaust air"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard"
+    },
+    {
+      "id": "qidi-power-switch-cover",
+      "title": "Power Switch Cover — QIDI Plus 4",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "made-to-order",
+      "price": 12.9,
+      "summary": "Splash shield that stops resin and cleaning fluid reaching the rocker switch.",
+      "description": "A clip-on shield for the QIDI Plus 4 power switch. It keeps resin, IPA and cleaning splash off the rocker without blocking it, which matters on a bench where the printer sits next to wet work. Fits over the existing switch with no wiring changes.",
+      "mainImage": "images/products/qidi-power-switch-cover.webp",
+      "mainImageAlt": "QIDI Plus 4 splash shield installed over the power switch",
+      "cardImage": "images/products/qidi-power-switch-cover.webp",
+      "cardImageAlt": "Power switch protection cover",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "QIDI Plus 4",
+        "Protection",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "QIDI Plus 4 power switch"
+        },
+        {
+          "label": "Fitting",
+          "value": "Clip-on, no rewiring"
+        },
+        {
+          "label": "Material",
+          "value": "PETG — resists IPA"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard"
+    },
+    {
+      "id": "adaptus-clamp",
+      "title": "ADAPTUS Clamp",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop",
+        "experimental"
+      ],
+      "status": "made-to-order",
+      "price": 22.9,
+      "summary": "Printed bench clamp with a threaded pressure screw and a swappable jaw.",
+      "description": "A fully printed clamp built around a threaded pressure screw, with a jaw that comes off so it can be matched to the job. Designed as a study in printable thread mechanics that turned out useful enough to keep on the bench — which is exactly the kind of thing DL X exists to catch.",
+      "mainImage": "images/products/adaptus-clamp.webp",
+      "mainImageAlt": "Printed ADAPTUS clamp prototype with threaded pressure screw",
+      "cardImage": "images/products/adaptus-clamp.webp",
+      "cardImageAlt": "Printed clamp with pressure screw",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "Printed threads",
+        "Swappable jaw",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Mechanism",
+          "value": "Printed threaded pressure screw"
+        },
+        {
+          "label": "Jaw",
+          "value": "Removable, swappable"
+        },
+        {
+          "label": "Material",
+          "value": "PETG, matte finish"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "wide"
     },
     {
       "id": "vesa-adapter-hp27",
