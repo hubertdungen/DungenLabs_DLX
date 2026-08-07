@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="/styles-dlx.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
@@ -29,14 +29,14 @@
         <img class="brand-mark-dlx" src="/images/brand/dlx-mark-dark.svg" alt="" width="68" height="46">
         <span class="brand-name">DL<span class="brand-x">X</span></span>
       </a>
-      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
+      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation" data-i18n-attr="aria-label:nav.open">
         <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
       <div class="nav-links" id="nav-links">
-        <a href="/" aria-current="page">Home</a>
-        <a href="/shop.html">Shop</a>
-        <a href="/#capabilities">Capabilities</a>
-        <a href="https://dungenlabs.com/workbench.html">Workbench</a>
+        <a href="/" aria-current="page" data-i18n="nav.home">Home</a>
+        <a href="/shop.html" data-i18n="nav.shop">Shop</a>
+        <a href="/#capabilities" data-i18n="nav.capabilities">Capabilities</a>
+        <a href="https://dungenlabs.com/workbench.html" data-i18n="nav.workbench">Workbench</a>
         <a class="nav-cta" href="https://dungenlabs.com">DungenLabs</a>
       </div>
     </nav>
@@ -51,12 +51,12 @@
             <polygon fill="#EB826C" points="521.28 788.93 521.28 596.66 426.43 489.55 426.43 788.93 426.43 883.78 521.28 883.78 699.36 883.78 699.36 788.93 521.28 788.93"/>
             <path fill="#EB826C" d="M1006.26,832.53h-79.87s-40.39-41.13-40.39-41.13l-44.71-45.96-28.35,29.11-66.72,68.41-30.51,30.66-.21-101.85-39.92-.14c-.51-3.83-.69-7.22.03-10.23l44.31-45.3,37.57-38.47c3.49-3.57,6.83-6.55,10.03-10.83l-59.03-60.39-33.32-33.94.07-66.07h87.27s21.41,22.01,21.41,22.01l8.67,9.12,48.62,50.94,18.68-19.82,29.72-31.01,30.09-31.21,86.56-.04-.02,66.51-54.67,56.19-37.06,37.92c4.04,4.73,7.83,8.65,12,12.88l26.85,27.24,48.17,48.95,4.71,5.05.04,71.4Z"/>
           </svg>
-          <p class="eyebrow">A DungenLabs division</p>
-          <h1>The half of the lab that builds for itself.</h1>
-          <p>DungenLabs solves other people's engineering problems. DL X is the other direction — research, experimental prototypes and hardware the lab designs, owns and sells under its own name.</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">A DungenLabs division</p>
+          <h1 data-i18n="hero.h1">The half of the lab that builds for itself.</h1>
+          <p data-i18n="hero.p">DungenLabs solves other people's engineering problems. DL X is the other direction — research, experimental prototypes and hardware the lab designs, owns and sells under its own name.</p>
           <div class="hero-actions">
-            <a class="button" href="/shop.html">Browse the shop</a>
-            <a class="button secondary" href="#what-is-dlx">What is DL X?</a>
+            <a class="button" href="/shop.html" data-i18n="hero.cta1">Browse the shop</a>
+            <a class="button secondary" href="#what-is-dlx" data-i18n="hero.cta2">What is DL X?</a>
           </div>
         </div>
       </div>
@@ -64,22 +64,22 @@
 
     <section class="markets" id="what-is-dlx">
       <div class="section-inner">
-        <p class="eyebrow">The ecosystem</p>
-        <h2>Two ways of working, one lab.</h2>
-        <p class="section-kicker">DungenLabs organises itself into divisions that share a bench, a toolchain and a visual identity. What changes between them is who the work belongs to.</p>
+        <p class="eyebrow" data-i18n="eco.eyebrow">The ecosystem</p>
+        <h2 data-i18n="eco.h2">Two ways of working, one lab.</h2>
+        <p class="section-kicker" data-i18n="eco.kicker">DungenLabs organises itself into divisions that share a bench, a toolchain and a visual identity. What changes between them is who the work belongs to.</p>
 
         <div class="market-grid dlx-lineage">
           <article class="market-panel">
             <p class="eyebrow">DungenLabs</p>
-            <h3>Client engineering</h3>
-            <p>Contract work: CAD, PCB design, reverse engineering and field systems, delivered to a client's brief. The problem arrives from outside, and so does the deadline.</p>
-            <a class="button secondary" href="https://dungenlabs.com">Engineering services</a>
+            <h3 data-i18n="eco.dl.h3">Client engineering</h3>
+            <p data-i18n="eco.dl.p">Contract work: CAD, PCB design, reverse engineering and field systems, delivered to a client's brief. The problem arrives from outside, and so does the deadline.</p>
+            <a class="button secondary" href="https://dungenlabs.com" data-i18n="eco.dl.cta">Engineering services</a>
           </article>
           <article class="market-panel is-current">
             <p class="eyebrow">DL X</p>
-            <h3>Research &amp; proprietary product</h3>
-            <p>Work the lab starts on its own initiative. Nobody commissions it, nobody sets the deadline, and whatever comes out belongs to DL X — including the right to manufacture and sell it.</p>
-            <a class="button" href="/shop.html">See what's for sale</a>
+            <h3 data-i18n="eco.dlx.h3">Research &amp; proprietary product</h3>
+            <p data-i18n="eco.dlx.p">Work the lab starts on its own initiative. Nobody commissions it, nobody sets the deadline, and whatever comes out belongs to DL X — including the right to manufacture and sell it.</p>
+            <a class="button" href="/shop.html" data-i18n="eco.dlx.cta">See what's for sale</a>
           </article>
         </div>
       </div>
@@ -87,26 +87,26 @@
 
     <section class="deliverables">
       <div class="section-inner">
-        <p class="eyebrow">What DL X covers</p>
-        <h2>Four kinds of work.</h2>
-        <p class="section-kicker">The division exists for the things that don't fit a client project: ideas worth testing, tools worth building and hardware worth owning outright.</p>
+        <p class="eyebrow" data-i18n="pillars.eyebrow">What DL X covers</p>
+        <h2 data-i18n="pillars.h2">Four kinds of work.</h2>
+        <p class="section-kicker" data-i18n="pillars.kicker">The division exists for the things that don't fit a client project: ideas worth testing, tools worth building and hardware worth owning outright.</p>
 
         <div class="deliverables-grid dlx-pillars">
           <article class="deliverable">
-            <h3>Experimental prototypes</h3>
-            <p>Built to answer a question rather than fill an order. Most stay on the bench — the point is finding out.</p>
+            <h3 data-i18n="pillars.proto.h3">Experimental prototypes</h3>
+            <p data-i18n="pillars.proto.p">Built to answer a question rather than fill an order. Most stay on the bench — the point is finding out.</p>
           </article>
           <article class="deliverable">
-            <h3>Proprietary products</h3>
-            <p>Designs the lab owns end to end, manufactured in-house and sold direct, without a middleman between design and buyer.</p>
+            <h3 data-i18n="pillars.product.h3">Proprietary products</h3>
+            <p data-i18n="pillars.product.p">Designs the lab owns end to end, manufactured in-house and sold direct, without a middleman between design and buyer.</p>
           </article>
           <article class="deliverable">
-            <h3>Strategic partnerships</h3>
-            <p>Joint development where DL X brings design capability, tooling and short-run manufacturing to someone else's idea.</p>
+            <h3 data-i18n="pillars.partner.h3">Strategic partnerships</h3>
+            <p data-i18n="pillars.partner.p">Joint development where DL X brings design capability, tooling and short-run manufacturing to someone else's idea.</p>
           </article>
           <article class="deliverable">
-            <h3>Future technologies</h3>
-            <p>Longer-horizon work with no client attached. The part of the lab that has to stay curious to stay useful.</p>
+            <h3 data-i18n="pillars.future.h3">Future technologies</h3>
+            <p data-i18n="pillars.future.p">Longer-horizon work with no client attached. The part of the lab that has to stay curious to stay useful.</p>
           </article>
         </div>
       </div>
@@ -115,14 +115,14 @@
     <section class="next-section">
       <div class="section-inner next-grid">
         <div class="next-copy">
-          <p class="eyebrow">How it gets made</p>
-          <h2>Printed after you order it.</h2>
-          <p>There is no warehouse behind this shop. Orders go into the next print batch, which is why lead times are stated in days rather than hidden, and why colour or engraving variants are a conversation rather than a separate SKU.</p>
-          <p>It also means the catalogue can stay honest: a product is listed when the geometry is validated and the tolerances are known, not when a container arrives.</p>
+          <p class="eyebrow" data-i18n="made.eyebrow">How it gets made</p>
+          <h2 data-i18n="made.h2">Printed after you order it.</h2>
+          <p data-i18n="made.p1">There is no warehouse behind this shop. Orders go into the next print batch, which is why lead times are stated in days rather than hidden, and why colour or engraving variants are a conversation rather than a separate SKU.</p>
+          <p data-i18n="made.p2">It also means the catalogue can stay honest: a product is listed when the geometry is validated and the tolerances are known, not when a container arrives.</p>
           <div class="facts">
-            <div class="fact"><strong>3–5</strong><span>working days to dispatch</span></div>
-            <div class="fact"><strong>PETG / ASA</strong><span>engineering polymers</span></div>
-            <div class="fact"><strong>Lisbon</strong><span>designed and printed</span></div>
+            <div class="fact"><strong>3–5</strong><span data-i18n="made.fact1">working days to dispatch</span></div>
+            <div class="fact"><strong>PETG / ASA</strong><span data-i18n="made.fact2">engineering polymers</span></div>
+            <div class="fact"><strong>Lisbon</strong><span data-i18n="made.fact3">designed and printed</span></div>
           </div>
         </div>
         <div class="next-media">
@@ -134,16 +134,16 @@
     <section class="flagship dlx-featured">
       <div class="section-inner flagship-grid">
         <div>
-          <p class="eyebrow">In the shop now</p>
-          <h2>Commander Deck Box</h2>
-          <p>A field-case approach to card storage: chamfered shell, corner bumpers, captive printed hinge and a friction latch that survives a backpack. Sized around 120+ sleeved cards with a token bay, in a windowed or solid lid.</p>
+          <p class="eyebrow" data-i18n="featured.eyebrow">In the shop now</p>
+          <h2 data-i18n="featured.h2">Commander Deck Box</h2>
+          <p data-i18n="featured.p">A field-case approach to card storage: chamfered shell, corner bumpers, captive printed hinge and a friction latch that survives a backpack. Sized around 120+ sleeved cards with a token bay, in a windowed or solid lid.</p>
           <div class="facts">
-            <div class="fact"><strong>120+</strong><span>sleeved cards</span></div>
-            <div class="fact"><strong>2.8 mm</strong><span>wall thickness</span></div>
-            <div class="fact"><strong>3–5 days</strong><span>made to order</span></div>
+            <div class="fact"><strong>120+</strong><span data-i18n="featured.fact1">sleeved cards</span></div>
+            <div class="fact"><strong>2.8 mm</strong><span data-i18n="featured.fact2">wall thickness</span></div>
+            <div class="fact"><strong>3–5 days</strong><span data-i18n="featured.fact3">made to order</span></div>
           </div>
           <div class="hero-actions">
-            <a class="button" href="/shop.html#tabletop/mtg-commander-box-windowed">See the product</a>
+            <a class="button" href="/shop.html#tabletop/mtg-commander-box-windowed" data-i18n="featured.cta">See the product</a>
           </div>
         </div>
         <div class="flagship-media">
@@ -154,100 +154,100 @@
 
     <section class="deliverables dlx-capability" id="capabilities">
       <div class="section-inner">
-        <p class="eyebrow">Materials &amp; capabilities</p>
-        <h2>Three processes, and what each one is for.</h2>
-        <p class="section-kicker">Every part here is made in house. Enclosed extrusion covers engineering polymers and fibre-reinforced filaments; resin covers the detail work that extrusion cannot reach. Which process a part goes through is a design decision, not a preference — it follows from what the part has to survive.</p>
+        <p class="eyebrow" data-i18n="cap.eyebrow">Materials &amp; capabilities</p>
+        <h2 data-i18n="cap.h2">Three processes, and what each one is for.</h2>
+        <p class="section-kicker" data-i18n="cap.kicker">Every part here is made in house. Enclosed extrusion covers engineering polymers and fibre-reinforced filaments; resin covers the detail work that extrusion cannot reach. Which process a part goes through is a design decision, not a preference — it follows from what the part has to survive.</p>
 
         <div class="machine-grid">
           <article class="machine">
-            <p class="eyebrow">Extrusion · heated chamber</p>
-            <h3>Engineering polymers</h3>
-            <p>An actively heated, enclosed chamber and a high-temperature hotend are what make ABS, ASA, PC and nylon behave instead of warping off the plate. This is where anything structural, outdoor or heat-exposed gets made.</p>
+            <p class="eyebrow" data-i18n="cap.eng.eyebrow">Extrusion · heated chamber</p>
+            <h3 data-i18n="cap.eng.h3">Engineering polymers</h3>
+            <p data-i18n="cap.eng.p">An actively heated, enclosed chamber and a high-temperature hotend are what make ABS, ASA, PC and nylon behave instead of warping off the plate. This is where anything structural, outdoor or heat-exposed gets made.</p>
             <dl class="machine-specs">
-              <dt>Envelope</dt><dd>Up to 300 mm cubed</dd>
-              <dt>Materials</dt><dd>ABS, ASA, PC, PA, PETG</dd>
-              <dt>Layer range</dt><dd>0.1 – 0.3 mm</dd>
-              <dt>Strength</dt><dd>Highest available here</dd>
+              <dt data-i18n="cap.spec.envelope">Envelope</dt><dd data-i18n="cap.eng.envelope">Up to 300 mm cubed</dd>
+              <dt data-i18n="cap.spec.materials">Materials</dt><dd data-i18n="cap.eng.materials">ABS, ASA, PC, PA, PETG</dd>
+              <dt data-i18n="cap.spec.layerRange">Layer range</dt><dd data-i18n="cap.eng.layers">0.1 – 0.3 mm</dd>
+              <dt data-i18n="cap.spec.strength">Strength</dt><dd data-i18n="cap.eng.strength">Highest available here</dd>
             </dl>
           </article>
 
           <article class="machine">
-            <p class="eyebrow">Extrusion · hardened</p>
-            <h3>Fibre-reinforced &amp; multi-colour</h3>
-            <p>A hardened flow path takes abrasive carbon- and glass-filled filament, for parts that must stay dimensionally honest under load. Multi-material capability puts colour and markings into the geometry rather than printing them on afterwards.</p>
+            <p class="eyebrow" data-i18n="cap.fib.eyebrow">Extrusion · hardened</p>
+            <h3 data-i18n="cap.fib.h3">Fibre-reinforced &amp; multi-colour</h3>
+            <p data-i18n="cap.fib.p">A hardened flow path takes abrasive carbon- and glass-filled filament, for parts that must stay dimensionally honest under load. Multi-material capability puts colour and markings into the geometry rather than printing them on afterwards.</p>
             <dl class="machine-specs">
-              <dt>Envelope</dt><dd>Up to 250 mm cubed</dd>
-              <dt>Materials</dt><dd>CF and GF filled, TPU, PLA</dd>
-              <dt>Colour</dt><dd>Multi-material in one part</dd>
-              <dt>Best for</dt><dd>Jigs and fixtures that must not flex</dd>
+              <dt data-i18n="cap.spec.envelope">Envelope</dt><dd data-i18n="cap.fib.envelope">Up to 250 mm cubed</dd>
+              <dt data-i18n="cap.spec.materials">Materials</dt><dd data-i18n="cap.fib.materials">CF and GF filled, TPU, PLA</dd>
+              <dt data-i18n="cap.spec.colour">Colour</dt><dd data-i18n="cap.fib.colour">Multi-material in one part</dd>
+              <dt data-i18n="cap.spec.bestfor">Best for</dt><dd data-i18n="cap.fib.bestfor">Jigs and fixtures that must not flex</dd>
             </dl>
           </article>
 
           <article class="machine">
             <p class="eyebrow">MSLA · resin</p>
-            <h3>Fine detail</h3>
-            <p>Masked stereolithography for fine features, thin walls and surfaces that come off the plate already smooth — enclosures for small electronics, fit models, presentation parts. Detail over strength, deliberately.</p>
+            <h3 data-i18n="cap.res.h3">Fine detail</h3>
+            <p data-i18n="cap.res.p">Masked stereolithography for fine features, thin walls and surfaces that come off the plate already smooth — enclosures for small electronics, fit models, presentation parts. Detail over strength, deliberately.</p>
             <dl class="machine-specs">
-              <dt>Process</dt><dd>405 nm masked SLA</dd>
-              <dt>Layers</dt><dd>From 0.01 mm</dd>
-              <dt>Materials</dt><dd>Standard, tough and casting resins</dd>
-              <dt>Best for</dt><dd>Resolution extrusion cannot reach</dd>
+              <dt data-i18n="cap.spec.process">Process</dt><dd data-i18n="cap.res.process">405 nm masked SLA</dd>
+              <dt data-i18n="cap.spec.layers">Layers</dt><dd data-i18n="cap.res.layers">From 0.01 mm</dd>
+              <dt data-i18n="cap.spec.materials">Materials</dt><dd data-i18n="cap.res.materials">Standard, tough and casting resins</dd>
+              <dt data-i18n="cap.spec.bestfor">Best for</dt><dd data-i18n="cap.res.bestfor">Resolution extrusion cannot reach</dd>
             </dl>
           </article>
         </div>
 
-        <h3 class="materials-heading">Materials in regular use</h3>
+        <h3 class="materials-heading" data-i18n="mat.h3">Materials in regular use</h3>
         <div class="materials-table-wrap">
           <table class="materials-table">
             <caption class="visually-hidden">Materials DL X prints, with their properties and typical applications</caption>
             <thead>
-              <tr><th scope="col">Material</th><th scope="col">Why it gets chosen</th><th scope="col">Typical use</th></tr>
+              <tr><th scope="col" data-i18n="mat.col1">Material</th><th scope="col" data-i18n="mat.col2">Why it gets chosen</th><th scope="col" data-i18n="mat.col3">Typical use</th></tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">PETG</th>
-                <td>Tough, dimensionally stable, resists IPA and most workshop chemicals</td>
-                <td>The default for functional parts and enclosures</td>
+                <td data-i18n="mat.petg.why">Tough, dimensionally stable, resists IPA and most workshop chemicals</td>
+                <td data-i18n="mat.petg.use">The default for functional parts and enclosures</td>
               </tr>
               <tr>
                 <th scope="row">ASA</th>
-                <td>UV-stable and heat-tolerant; will not go chalky outdoors</td>
-                <td>Anything living outside, or near warm air</td>
+                <td data-i18n="mat.asa.why">UV-stable and heat-tolerant; will not go chalky outdoors</td>
+                <td data-i18n="mat.asa.use">Anything living outside, or near warm air</td>
               </tr>
               <tr>
                 <th scope="row">ABS</th>
-                <td>Impact-resistant, solvent-smoothable, machines cleanly</td>
-                <td>Housings that get handled and dropped</td>
+                <td data-i18n="mat.abs.why">Impact-resistant, solvent-smoothable, machines cleanly</td>
+                <td data-i18n="mat.abs.use">Housings that get handled and dropped</td>
               </tr>
               <tr>
                 <th scope="row">PLA</th>
-                <td>Highest detail and the least fuss, but softens with heat</td>
-                <td>Fit checks, jigs, display parts</td>
+                <td data-i18n="mat.pla.why">Highest detail and the least fuss, but softens with heat</td>
+                <td data-i18n="mat.pla.use">Fit checks, jigs, display parts</td>
               </tr>
               <tr>
                 <th scope="row">TPU</th>
-                <td>Flexible and abrasion-resistant</td>
-                <td>Gaskets, bumpers, strain reliefs</td>
+                <td data-i18n="mat.tpu.why">Flexible and abrasion-resistant</td>
+                <td data-i18n="mat.tpu.use">Gaskets, bumpers, strain reliefs</td>
               </tr>
               <tr>
                 <th scope="row">PC</th>
-                <td>High temperature resistance and real structural strength</td>
-                <td>Load-bearing brackets, hot environments</td>
+                <td data-i18n="mat.pc.why">High temperature resistance and real structural strength</td>
+                <td data-i18n="mat.pc.use">Load-bearing brackets, hot environments</td>
               </tr>
               <tr>
-                <th scope="row">Nylon (PA)</th>
-                <td>Low friction and fatigue-resistant</td>
-                <td>Bearings, living hinges, moving assemblies</td>
+                <th scope="row" data-i18n="mat.pa.name">Nylon (PA)</th>
+                <td data-i18n="mat.pa.why">Low friction and fatigue-resistant</td>
+                <td data-i18n="mat.pa.use">Bearings, living hinges, moving assemblies</td>
               </tr>
               <tr>
-                <th scope="row">Carbon-filled (CF / GF)</th>
-                <td>Stiff and dimensionally stable, at the cost of a hardened nozzle</td>
-                <td>Fixtures and jigs that must not flex</td>
+                <th scope="row" data-i18n="mat.cf.name">Carbon-filled (CF / GF)</th>
+                <td data-i18n="mat.cf.why">Stiff and dimensionally stable, at the cost of a hardened nozzle</td>
+                <td data-i18n="mat.cf.use">Fixtures and jigs that must not flex</td>
               </tr>
               <tr>
-                <th scope="row">Resin</th>
-                <td>Feature resolution extrusion cannot reach</td>
-                <td>Small enclosures, fine detail, presentation models</td>
+                <th scope="row" data-i18n="mat.resin.name">Resin</th>
+                <td data-i18n="mat.resin.why">Feature resolution extrusion cannot reach</td>
+                <td data-i18n="mat.resin.use">Small enclosures, fine detail, presentation models</td>
               </tr>
             </tbody>
           </table>
@@ -255,20 +255,20 @@
 
         <div class="deliverables-grid dlx-pillars">
           <article class="deliverable">
-            <h3>Design for manufacture</h3>
-            <p>Parts are drawn around print orientation, support strategy and tolerance from the start, not adapted to it afterwards.</p>
+            <h3 data-i18n="shopcap.dfm.h3">Design for manufacture</h3>
+            <p data-i18n="shopcap.dfm.p">Parts are drawn around print orientation, support strategy and tolerance from the start, not adapted to it afterwards.</p>
           </article>
           <article class="deliverable">
-            <h3>Short production runs</h3>
-            <p>Batches of tens rather than thousands, with the same geometry and settings every time.</p>
+            <h3 data-i18n="shopcap.runs.h3">Short production runs</h3>
+            <p data-i18n="shopcap.runs.p">Batches of tens rather than thousands, with the same geometry and settings every time.</p>
           </article>
           <article class="deliverable">
-            <h3>Finishing</h3>
-            <p>Support removal, sanding, heat-set inserts, captive hardware and solvent smoothing where the material allows.</p>
+            <h3 data-i18n="shopcap.finish.h3">Finishing</h3>
+            <p data-i18n="shopcap.finish.p">Support removal, sanding, heat-set inserts, captive hardware and solvent smoothing where the material allows.</p>
           </article>
           <article class="deliverable">
-            <h3>Custom work</h3>
-            <p>Colour, engraving and dimensional variants on any DL X design — quoted on request.</p>
+            <h3 data-i18n="shopcap.custom.h3">Custom work</h3>
+            <p data-i18n="shopcap.custom.p">Colour, engraving and dimensional variants on any DL X design — quoted on request.</p>
           </article>
         </div>
       </div>
@@ -276,12 +276,12 @@
 
     <section class="contact dlx-contact">
       <div class="section-inner">
-        <p class="eyebrow">Contact</p>
-        <h2>Need something that isn't listed?</h2>
-        <p class="section-kicker">DL X takes on custom runs, variants and engraving on its own products. For client engineering work — CAD, PCB, field systems — that lives on the main DungenLabs site.</p>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+        <h2 data-i18n="contact.h2">Need something that isn't listed?</h2>
+        <p class="section-kicker" data-i18n="contact.kicker">DL X takes on custom runs, variants and engraving on its own products. For client engineering work — CAD, PCB, field systems — that lives on the main DungenLabs site.</p>
         <div class="hero-actions">
           <a class="button" href="mailto:info@dungenlabs.com">info@dungenlabs.com</a>
-          <a class="button secondary" href="https://dungenlabs.com/start.html">Start a project</a>
+          <a class="button secondary" href="https://dungenlabs.com/start.html" data-i18n="contact.cta">Start a project</a>
         </div>
       </div>
     </section>
@@ -291,29 +291,30 @@
     <div class="footer-inner">
       <div>
         <strong>DL X</strong>
-        <p>Research, development and proprietary products. A division of DungenLabs, Lisbon.</p>
+        <p data-i18n="footer.dlx.p">Research, development and proprietary products. A division of DungenLabs, Lisbon.</p>
       </div>
       <div>
-        <strong>Shop</strong>
-        <a href="/shop.html#tabletop">Tabletop &amp; Gaming</a>
-        <a href="/shop.html#workshop">Workshop &amp; Desk</a>
-        <a href="/shop.html#experimental">Experimental</a>
-        <a href="/#capabilities">Materials &amp; capabilities</a>
+        <strong data-i18n="footer.shop">Shop</strong>
+        <a href="/shop.html#tabletop" data-i18n="footer.tabletop">Tabletop &amp; Gaming</a>
+        <a href="/shop.html#workshop" data-i18n="footer.workshop">Workshop &amp; Desk</a>
+        <a href="/shop.html#experimental" data-i18n="footer.experimental">Experimental</a>
+        <a href="/#capabilities" data-i18n="footer.capabilities">Materials &amp; capabilities</a>
       </div>
       <div>
         <strong>DungenLabs</strong>
-        <a href="https://dungenlabs.com">Main site</a>
-        <a href="https://dungenlabs.com/workbench.html">Workbench</a>
-        <a href="https://dungenlabs.com/start.html">Start a project</a>
+        <a href="https://dungenlabs.com" data-i18n="footer.mainsite">Main site</a>
+        <a href="https://dungenlabs.com/workbench.html" data-i18n="footer.workbench">Workbench</a>
+        <a href="https://dungenlabs.com/start.html" data-i18n="footer.start">Start a project</a>
       </div>
       <div>
-        <strong>Support</strong>
+        <strong data-i18n="footer.support">Support</strong>
         <a href="mailto:info@dungenlabs.com">info@dungenlabs.com</a>
-        <a href="/shipping.html">Shipping &amp; returns</a>
+        <a href="/shipping.html" data-i18n="footer.shipping">Shipping &amp; returns</a>
       </div>
     </div>
   </footer>
 
+  <script src="/i18n.js" defer></script>
   <script src="/cart.js" defer></script>
   <script src="/app.js" defer></script>
 </body>

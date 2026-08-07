@@ -48,8 +48,10 @@ collections:
             summary: '{{fields.title}}'
             fields:
               - { label: ID (slug, used in links), name: id, widget: string, pattern: ['^[a-z0-9-]+$', 'lowercase letters, numbers and hyphens only'] }
-              - { label: Title, name: title, widget: string }
-              - { label: Summary, name: summary, widget: text }
+              - { label: Title (English), name: title, widget: string }
+              - { label: Title (Portugues), name: title_pt, widget: string, required: false, hint: 'Deixa vazio para usar o ingles.' }
+              - { label: Summary (English), name: summary, widget: text }
+              - { label: Summary (Portugues), name: summary_pt, widget: text, required: false, hint: 'Deixa vazio para usar o ingles.' }
               - { label: Image, name: image, widget: image, media_folder: ../images/categories, public_folder: /images/categories }
               - { label: Image alt text, name: imageAlt, widget: string, hint: 'Describe the image for screen readers and search.' }
               - label: Tile size
@@ -65,7 +67,8 @@ collections:
             summary: '{{fields.title}} — {{fields.status}}'
             fields:
               - { label: ID (slug, used in links), name: id, widget: string, pattern: ['^[a-z0-9-]+$', 'lowercase letters, numbers and hyphens only'] }
-              - { label: Title, name: title, widget: string }
+              - { label: Title (English), name: title, widget: string }
+              - { label: Title (Portugues), name: title_pt, widget: string, required: false, hint: 'Deixa vazio para usar o ingles.' }
               - { label: Eyebrow label, name: stageLabel, widget: string, default: 'DL X', required: false }
               - { label: Categories, name: categoryIds, widget: list, field: { label: Category ID, name: id, widget: string }, hint: 'Must match a category ID above.' }
 
@@ -80,8 +83,10 @@ collections:
                 default: made-to-order
 
               - { label: Price, name: price, widget: number, value_type: float, required: false, hint: 'Leave empty to show "Price on request".' }
-              - { label: Short summary, name: summary, widget: text }
-              - { label: Full description, name: description, widget: text }
+              - { label: Short summary (English), name: summary, widget: text }
+              - { label: Short summary (Portugues), name: summary_pt, widget: text, required: false, hint: 'Deixa vazio para usar o ingles.' }
+              - { label: Full description (English), name: description, widget: text }
+              - { label: Full description (Portugues), name: description_pt, widget: text, required: false, hint: 'Deixa vazio para usar o ingles.' }
 
               - { label: Main image, name: mainImage, widget: image }
               - { label: Main image alt text, name: mainImageAlt, widget: string }
@@ -109,8 +114,12 @@ collections:
                   - { label: Label, name: label, widget: string }
                   - { label: Value, name: value, widget: string }
 
-              - { label: Card checkout URL, name: checkoutUrl, widget: string, required: false, hint: 'Stripe Payment Link. Empty = shows an email enquiry button instead.' }
-              - { label: Crypto checkout URL, name: cryptoCheckoutUrl, widget: string, required: false, hint: 'NOWPayments or Coinbase Commerce link. Optional.' }
+              # Guardados por compatibilidade com o catalogo antigo. O
+              # checkout de hoje passa pelo carrinho e pelas funcoes, que
+              # calculam o preco a partir daqui — estes campos ja nao sao
+              # lidos por nada.
+              - { label: Card checkout URL (legacy, unused), name: checkoutUrl, widget: string, required: false }
+              - { label: Crypto checkout URL (legacy, unused), name: cryptoCheckoutUrl, widget: string, required: false }
 
               - label: Tile size
                 name: layout

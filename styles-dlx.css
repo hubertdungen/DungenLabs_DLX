@@ -402,6 +402,27 @@
   color: var(--coral);
 }
 
+/* Botao de lingua. Mais discreto do que o do carrinho — comprar e a
+   accao principal da barra, mudar de lingua faz-se uma vez. */
+.lang-toggle {
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font: inherit;
+  font-family: var(--font-digital);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  border-color: var(--coral);
+  color: var(--coral);
+}
+
 .cart-count {
   min-width: 22px;
   padding: 1px 6px;

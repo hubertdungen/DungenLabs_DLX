@@ -20,16 +20,23 @@ const STORAGE_KEY = "dlx.cart.v1";
 const FREE_NATIONAL_ABOVE = 3000;
 const NATIONAL_SHIPPING = 490;
 
+/** Traducao, se o i18n.js estiver carregado; senao fica o ingles. */
+const t = (key, fallback) => window.DLXi18n?.t(key, fallback) ?? fallback;
+
 const money = (cents, currency = "EUR") =>
-  new Intl.NumberFormat("en-IE", { style: "currency", currency }).format(cents / 100);
+  new Intl.NumberFormat(window.DLXi18n?.language === "pt" ? "pt-PT" : "en-IE", {
+    style: "currency",
+    currency
+  }).format(cents / 100);
 
 /** Mensagem de portes para um subtotal, em centimos. */
 function shippingNote(subtotal, currency = "EUR") {
   if (subtotal === 0) return "";
   const falta = FREE_NATIONAL_ABOVE - subtotal;
-  return falta > 0
-    ? `${money(NATIONAL_SHIPPING, currency)} shipping in Portugal — add ${money(falta, currency)} for free delivery.`
-    : "Free tracked delivery in Portugal.";
+  if (falta <= 0) return t("cart.freeShipping", "Free tracked delivery in Portugal.");
+  return t("cart.paidShipping", "{amount} shipping in Portugal — add {short} for free delivery.")
+    .replace("{amount}", money(NATIONAL_SHIPPING, currency))
+    .replace("{short}", money(falta, currency));
 }
 
 /* ---------------------------------------------------------------- estado */
@@ -154,14 +161,15 @@ function buildDrawer() {
   drawer.setAttribute("aria-label", "Shopping cart");
   drawer.innerHTML = `
     <div class="cart-drawer-head">
-      <strong>Your cart</strong>
-      <button type="button" class="cart-close" aria-label="Close cart">&times;</button>
+      <strong data-i18n="cart.drawerTitle">Your cart</strong>
+      <button type="button" class="cart-close" aria-label="Close cart"
+              data-i18n-attr="aria-label:cart.close">&times;</button>
     </div>
     <div class="cart-drawer-body" id="dlx-cart-lines"></div>
     <div class="cart-drawer-foot">
-      <div class="cart-total"><span>Subtotal</span><strong id="dlx-cart-total">—</strong></div>
-      <p class="cart-note" id="dlx-cart-shipping">Shipping calculated at checkout.</p>
-      <a class="button" href="/cart.html">Go to checkout</a>
+      <div class="cart-total"><span data-i18n="cart.subtotal">Subtotal</span><strong id="dlx-cart-total">—</strong></div>
+      <p class="cart-note" id="dlx-cart-shipping"></p>
+      <a class="button" href="/cart.html" data-i18n="cart.checkout">Go to checkout</a>
     </div>`;
 
   const backdrop = document.createElement("div");
@@ -202,12 +210,12 @@ async function renderDrawer() {
   try {
     cart = await resolveCart();
   } catch {
-    host.innerHTML = '<p class="cart-empty">Could not load the catalogue.</p>';
+    host.innerHTML = `<p class="cart-empty">${t("cart.loadError", "Could not load the catalogue.")}</p>`;
     return;
   }
 
   if (!cart.lines.length) {
-    host.innerHTML = '<p class="cart-empty">Nothing in the cart yet.</p>';
+    host.innerHTML = `<p class="cart-empty">${t("cart.empty", "Nothing in the cart yet.")}</p>`;
     totalNode.textContent = money(0, cart.currency);
     if (shippingNode) shippingNode.textContent = "";
     return;
@@ -224,9 +232,11 @@ async function renderDrawer() {
         <span>${line.colour}</span>
       </div>
       <div class="cart-line-qty">
-        <button type="button" data-step="-1" aria-label="Decrease quantity">−</button>
+        <button type="button" data-step="-1" aria-label="Decrease quantity"
+                data-i18n-attr="aria-label:cart.decrease">−</button>
         <span>${line.quantity}</span>
-        <button type="button" data-step="1" aria-label="Increase quantity">+</button>
+        <button type="button" data-step="1" aria-label="Increase quantity"
+                data-i18n-attr="aria-label:cart.increase">+</button>
       </div>
       <strong class="cart-line-total">${money(line.lineTotal, cart.currency)}</strong>`;
 
@@ -240,6 +250,9 @@ async function renderDrawer() {
 
   totalNode.textContent = money(cart.total, cart.currency);
   if (shippingNode) shippingNode.textContent = shippingNote(cart.total, cart.currency);
+
+  // As linhas acabaram de nascer; o i18n.js ainda nao as viu.
+  document.dispatchEvent(new CustomEvent("dlx:content-rendered", { detail: host.parentElement }));
 }
 
 /* -------------------------------------------------- botao no cabecalho */
@@ -251,7 +264,8 @@ function mountCartButton() {
   const button = document.createElement("button");
   button.type = "button";
   button.className = "cart-button";
-  button.innerHTML = 'Cart <span class="cart-count" data-cart-count>0</span>';
+  button.innerHTML =
+    `<span data-i18n="cart.button">Cart</span> <span class="cart-count" data-cart-count>0</span>`;
   button.addEventListener("click", openDrawer);
   nav.append(button);
   refreshCount();
@@ -278,7 +292,7 @@ async function startCheckout(endpoint, button) {
 
   const original = button.textContent;
   button.disabled = true;
-  button.textContent = "Starting…";
+  button.textContent = t("cart.starting", "Starting…");
 
   try {
     const response = await fetch(endpoint, {
@@ -310,6 +324,14 @@ async function startCheckout(endpoint, button) {
 
 document.addEventListener("dlx:cart-changed", () => {
   refreshCount();
+  if (!document.querySelector("#dlx-cart-drawer")?.hidden) renderDrawer();
+  document.dispatchEvent(new CustomEvent("dlx:cart-render"));
+});
+
+// Mudar de lingua muda tambem o formato do dinheiro (1.234,56 € contra
+// €1,234.56), por isso nao chega traduzir o texto: os valores tem de
+// ser escritos outra vez.
+document.addEventListener("dlx:lang-changed", () => {
   if (!document.querySelector("#dlx-cart-drawer")?.hidden) renderDrawer();
   document.dispatchEvent(new CustomEvent("dlx:cart-render"));
 });

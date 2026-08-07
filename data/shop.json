@@ -7,7 +7,9 @@
       "summary": "Rugged storage and playfield hardware for card and board games.",
       "image": "images/products/mtg-box-render-open.png",
       "imageAlt": "Rugged printed deck box open, holding sleeved cards and tokens",
-      "layout": "wide"
+      "layout": "wide",
+      "title_pt": "Jogos de Mesa",
+      "summary_pt": "Armazenamento resistente e acessórios de jogo para cartas e jogos de tabuleiro."
     },
     {
       "id": "workshop",
@@ -15,7 +17,9 @@
       "summary": "Printer upgrades, mounts and bench utilities from the DL X bench.",
       "image": "images/products/adaptus-clamp.webp",
       "imageAlt": "Printed clamp with threaded pressure screw on the bench",
-      "layout": "standard"
+      "layout": "standard",
+      "title_pt": "Oficina e Secretária",
+      "summary_pt": "Melhorias para impressoras, suportes e utilitários de bancada saídos da DL X."
     },
     {
       "id": "experimental",
@@ -23,7 +27,9 @@
       "summary": "Short runs and prototypes released straight out of R&D.",
       "image": "images/categories/placeholder-experimental.svg",
       "imageAlt": "Technical pattern placeholder for the experimental category",
-      "layout": "standard"
+      "layout": "standard",
+      "title_pt": "Experimental",
+      "summary_pt": "Séries curtas e protótipos lançados diretamente da investigação."
     }
   ],
   "products": [
@@ -91,7 +97,10 @@
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
       "layout": "featured",
-      "featured": true
+      "featured": true,
+      "title_pt": "Caixa de Baralho Commander — com Janela",
+      "summary_pt": "Caixa resistente para mais de 120 cartas, com tampa de janela e dobradiça cativa.",
+      "description_pt": "Uma abordagem de mala de campo ao armazenamento de cartas. O casco é chanfrado nas oito arestas e engrossa nos cantos, onde a caixa bate quando cai. A dobradiça é impressa no lugar, sem pinos nem parafusos, e o fecho é de atrito — aguenta a viagem numa mochila sem abrir. A janela na tampa deixa ver o baralho sem o tirar. Dimensionada para mais de 120 cartas com bolsa, com baía separada para tokens e contadores."
     },
     {
       "id": "mtg-commander-box-basic",
@@ -156,7 +165,10 @@
       ],
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
-      "layout": "standard"
+      "layout": "standard",
+      "title_pt": "Caixa de Baralho Commander — Opaca",
+      "summary_pt": "A versão de tampa fechada da caixa Commander resistente para mais de 120 cartas.",
+      "description_pt": "A mesma caixa, sem a janela. A tampa fechada é mais rígida e mais rápida de imprimir, e protege as cartas da luz — o que conta se o baralho ficar arrumado à vista. Mesma dobradiça cativa, mesmo fecho de atrito, mesma capacidade para mais de 120 cartas com bolsa e baía para tokens."
     },
     {
       "id": "qidi-ptfe-aligner",
@@ -202,7 +214,10 @@
       ],
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
-      "layout": "standard"
+      "layout": "standard",
+      "title_pt": "Alinhador de Tubo PTFE — QIDI Box",
+      "summary_pt": "Mantém o percurso do filamento direito onde a QIDI Box alimenta a impressora.",
+      "description_pt": "Um alinhador em duas partes para o troço de PTFE entre a QIDI Box e a impressora. Elimina a curva apertada que gera atrito à entrada, para que as retrações se mantenham consistentes e o tubo deixe de sair do acoplamento. Impresso por encomenda e fornecido como par ajustado."
     },
     {
       "id": "qidi-exhaust-elbow",
@@ -248,7 +263,10 @@
       ],
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
-      "layout": "standard"
+      "layout": "standard",
+      "title_pt": "Cotovelo de Exaustão — QIDI Plus 4",
+      "summary_pt": "Vira a exaustão da Plus 4 em 90° para poder ligar a uma conduta.",
+      "description_pt": "Um cotovelo que redireciona a saída de exaustão da QIDI Plus 4, permitindo que a extração corra ao longo de uma parede ou entre numa conduta flexível, em vez de sair a direito por trás. O perfil interior mantém a secção constante ao longo da curva, para que o caudal não seja estrangulado na mudança de direção."
     },
     {
       "id": "qidi-power-switch-cover",
@@ -294,7 +312,10 @@
       ],
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
-      "layout": "standard"
+      "layout": "standard",
+      "title_pt": "Tampa do Interruptor — QIDI Plus 4",
+      "summary_pt": "Proteção que impede resina e líquido de limpeza de chegarem ao interruptor.",
+      "description_pt": "Uma proteção que cobre o interruptor basculante sem o bloquear. Impede que salpicos de resina e de líquido de limpeza cheguem aos contactos — a falha silenciosa que dá origem a interruptores que colam ou deixam de funcionar. Encaixa por pressão, sem ferramenta."
     },
     {
       "id": "adaptus-clamp",
@@ -341,7 +362,10 @@
       ],
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
-      "layout": "wide"
+      "layout": "wide",
+      "title_pt": "Grampo ADAPTUS",
+      "summary_pt": "Grampo de bancada impresso, com parafuso de pressão roscado e mordente substituível.",
+      "description_pt": "Um grampo de bancada em que a força vem de um parafuso de pressão roscado e não da flexão do plástico. O mordente é uma peça separada, substituível: há um plano para superfícies direitas e um em V para tubo. Impresso em PETG, que aguenta o aperto sem fluir com o tempo como o PLA faz."
     },
     {
       "id": "vesa-adapter-hp27",
@@ -382,7 +406,10 @@
       ],
       "checkoutUrl": "",
       "cryptoCheckoutUrl": "",
-      "layout": "standard"
+      "layout": "standard",
+      "title_pt": "Adaptador VESA — HP 27fwa",
+      "summary_pt": "Chapa VESA 100 aparafusável para monitores que vêm sem suporte.",
+      "description_pt": "Uma chapa que dá um padrão VESA 100 a monitores que saem de fábrica sem ele. Aparafusa aos furos existentes da traseira e distribui a carga por uma área maior do que os quatro pontos originais. Ainda em validação — o ajuste está confirmado, a resistência a longo prazo com o monitor pendurado não."
     }
   ]
 }

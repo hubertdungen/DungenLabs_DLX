@@ -2,6 +2,8 @@
  * Pagina do carrinho. O cart.js trata do estado e do checkout; isto so
  * desenha a lista completa e liga os dois botoes de pagamento.
  */
+const t = (key, fallback) => window.DLXi18n?.t(key, fallback) ?? fallback;
+
 const page = document.querySelector("#cart-page");
 const checkoutBox = document.querySelector("#cart-checkout");
 const totalNode = document.querySelector("#cart-page-total");
@@ -19,12 +21,14 @@ async function render() {
   try {
     resolved = await cart.resolve();
   } catch {
-    page.innerHTML = '<p class="cart-empty">Could not load the catalogue. Please refresh.</p>';
+    page.innerHTML = `<p class="cart-empty">${t("cart.loadError", "Could not load the catalogue. Please refresh.")}</p>`;
     return;
   }
 
   if (!resolved.lines.length) {
-    page.innerHTML = '<p class="cart-empty">Your cart is empty. <a href="/shop.html">Browse the shop</a>.</p>';
+    page.innerHTML =
+      `<p class="cart-empty">${t("cart.emptyPage", "Your cart is empty.")} ` +
+      `<a href="/shop.html">${t("cart.browse", "Browse the shop")}</a>.</p>`;
     checkoutBox.hidden = true;
     return;
   }
@@ -37,15 +41,17 @@ async function render() {
       <img src="/${line.product.cardImage || line.product.mainImage}" alt="" width="96" height="72">
       <div class="cart-line-copy">
         <strong>${line.product.title}</strong>
-        <span>${line.colour} · ${cart.money(Math.round(line.product.price * 100), resolved.currency)} each</span>
+        <span>${line.colour} · ${cart.money(Math.round(line.product.price * 100), resolved.currency)} ${t("cart.each", "each")}</span>
       </div>
       <div class="cart-line-qty">
-        <button type="button" data-step="-1" aria-label="Decrease quantity">−</button>
+        <button type="button" data-step="-1" aria-label="Decrease quantity"
+                data-i18n-attr="aria-label:cart.decrease">−</button>
         <span>${line.quantity}</span>
-        <button type="button" data-step="1" aria-label="Increase quantity">+</button>
+        <button type="button" data-step="1" aria-label="Increase quantity"
+                data-i18n-attr="aria-label:cart.increase">+</button>
       </div>
       <strong class="cart-line-total">${cart.money(line.lineTotal, resolved.currency)}</strong>
-      <button type="button" class="cart-remove" aria-label="Remove ${line.product.title}">Remove</button>`;
+      <button type="button" class="cart-remove" data-i18n="cart.remove">Remove</button>`;
 
     row.querySelectorAll("[data-step]").forEach((button) => {
       button.addEventListener("click", () =>
@@ -61,6 +67,7 @@ async function render() {
   const shippingNode = document.querySelector("#cart-page-shipping");
   if (shippingNode) shippingNode.textContent = cart.shippingNote(resolved.total, resolved.currency);
   checkoutBox.hidden = false;
+  document.dispatchEvent(new CustomEvent("dlx:content-rendered", { detail: page }));
 }
 
 document.querySelectorAll("[data-checkout]").forEach((button) => {

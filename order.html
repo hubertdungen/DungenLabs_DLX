@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/styles-dlx.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
@@ -23,12 +23,12 @@
         <img class="brand-mark-dlx" src="/images/brand/dlx-mark-dark.svg" alt="" width="68" height="46">
         <span class="brand-name">DL X</span>
       </a>
-      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
+      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation" data-i18n-attr="aria-label:nav.open">
         <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
       <div class="nav-links" id="nav-links">
-        <a href="/">Home</a>
-        <a href="/shop.html">Shop</a>
+        <a href="/" data-i18n="nav.home">Home</a>
+        <a href="/shop.html" data-i18n="nav.shop">Shop</a>
         <a class="nav-cta" href="https://dungenlabs.com">DungenLabs</a>
       </div>
     </nav>
@@ -36,9 +36,9 @@
 
   <main class="dlx-doc" id="main">
     <div class="section-inner">
-      <p class="eyebrow">Order</p>
-      <h1 id="order-heading">Place an order</h1>
-      <p class="section-kicker" id="order-intro">Tell us what you need and you'll get a confirmation with the final price including shipping, normally within one working day. Nothing is charged until you confirm.</p>
+      <p class="eyebrow" data-i18n="order.eyebrow">Order</p>
+      <h1 id="order-heading" data-i18n="order.h1">Place an order</h1>
+      <p class="section-kicker" id="order-intro" data-i18n="order.intro">Tell us what you need and you'll get a confirmation with the final price including shipping, normally within one working day. Nothing is charged until you confirm.</p>
 
       <!-- Netlify recolhe este formulario no deploy: sem servidor, sem base
            de dados. O campo `bot-field` e uma armadilha para spam — fica
@@ -62,45 +62,45 @@
           </div>
         </div>
 
-        <label for="order-product">Product</label>
+        <label for="order-product" data-i18n="order.product">Product</label>
         <input type="text" id="order-product" name="product" required readonly>
 
         <div class="dlx-order-row">
           <div>
-            <label for="order-quantity">Quantity</label>
+            <label for="order-quantity" data-i18n="order.quantity">Quantity</label>
             <input type="number" id="order-quantity" name="quantity" value="1" min="1" max="50" required>
           </div>
           <div>
-            <label for="order-colour">Colour</label>
+            <label for="order-colour" data-i18n="order.colour">Colour</label>
             <select id="order-colour" name="colour">
               <option>Deep Teal</option>
               <option>Coral</option>
               <option>Matte Black</option>
               <option>Light Grey</option>
-              <option>Other — see notes</option>
+              <option data-i18n="order.colourOther">Other — see notes</option>
             </select>
           </div>
         </div>
 
         <div class="dlx-order-row">
           <div>
-            <label for="order-name">Your name</label>
+            <label for="order-name" data-i18n="order.name">Your name</label>
             <input type="text" id="order-name" name="name" required autocomplete="name">
           </div>
           <div>
-            <label for="order-email">Email</label>
+            <label for="order-email" data-i18n="order.email">Email</label>
             <input type="email" id="order-email" name="email" required autocomplete="email">
           </div>
         </div>
 
-        <label for="order-country">Shipping country</label>
+        <label for="order-country" data-i18n="order.country">Shipping country</label>
         <input type="text" id="order-country" name="country" required autocomplete="country-name" value="Portugal">
 
-        <label for="order-notes">Notes <span class="dlx-optional">(engraving, variants, deadlines)</span></label>
+        <label for="order-notes"><span data-i18n="order.notes">Notes</span> <span class="dlx-optional" data-i18n="order.notesHint">(engraving, variants, deadlines)</span></label>
         <textarea id="order-notes" name="notes" rows="4"></textarea>
 
-        <button class="button" type="submit">Send order request</button>
-        <p class="dlx-order-note">You'll get a reply with the total including shipping before any payment is taken. Card and crypto payment links are sent with the confirmation.</p>
+        <button class="button" type="submit" data-i18n="order.submit">Send order request</button>
+        <p class="dlx-order-note" data-i18n="order.note">You'll get a reply with the total including shipping before any payment is taken. Card and crypto payment links are sent with the confirmation.</p>
       </form>
     </div>
   </main>
@@ -109,16 +109,17 @@
     <div class="footer-inner">
       <div>
         <strong>DL X</strong>
-        <p>Research, development and proprietary products. A division of DungenLabs, Lisbon.</p>
+        <p data-i18n="footer.dlx.p">Research, development and proprietary products. A division of DungenLabs, Lisbon.</p>
       </div>
       <div>
-        <strong>Support</strong>
+        <strong data-i18n="footer.support">Support</strong>
         <a href="mailto:info@dungenlabs.com">info@dungenlabs.com</a>
-        <a href="/shipping.html">Shipping &amp; returns</a>
+        <a href="/shipping.html" data-i18n="footer.shipping">Shipping &amp; returns</a>
       </div>
     </div>
   </footer>
 
+  <script src="/i18n.js" defer></script>
   <script src="/cart.js" defer></script>
   <script src="/app.js" defer></script>
 </body>

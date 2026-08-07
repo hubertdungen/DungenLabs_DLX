@@ -5,7 +5,10 @@ if (toggle && navLinks) {
   toggle.addEventListener("click", () => {
     const open = navLinks.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    toggle.setAttribute(
+      "aria-label",
+      open ? t("nav.close", "Close navigation") : t("nav.open", "Open navigation")
+    );
   });
 
   navLinks.addEventListener("click", (event) => {
@@ -51,20 +54,42 @@ function getLayoutClass(entry) {
   return "span-standard";
 }
 
+/** Traducao, se o i18n.js estiver carregado; senao fica o ingles. */
+const t = (key, fallback) => window.DLXi18n?.t(key, fallback) ?? fallback;
+
+/**
+ * Campo do catalogo na lingua activa.
+ *
+ * O shop.json aceita um "_pt" ao lado de qualquer campo de texto —
+ * title_pt, summary_pt, description_pt. Quando nao existe, fica o
+ * ingles: um produto novo aparece nas duas linguas sem esperar pela
+ * traducao, que e melhor do que aparecer em branco.
+ */
+function localised(entry, campo) {
+  if (!entry) return "";
+  const pt = window.DLXi18n?.language === "pt" ? entry[`${campo}_pt`] : null;
+  return pt || entry[campo] || "";
+}
+
 /** Formata o preco na moeda definida no shop.json; null significa "sem preco publicado". */
 function formatPrice(value) {
   if (typeof value !== "number") return null;
-  return new Intl.NumberFormat("en-IE", {
+  return new Intl.NumberFormat(window.DLXi18n?.language === "pt" ? "pt-PT" : "en-IE", {
     style: "currency",
     currency: shop.currency || "EUR"
   }).format(value);
 }
 
-const STATUS_LABELS = {
-  "in-stock": "In stock",
-  "made-to-order": "Made to order",
-  "coming-soon": "Coming soon",
-  "sold-out": "Sold out"
+const STATUS_KEYS = {
+  "in-stock": ["shop.inStock", "In stock"],
+  "made-to-order": ["shop.madeToOrder", "Made to order"],
+  "coming-soon": ["shop.comingSoon", "Coming soon"],
+  "sold-out": ["shop.soldOut", "Sold out"]
+};
+
+const statusLabel = (status) => {
+  const par = STATUS_KEYS[status];
+  return par ? t(par[0], par[1]) : status;
 };
 
 function createMosaicTile({ key, className, image, imageAlt, label, title, summary, button = true }) {
@@ -106,7 +131,7 @@ function appendTags(tile, tags) {
 /** Etiqueta de preco/estado que aparece no canto do cartao. */
 function appendPriceBadge(tile, product) {
   const price = formatPrice(product.price);
-  const status = STATUS_LABELS[product.status] || "";
+  const status = statusLabel(product.status);
   if (!price && !status) return;
 
   const badge = createElement("span", "price-badge");
@@ -186,23 +211,23 @@ function updateChrome({ mode, category, product }) {
   if (!viewTitle || !viewSummary || !breadcrumb) return;
 
   if (mode === "categories") {
-    viewTitle.textContent = "Shop";
-    viewSummary.textContent = "Proprietary hardware from the DL X bench, printed to order in Lisbon.";
-    renderBreadcrumb([{ label: "Shop" }]);
+    viewTitle.textContent = t("shop.viewTitle", "Shop");
+    viewSummary.textContent = t("shop.viewSummary", "Proprietary hardware from the DL X bench, printed to order in Lisbon.");
+    renderBreadcrumb([{ label: t("shop.viewTitle", "Shop") }]);
   } else if (mode === "category" && category) {
-    viewTitle.textContent = category.title;
-    viewSummary.textContent = category.summary;
+    viewTitle.textContent = localised(category, "title");
+    viewSummary.textContent = localised(category, "summary");
     renderBreadcrumb([
-      { label: "Shop", target: { mode: "categories", categoryId: null, productId: null } },
-      { label: category.title }
+      { label: t("shop.viewTitle", "Shop"), target: { mode: "categories", categoryId: null, productId: null } },
+      { label: localised(category, "title") }
     ]);
   } else if (mode === "product" && category && product) {
-    viewTitle.textContent = product.title;
-    viewSummary.textContent = product.summary;
+    viewTitle.textContent = localised(product, "title");
+    viewSummary.textContent = localised(product, "summary");
     renderBreadcrumb([
-      { label: "Shop", target: { mode: "categories", categoryId: null, productId: null } },
-      { label: category.title, target: { mode: "category", categoryId: category.id, productId: null } },
-      { label: product.title }
+      { label: t("shop.viewTitle", "Shop"), target: { mode: "categories", categoryId: null, productId: null } },
+      { label: localised(category, "title"), target: { mode: "category", categoryId: category.id, productId: null } },
+      { label: localised(product, "title") }
     ]);
   }
 
@@ -220,8 +245,8 @@ function renderCategoriesView() {
       image: category.image,
       imageAlt: category.imageAlt,
       label: count === 1 ? "1 item" : `${count} items`,
-      title: category.title,
-      summary: category.summary
+      title: localised(category, "title"),
+      summary: localised(category, "summary")
     });
     tile.addEventListener("click", () =>
       transition({ mode: "category", categoryId: category.id, productId: null })
@@ -242,8 +267,8 @@ function renderCategoryView(categoryId) {
     image: category.image,
     imageAlt: category.imageAlt,
     label: "Category",
-    title: category.title,
-    summary: category.summary,
+    title: localised(category, "title"),
+    summary: localised(category, "summary"),
     button: false
   });
   mosaicRoot.append(feature);
@@ -268,8 +293,8 @@ function renderCategoryView(categoryId) {
       image: product.cardImage || product.mainImage,
       imageAlt: product.cardImageAlt || product.mainImageAlt,
       label: product.stageLabel || "Product",
-      title: product.title,
-      summary: product.summary
+      title: localised(product, "title"),
+      summary: localised(product, "summary")
     });
     appendTags(tile, product.tags);
     appendPriceBadge(tile, product);
@@ -282,7 +307,7 @@ function renderCategoryView(categoryId) {
   const back = createMosaicTile({
     key: "back-to-categories",
     className: "project-copy-tile span-standard",
-    title: "All categories",
+    title: t("shop.allCategories", "All categories"),
     summary: "Back to the full DL X catalogue."
   });
   back.addEventListener("click", () =>
@@ -297,7 +322,7 @@ function createBuyPanel(product) {
   panel.setAttribute("data-mosaic-key", `buy-${product.id}`);
 
   const price = formatPrice(product.price);
-  panel.append(createElement("span", "mosaic-label", STATUS_LABELS[product.status] || "Availability"));
+  panel.append(createElement("span", "mosaic-label", statusLabel(product.status)));
   panel.append(createElement("strong", "buy-price", price || "Price on request"));
 
   if (Array.isArray(product.specs) && product.specs.length) {
@@ -327,16 +352,16 @@ function createBuyPanel(product) {
 
     const actions = createElement("div", "buy-actions");
 
-    const add = createElement("button", "button", "Add to cart");
+    const add = createElement("button", "button", t("shop.addToCart", "Add to cart"));
     add.type = "button";
     add.addEventListener("click", () => {
       window.DLXCart?.add(product.id, 1, colour.value);
-      add.textContent = "Added ✓";
-      setTimeout(() => { add.textContent = "Add to cart"; }, 1400);
+      add.textContent = `${t("shop.added", "Added")} \u2713`;
+      setTimeout(() => { add.textContent = t("shop.addToCart", "Add to cart"); }, 1400);
       window.DLXCart?.open();
     });
 
-    const request = createElement("a", "button secondary", "Request a quote");
+    const request = createElement("a", "button secondary", t("shop.requestQuote", "Request a quote"));
     request.href = `/order.html?product=${encodeURIComponent(product.id)}`;
 
     actions.append(add, request);
@@ -368,8 +393,8 @@ function renderProductView(categoryId, productId) {
     image: product.mainImage,
     imageAlt: product.mainImageAlt,
     label: product.stageLabel || "Product",
-    title: product.title,
-    summary: product.summary,
+    title: localised(product, "title"),
+    summary: localised(product, "summary"),
     button: false
   });
   appendTags(hero, product.tags);
@@ -382,7 +407,7 @@ function renderProductView(categoryId, productId) {
       key: `copy-${product.id}`,
       className: "project-copy-tile span-standard",
       title: "Details",
-      summary: product.description,
+      summary: localised(product, "description"),
       button: false
     });
     mosaicRoot.append(copy);
@@ -403,7 +428,7 @@ function renderProductView(categoryId, productId) {
   const back = createMosaicTile({
     key: "back-to-category",
     className: "project-copy-tile span-standard",
-    title: `Back to ${category.title}`,
+    title: `${t("shop.back", "Back to")} ${localised(category, "title")}`,
     summary: "Return to the category listing."
   });
   back.addEventListener("click", () =>
@@ -502,7 +527,7 @@ async function initOrderForm() {
   if (summary && image && title && price) {
     image.src = product.cardImage || product.mainImage;
     image.alt = product.cardImageAlt || product.mainImageAlt || "";
-    title.textContent = product.title;
+    title.textContent = localised(product, "title");
     price.textContent = typeof product.price === "number"
       ? `${new Intl.NumberFormat("en-IE", { style: "currency", currency: catalogue.currency || "EUR" }).format(product.price)} each, before shipping`
       : "Price on request";
@@ -541,6 +566,11 @@ async function init() {
     transition({ mode: "categories", categoryId: null, productId: null })
   );
   window.addEventListener("hashchange", () => transition(readHash()));
+
+  // Mudar de lingua muda os rotulos de estado, os botoes e o formato do
+  // preco, todos escritos em codigo. Desenhar outra vez e mais simples
+  // — e menos fragil — do que ir la corrigir cada um.
+  document.addEventListener("dlx:lang-changed", () => render());
 }
 
 init();
