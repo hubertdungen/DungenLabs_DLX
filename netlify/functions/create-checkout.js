@@ -6,6 +6,7 @@
  * variaveis de ambiente do Netlify e nunca chega ao cliente.
  */
 const { priceCart, loadCatalogue } = require("./_catalogue");
+const { shippingOptions } = require("./_shipping");
 
 /**
  * O catalogo chega as funcoes por `included_files` no netlify.toml. Se
@@ -22,14 +23,6 @@ function catalogueStatus() {
     return `MISSING — ${error.message}`;
   }
 }
-
-// Os precos do catalogo ja incluem 4.90 EUR de correio registado nacional
-// (ver scripts/build-prices.py), por isso Portugal e gratuito aqui — cobrar
-// outra vez seria cobrar os portes duas vezes. A UE paga so a diferenca.
-const SHIPPING = [
-  { label: "Portugal — tracked, included", amount: 0, minDays: 2, maxDays: 4 },
-  { label: "European Union — tracked", amount: 700, minDays: 4, maxDays: 8 }
-];
 
 const SHIP_TO = [
   "PT", "ES", "FR", "DE", "IT", "NL", "BE", "LU", "IE", "AT",
@@ -87,7 +80,10 @@ exports.handler = async (event) => {
         }
       })),
       shipping_address_collection: { allowed_countries: SHIP_TO },
-      shipping_options: SHIPPING.map((option) => ({
+      // Os portes saem do subtotal calculado no servidor, nao de nada que
+      // o cliente envie: quem mandar um carrinho de 1 EUR nao consegue
+      // desbloquear o envio gratuito.
+      shipping_options: shippingOptions(priced.total).map((option) => ({
         shipping_rate_data: {
           type: "fixed_amount",
           display_name: option.label,

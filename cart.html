@@ -47,14 +47,14 @@
 
       <div class="cart-checkout" id="cart-checkout" hidden>
         <div class="cart-total"><span>Subtotal</span><strong id="cart-page-total">—</strong></div>
-        <p class="cart-note">Shipping within Portugal is included in the price. Elsewhere in the EU a flat €7.00 is added at the payment step.</p>
+        <p class="cart-note" id="cart-page-shipping">Shipping calculated at checkout.</p>
 
         <div class="cart-pay">
           <button class="button" type="button" data-checkout="/api/checkout">Pay by card</button>
           <button class="button secondary" type="button" data-checkout="/api/crypto-checkout">Pay with crypto</button>
         </div>
 
-        <p class="cart-note">Card payments run on Stripe. Crypto accepts Bitcoin, Ethereum, Litecoin, Monero and several hundred others — you pick the coin on the payment page. Neither stores card or wallet details on this site.</p>
+        <p class="cart-note">Card payments run on Stripe. Crypto accepts Bitcoin, Ethereum, Litecoin, Monero and several hundred others — you pick the coin on the payment page. Neither stores card or wallet details on this site. Crypto orders are charged EU shipping because no address is collected up front; if you are in Portugal, or your order qualifies for free delivery, the difference is refunded.</p>
         <p class="checkout-status" id="checkout-status" role="alert"></p>
 
         <p class="cart-note">Prefer to be quoted first, or need engraving or a custom colour? <a href="/order.html">Send an order request</a> instead.</p>

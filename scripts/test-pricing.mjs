@@ -18,6 +18,8 @@ import { readFileSync } from "node:fs";
 
 const require = createRequire(import.meta.url);
 const { priceCart } = require("../netlify/functions/_catalogue.js");
+const { shippingOptions, FREE_NATIONAL_ABOVE, NATIONAL, EU } =
+  require("../netlify/functions/_shipping.js");
 
 const catalogue = JSON.parse(readFileSync("data/shop.json", "utf8"));
 const sellable = catalogue.products.filter(
@@ -103,6 +105,42 @@ if (unavailable) {
   check(`produto nao a venda (${unavailable.status})`,
     () => priceCart([{ id: unavailable.id, quantity: 1 }]), "throws");
 }
+
+console.log("\nportes:");
+
+const nacional = (subtotal) => shippingOptions(subtotal)[0].amount;
+const europa = (subtotal) => shippingOptions(subtotal)[1].amount;
+
+check("abaixo do limite paga portes nacionais",
+  () => nacional(FREE_NATIONAL_ABOVE - 1),
+  (a) => a === NATIONAL.amount);
+
+// A fronteira e onde um `>` a mais ou a menos passa despercebido.
+check("exactamente no limite ja e gratuito",
+  () => nacional(FREE_NATIONAL_ABOVE),
+  (a) => a === 0);
+
+check("acima do limite e gratuito",
+  () => nacional(FREE_NATIONAL_ABOVE + 5000),
+  (a) => a === 0);
+
+check("o rotulo explica porque desapareceu o valor",
+  () => shippingOptions(FREE_NATIONAL_ABOVE)[0].label,
+  (l) => l.toLowerCase().includes("free"));
+
+check("a UE paga sempre, mesmo numa encomenda grande",
+  () => europa(FREE_NATIONAL_ABOVE * 10),
+  (a) => a === EU.amount);
+
+check("carrinho vazio nao desbloqueia envio gratuito",
+  () => nacional(0),
+  (a) => a === NATIONAL.amount);
+
+// Os portes deixaram de estar dentro dos precos; se voltassem a entrar,
+// o cliente pagava-os duas vezes e so daria por isso a receber a factura.
+check("os precos do catalogo ja nao carregam portes",
+  () => Math.min(...sellable.map((p) => p.price)),
+  (menor) => menor < NATIONAL.amount / 100 + 3);
 
 console.log(`\n${pass} passaram, ${fail} falharam\n`);
 process.exit(fail ? 1 : 0);

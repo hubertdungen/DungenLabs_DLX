@@ -12,8 +12,25 @@
  */
 const STORAGE_KEY = "dlx.cart.v1";
 
+/**
+ * Espelho das regras de netlify/functions/_shipping.js, so para escrever
+ * a mensagem do envio gratuito. Quem decide o que e cobrado e o servidor:
+ * mexer nisto aqui muda o texto, nao muda a factura.
+ */
+const FREE_NATIONAL_ABOVE = 3000;
+const NATIONAL_SHIPPING = 490;
+
 const money = (cents, currency = "EUR") =>
   new Intl.NumberFormat("en-IE", { style: "currency", currency }).format(cents / 100);
+
+/** Mensagem de portes para um subtotal, em centimos. */
+function shippingNote(subtotal, currency = "EUR") {
+  if (subtotal === 0) return "";
+  const falta = FREE_NATIONAL_ABOVE - subtotal;
+  return falta > 0
+    ? `${money(NATIONAL_SHIPPING, currency)} shipping in Portugal — add ${money(falta, currency)} for free delivery.`
+    : "Free tracked delivery in Portugal.";
+}
 
 /* ---------------------------------------------------------------- estado */
 
@@ -113,7 +130,7 @@ function buildDrawer() {
     <div class="cart-drawer-body" id="dlx-cart-lines"></div>
     <div class="cart-drawer-foot">
       <div class="cart-total"><span>Subtotal</span><strong id="dlx-cart-total">—</strong></div>
-      <p class="cart-note">Shipping included within Portugal.</p>
+      <p class="cart-note" id="dlx-cart-shipping">Shipping calculated at checkout.</p>
       <a class="button" href="/cart.html">Go to checkout</a>
     </div>`;
 
@@ -148,6 +165,7 @@ async function openDrawer() {
 async function renderDrawer() {
   const host = document.querySelector("#dlx-cart-lines");
   const totalNode = document.querySelector("#dlx-cart-total");
+  const shippingNode = document.querySelector("#dlx-cart-shipping");
   if (!host) return;
 
   let cart;
@@ -161,6 +179,7 @@ async function renderDrawer() {
   if (!cart.lines.length) {
     host.innerHTML = '<p class="cart-empty">Nothing in the cart yet.</p>';
     totalNode.textContent = money(0, cart.currency);
+    if (shippingNode) shippingNode.textContent = "";
     return;
   }
 
@@ -190,6 +209,7 @@ async function renderDrawer() {
   });
 
   totalNode.textContent = money(cart.total, cart.currency);
+  if (shippingNode) shippingNode.textContent = shippingNote(cart.total, cart.currency);
 }
 
 /* -------------------------------------------------- botao no cabecalho */
@@ -275,5 +295,7 @@ window.DLXCart = {
   open: openDrawer,
   count: cartCount,
   money,
-  startCheckout
+  shippingNote,
+  startCheckout,
+  FREE_NATIONAL_ABOVE
 };

@@ -35,7 +35,7 @@
         "tabletop"
       ],
       "status": "made-to-order",
-      "price": 20.9,
+      "price": 15.9,
       "summary": "Rugged 120+ card deck box with a windowed lid and captive hinge.",
       "description": "A field-case take on the Commander deck box. The windowed lid shows the top of the stack without opening the case, while the chamfered shell, corner bumpers and recessed panels come straight from the DungenLabs hardware language. Printed to order in engineering polymer, with a captive printed hinge and a friction latch that holds through transport.",
       "mainImage": "images/products/mtg-box-render-open.png",
@@ -101,7 +101,7 @@
         "tabletop"
       ],
       "status": "made-to-order",
-      "price": 19.9,
+      "price": 14.9,
       "summary": "The solid-lid version of the rugged 120+ card Commander box.",
       "description": "Same shell, same hinge, same latch — without the lid window. The closed lid gives a fully enclosed case for transport and a larger surface for custom engraving. Printed to order in engineering polymer.",
       "mainImage": "images/products/mtg-box-render-alt.png",
@@ -166,7 +166,7 @@
         "workshop"
       ],
       "status": "made-to-order",
-      "price": 8.9,
+      "price": 4.9,
       "summary": "Keeps the filament path straight where the QIDI Box feeds the printer.",
       "description": "A two-part aligner for the PTFE run between a QIDI Box and the printer. It removes the tight bend that builds drag at the entry point, so retractions stay consistent and the tube stops walking out of its coupler. Printed to order and supplied as a fitted pair.",
       "mainImage": "images/products/qidi-ptfe-aligner.webp",
@@ -212,7 +212,7 @@
         "workshop"
       ],
       "status": "made-to-order",
-      "price": 9.9,
+      "price": 5.9,
       "summary": "Turns the Plus 4 exhaust through 90° so it can vent into ducting.",
       "description": "An elbow that redirects the QIDI Plus 4 exhaust outlet, letting the extraction run along a wall or into flexible ducting instead of straight out the back. The internal profile keeps the section constant through the bend, so airflow is not choked at the turn.",
       "mainImage": "images/products/qidi-exhaust-elbow.webp",
@@ -258,7 +258,7 @@
         "workshop"
       ],
       "status": "made-to-order",
-      "price": 6.9,
+      "price": 4.9,
       "summary": "Splash shield that stops resin and cleaning fluid reaching the rocker switch.",
       "description": "A clip-on shield for the QIDI Plus 4 power switch. It keeps resin, IPA and cleaning splash off the rocker without blocking it, which matters on a bench where the printer sits next to wet work. Fits over the existing switch with no wiring changes.",
       "mainImage": "images/products/qidi-power-switch-cover.webp",
@@ -305,7 +305,7 @@
         "experimental"
       ],
       "status": "made-to-order",
-      "price": 17.9,
+      "price": 12.9,
       "summary": "Printed bench clamp with a threaded pressure screw and a swappable jaw.",
       "description": "A fully printed clamp built around a threaded pressure screw, with a jaw that comes off so it can be matched to the job. Designed as a study in printable thread mechanics that turned out useful enough to keep on the bench — which is exactly the kind of thing DL X exists to catch.",
       "mainImage": "images/products/adaptus-clamp.webp",

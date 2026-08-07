@@ -58,6 +58,8 @@ async function render() {
   });
 
   totalNode.textContent = cart.money(resolved.total, resolved.currency);
+  const shippingNode = document.querySelector("#cart-page-shipping");
+  if (shippingNode) shippingNode.textContent = cart.shippingNote(resolved.total, resolved.currency);
   checkoutBox.hidden = false;
 }
 
