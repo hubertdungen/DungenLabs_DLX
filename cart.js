@@ -1,3 +1,18 @@
+/* Envolvido numa funcao de propósito.
+ *
+ * Estes ficheiros sao carregados como <script> normais, e scripts
+ * normais partilham o escopo global: dois ficheiros a declarar
+ * `const t` no topo fazem o segundo rebentar inteiro com
+ * "redeclaration of const t" — e um ficheiro que rebenta nao desenha
+ * nada. Foi assim que a loja ficou sem produtos.
+ *
+ * O corpo nao esta indentado para dentro do wrapper de proposito, para
+ * o diff continuar legivel. O que importa e que nada aqui dentro chega
+ * ao escopo global sem ser por window.
+ */
+(function () {
+"use strict";
+
 /**
  * Carrinho do DL X.
  *
@@ -352,3 +367,4 @@ window.DLXCart = {
   startCheckout,
   FREE_NATIONAL_ABOVE
 };
+})();

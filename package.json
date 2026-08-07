@@ -10,7 +10,7 @@
     "jsdom": "^26.0.0"
   },
   "scripts": {
-    "test": "node scripts/test-pricing.mjs && node scripts/test-cart.mjs && node scripts/test-webhook.mjs && node scripts/test-i18n.mjs && node scripts/test-admin-table.mjs",
+    "test": "node scripts/test-pricing.mjs && node scripts/test-cart.mjs && node scripts/test-webhook.mjs && node scripts/test-i18n.mjs && node scripts/test-admin-table.mjs && node scripts/test-page-scripts.mjs",
     "prices": "node scripts/recompute-prices.mjs"
   }
 }
