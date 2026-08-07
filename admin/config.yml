@@ -82,7 +82,39 @@ collections:
                   - { label: Sold out, value: sold-out }
                 default: made-to-order
 
-              - { label: Price, name: price, widget: number, value_type: float, required: false, hint: 'Leave empty to show "Price on request".' }
+              # ------------------------------------------------------
+              # Custo. Preenche isto e o preco calcula-se sozinho ao
+              # gravar — nao e preciso terminal nenhum. A formula esta
+              # em admin/pricing.js, que e o mesmo ficheiro usado pelo
+              # recalculo em lote.
+              # ------------------------------------------------------
+              - label: Costing (price is calculated from this)
+                name: costing
+                widget: object
+                required: false
+                collapsed: true
+                hint: 'Fill this in and the price is worked out on save. Leave it out to set the price by hand.'
+                fields:
+                  - { label: Grams of material, name: grams, widget: number, value_type: float, hint: 'Sliced weight, including purge and failures.' }
+                  - { label: Print hours, name: hours, widget: number, value_type: float }
+                  - label: Material
+                    name: material
+                    widget: select
+                    options: [PLA, PETG, ABS, ASA, TPU, PC, PA, CF, Resina]
+                    default: PETG
+                  - label: Profit margin
+                    name: margin
+                    widget: select
+                    options:
+                      - { label: '20%', value: 0.2 }
+                      - { label: '25%', value: 0.25 }
+                      - { label: '30%', value: 0.3 }
+                      - { label: '35%', value: 0.35 }
+                      - { label: '40%', value: 0.4 }
+                    default: 0.35
+                  - { label: Cults3D price (USD), name: cultsUsd, widget: number, value_type: float, default: 0, hint: 'What the model sells for on Cults3D. Zero for designs that are not published there.' }
+
+              - { label: Price (calculated — edit only if there is no costing above), name: price, widget: number, value_type: float, required: false, hint: 'Overwritten on save when Costing is filled in. Leave empty to show "Price on request".' }
               - { label: Short summary (English), name: summary, widget: text }
               - { label: Short summary (Portugues), name: summary_pt, widget: text, required: false, hint: 'Deixa vazio para usar o ingles.' }
               - { label: Full description (English), name: description, widget: text }

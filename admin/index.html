@@ -12,5 +12,61 @@
        seria um compromisso do catalogo: uma dependencia de terceiros em
        runtime nao se justifica. Ver admin/vendor/decap/VERSION. -->
   <script src="/admin/vendor/decap/decap-cms.js"></script>
+  <script src="/admin/pricing.js"></script>
+  <script>
+    /**
+     * Calcula os precos no momento de gravar.
+     *
+     * Antes disto a formula vivia num script de Python que era preciso
+     * correr a mao no terminal, e depois copiar os numeros para o
+     * catalogo. Duas coisas correm mal assim: esquece-se, e quem edita
+     * o catalogo passa a precisar de uma linha de comandos.
+     *
+     * Agora basta preencher gramas, horas, material e margem em cada
+     * produto; o preco sai daqui quando carregas em Publish. Um produto
+     * sem esses dados fica com o preco que estiver escrito a mao, o que
+     * deixa espaco para excepcoes deliberadas.
+     */
+    CMS.registerEventListener({
+      name: "preSave",
+      handler: function (evento) {
+        var dados = evento.entry.get("data");
+        var produtos = dados.get("products");
+        if (!produtos) return dados;
+
+        var alterados = [];
+
+        var actualizados = produtos.map(function (produto) {
+          var costing = produto.get("costing");
+          if (!costing || !Number(costing.get("grams"))) return produto;
+
+          var resultado = window.DLXPricing.computePrice({
+            grams: costing.get("grams"),
+            hours: costing.get("hours"),
+            material: costing.get("material"),
+            margin: costing.get("margin"),
+            cultsUsd: costing.get("cultsUsd")
+          });
+
+          if (produto.get("price") !== resultado.price) {
+            alterados.push(
+              produto.get("title") + ": " +
+              (produto.get("price") == null ? "—" : produto.get("price")) +
+              " → " + resultado.price.toFixed(2)
+            );
+          }
+          return produto.set("price", resultado.price);
+        });
+
+        if (alterados.length) {
+          // Recalcular precos em silencio seria a maneira certa de
+          // alguem publicar um preco que nao esperava.
+          console.info("DL X — precos recalculados:\n" + alterados.join("\n"));
+        }
+
+        return dados.set("products", actualizados);
+      }
+    });
+  </script>
 </body>
 </html>

@@ -100,7 +100,14 @@
       "featured": true,
       "title_pt": "Caixa de Baralho Commander — com Janela",
       "summary_pt": "Caixa resistente para mais de 120 cartas, com tampa de janela e dobradiça cativa.",
-      "description_pt": "Uma abordagem de mala de campo ao armazenamento de cartas. O casco é chanfrado nas oito arestas e engrossa nos cantos, onde a caixa bate quando cai. A dobradiça é impressa no lugar, sem pinos nem parafusos, e o fecho é de atrito — aguenta a viagem numa mochila sem abrir. A janela na tampa deixa ver o baralho sem o tirar. Dimensionada para mais de 120 cartas com bolsa, com baía separada para tokens e contadores."
+      "description_pt": "Uma abordagem de mala de campo ao armazenamento de cartas. O casco é chanfrado nas oito arestas e engrossa nos cantos, onde a caixa bate quando cai. A dobradiça é impressa no lugar, sem pinos nem parafusos, e o fecho é de atrito — aguenta a viagem numa mochila sem abrir. A janela na tampa deixa ver o baralho sem o tirar. Dimensionada para mais de 120 cartas com bolsa, com baía separada para tokens e contadores.",
+      "costing": {
+        "grams": 185,
+        "hours": 12.0,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 0.0
+      }
     },
     {
       "id": "mtg-commander-box-basic",
@@ -168,7 +175,14 @@
       "layout": "standard",
       "title_pt": "Caixa de Baralho Commander — Opaca",
       "summary_pt": "A versão de tampa fechada da caixa Commander resistente para mais de 120 cartas.",
-      "description_pt": "A mesma caixa, sem a janela. A tampa fechada é mais rígida e mais rápida de imprimir, e protege as cartas da luz — o que conta se o baralho ficar arrumado à vista. Mesma dobradiça cativa, mesmo fecho de atrito, mesma capacidade para mais de 120 cartas com bolsa e baía para tokens."
+      "description_pt": "A mesma caixa, sem a janela. A tampa fechada é mais rígida e mais rápida de imprimir, e protege as cartas da luz — o que conta se o baralho ficar arrumado à vista. Mesma dobradiça cativa, mesmo fecho de atrito, mesma capacidade para mais de 120 cartas com bolsa e baía para tokens.",
+      "costing": {
+        "grams": 175,
+        "hours": 11.0,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 0.0
+      }
     },
     {
       "id": "qidi-ptfe-aligner",
@@ -217,7 +231,14 @@
       "layout": "standard",
       "title_pt": "Alinhador de Tubo PTFE — QIDI Box",
       "summary_pt": "Mantém o percurso do filamento direito onde a QIDI Box alimenta a impressora.",
-      "description_pt": "Um alinhador em duas partes para o troço de PTFE entre a QIDI Box e a impressora. Elimina a curva apertada que gera atrito à entrada, para que as retrações se mantenham consistentes e o tubo deixe de sair do acoplamento. Impresso por encomenda e fornecido como par ajustado."
+      "description_pt": "Um alinhador em duas partes para o troço de PTFE entre a QIDI Box e a impressora. Elimina a curva apertada que gera atrito à entrada, para que as retrações se mantenham consistentes e o tubo deixe de sair do acoplamento. Impresso por encomenda e fornecido como par ajustado.",
+      "costing": {
+        "grams": 22,
+        "hours": 1.5,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 1.7
+      }
     },
     {
       "id": "qidi-exhaust-elbow",
@@ -266,7 +287,14 @@
       "layout": "standard",
       "title_pt": "Cotovelo de Exaustão — QIDI Plus 4",
       "summary_pt": "Vira a exaustão da Plus 4 em 90° para poder ligar a uma conduta.",
-      "description_pt": "Um cotovelo que redireciona a saída de exaustão da QIDI Plus 4, permitindo que a extração corra ao longo de uma parede ou entre numa conduta flexível, em vez de sair a direito por trás. O perfil interior mantém a secção constante ao longo da curva, para que o caudal não seja estrangulado na mudança de direção."
+      "description_pt": "Um cotovelo que redireciona a saída de exaustão da QIDI Plus 4, permitindo que a extração corra ao longo de uma parede ou entre numa conduta flexível, em vez de sair a direito por trás. O perfil interior mantém a secção constante ao longo da curva, para que o caudal não seja estrangulado na mudança de direção.",
+      "costing": {
+        "grams": 55,
+        "hours": 3.5,
+        "material": "ASA",
+        "margin": 0.4,
+        "cultsUsd": 0.0
+      }
     },
     {
       "id": "qidi-power-switch-cover",
@@ -315,7 +343,14 @@
       "layout": "standard",
       "title_pt": "Tampa do Interruptor — QIDI Plus 4",
       "summary_pt": "Proteção que impede resina e líquido de limpeza de chegarem ao interruptor.",
-      "description_pt": "Uma proteção que cobre o interruptor basculante sem o bloquear. Impede que salpicos de resina e de líquido de limpeza cheguem aos contactos — a falha silenciosa que dá origem a interruptores que colam ou deixam de funcionar. Encaixa por pressão, sem ferramenta."
+      "description_pt": "Uma proteção que cobre o interruptor basculante sem o bloquear. Impede que salpicos de resina e de líquido de limpeza cheguem aos contactos — a falha silenciosa que dá origem a interruptores que colam ou deixam de funcionar. Encaixa por pressão, sem ferramenta.",
+      "costing": {
+        "grams": 15,
+        "hours": 1.0,
+        "material": "PETG",
+        "margin": 0.4,
+        "cultsUsd": 0.0
+      }
     },
     {
       "id": "adaptus-clamp",
@@ -365,7 +400,14 @@
       "layout": "wide",
       "title_pt": "Grampo ADAPTUS",
       "summary_pt": "Grampo de bancada impresso, com parafuso de pressão roscado e mordente substituível.",
-      "description_pt": "Um grampo de bancada em que a força vem de um parafuso de pressão roscado e não da flexão do plástico. O mordente é uma peça separada, substituível: há um plano para superfícies direitas e um em V para tubo. Impresso em PETG, que aguenta o aperto sem fluir com o tempo como o PLA faz."
+      "description_pt": "Um grampo de bancada em que a força vem de um parafuso de pressão roscado e não da flexão do plástico. O mordente é uma peça separada, substituível: há um plano para superfícies direitas e um em V para tubo. Impresso em PETG, que aguenta o aperto sem fluir com o tempo como o PLA faz.",
+      "costing": {
+        "grams": 55,
+        "hours": 4.5,
+        "material": "PETG",
+        "margin": 0.2,
+        "cultsUsd": 7.42
+      }
     },
     {
       "id": "vesa-adapter-hp27",

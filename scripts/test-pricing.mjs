@@ -20,6 +20,7 @@ const require = createRequire(import.meta.url);
 const { priceCart } = require("../netlify/functions/_catalogue.js");
 const { shippingOptions, FREE_NATIONAL_ABOVE, NATIONAL, EU } =
   require("../netlify/functions/_shipping.js");
+const { computePrice, hasCosting } = require("../admin/pricing.js");
 
 const catalogue = JSON.parse(readFileSync("data/shop.json", "utf8"));
 const sellable = catalogue.products.filter(
@@ -141,6 +142,32 @@ check("carrinho vazio nao desbloqueia envio gratuito",
 check("os precos do catalogo ja nao carregam portes",
   () => Math.min(...sellable.map((p) => p.price)),
   (menor) => menor < NATIONAL.amount / 100 + 3);
+
+console.log("\nformula do preco:");
+
+// O /admin calcula o preco ao gravar. Se o catalogo publicado deixar de
+// bater com a formula, foi porque alguem escreveu um preco a mao por
+// cima — o que e legitimo, mas tem de ser uma decisao e nao um acidente.
+catalogue.products.filter(hasCosting).forEach((produto) => {
+  check(`${produto.id} bate com o custo declarado`,
+    () => computePrice(produto.costing).price,
+    (calculado) => calculado === produto.price);
+});
+
+check("o preco nunca desce abaixo do minimo",
+  () => computePrice({ grams: 1, hours: 0.1, material: "PLA", margin: 0.2, cultsUsd: 0 }).price,
+  (p) => p >= 4.9);
+
+check("mais material da um preco mais alto",
+  () => [
+    computePrice({ grams: 50, hours: 2, material: "PETG", margin: 0.35 }).price,
+    computePrice({ grams: 500, hours: 2, material: "PETG", margin: 0.35 }).price
+  ],
+  ([pequeno, grande]) => grande > pequeno);
+
+check("material desconhecido nao rebenta, assume PETG",
+  () => computePrice({ grams: 100, hours: 3, material: "Adamantium", margin: 0.35 }).price,
+  (p) => p === computePrice({ grams: 100, hours: 3, material: "PETG", margin: 0.35 }).price);
 
 console.log(`\n${pass} passaram, ${fail} falharam\n`);
 process.exit(fail ? 1 : 0);
