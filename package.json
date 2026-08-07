@@ -2,8 +2,11 @@
   "name": "dungenlabs-dlx",
   "version": "1.0.0",
   "private": true,
-  "description": "DL X shop — static site with Netlify Functions for checkout",
+  "description": "DL X shop \u2014 static site with Netlify Functions for checkout",
   "dependencies": {
     "stripe": "^17.5.0"
+  },
+  "scripts": {
+    "test": "node scripts/test-pricing.mjs"
   }
 }
