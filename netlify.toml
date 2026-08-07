@@ -9,9 +9,10 @@
 
 # ------------------------------------------------------------------
 # Cabecalhos de seguranca — espelham os do dungenlabs.com.
-# O checkout usa Stripe Payment Links (navegacao normal por <a href>),
-# nao o SDK, por isso a CSP nao precisa de abrir script-src nem
-# connect-src para a Stripe. Nao acrescentar dominios sem necessidade.
+# O carrinho fala com /api/checkout, que e o proprio site, e a ida para
+# a Stripe e uma navegacao normal do browser. Nada disto precisa que a
+# CSP abra script-src ou connect-src para dominios da Stripe: o SDK
+# dela nunca corre aqui. Nao acrescentar dominios sem necessidade.
 # ------------------------------------------------------------------
 [[headers]]
   for = "/*"
@@ -57,6 +58,13 @@
 [[redirects]]
   from = "/api/crypto-checkout"
   to = "/.netlify/functions/create-crypto-checkout"
+  status = 200
+
+# Chamado pela Stripe, nao pelo browser. A assinatura e verificada
+# dentro da funcao — ver stripe-webhook.js.
+[[redirects]]
+  from = "/api/stripe-webhook"
+  to = "/.netlify/functions/stripe-webhook"
   status = 200
 
 [[redirects]]
