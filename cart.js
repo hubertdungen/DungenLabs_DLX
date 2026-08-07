@@ -63,11 +63,41 @@ function addToCart(id, quantity = 1, colour = "Deep Teal") {
   writeCart(items);
 }
 
-function setQuantity(index, quantity) {
+/**
+ * Localiza uma linha por id e cor, e nao por posicao.
+ *
+ * A posicao muda quando uma linha e removida, e quem carrega no botao
+ * tem na mao a posicao de quando o ecra foi desenhado. Id e cor sao o
+ * que identifica a linha de facto — e addToCart ja junta repetidos.
+ */
+const findLine = (items, id, colour) =>
+  items.findIndex((item) => item.id === id && item.colour === colour);
+
+/**
+ * Soma `delta` a quantidade de uma linha. Abaixo de 1 remove-a.
+ *
+ * Recebe o incremento em vez do valor final de proposito. O redesenho
+ * do carrinho e assincrono, por isso dois cliques rapidos no "+" liam
+ * os dois a mesma quantidade antiga e escreviam o mesmo numero: o
+ * segundo clique perdia-se. Lendo o estado no momento do clique, cada
+ * um conta.
+ */
+function stepQuantity(id, colour, delta) {
   const items = readCart();
-  if (!items[index]) return;
-  if (quantity < 1) items.splice(index, 1);
-  else items[index].quantity = Math.min(quantity, 50);
+  const i = findLine(items, id, colour);
+  if (i === -1) return;
+  const next = items[i].quantity + delta;
+  if (next < 1) items.splice(i, 1);
+  else items[i].quantity = Math.min(next, 50);
+  writeCart(items);
+}
+
+/** Remove a linha por inteiro, qualquer que seja a quantidade. */
+function removeLine(id, colour) {
+  const items = readCart();
+  const i = findLine(items, id, colour);
+  if (i === -1) return;
+  items.splice(i, 1);
   writeCart(items);
 }
 
@@ -202,7 +232,7 @@ async function renderDrawer() {
 
     row.querySelectorAll("[data-step]").forEach((button) => {
       button.addEventListener("click", () => {
-        setQuantity(line.index, line.quantity + Number(button.dataset.step));
+        stepQuantity(line.id, line.colour, Number(button.dataset.step));
       });
     });
     host.append(row);
@@ -290,7 +320,8 @@ refreshCount();
 window.DLXCart = {
   add: addToCart,
   read: readCart,
-  setQuantity,
+  step: stepQuantity,
+  remove: removeLine,
   resolve: resolveCart,
   open: openDrawer,
   count: cartCount,

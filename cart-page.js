@@ -49,10 +49,10 @@ async function render() {
 
     row.querySelectorAll("[data-step]").forEach((button) => {
       button.addEventListener("click", () =>
-        cart.setQuantity(line.index, line.quantity + Number(button.dataset.step))
+        cart.step(line.id, line.colour, Number(button.dataset.step))
       );
     });
-    row.querySelector(".cart-remove").addEventListener("click", () => cart.setQuantity(line.index, 0));
+    row.querySelector(".cart-remove").addEventListener("click", () => cart.remove(line.id, line.colour));
 
     page.append(row);
   });
