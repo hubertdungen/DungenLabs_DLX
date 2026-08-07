@@ -113,7 +113,7 @@ function buildDrawer() {
     <div class="cart-drawer-body" id="dlx-cart-lines"></div>
     <div class="cart-drawer-foot">
       <div class="cart-total"><span>Subtotal</span><strong id="dlx-cart-total">—</strong></div>
-      <p class="cart-note">Shipping calculated at checkout.</p>
+      <p class="cart-note">Shipping included within Portugal.</p>
       <a class="button" href="/cart.html">Go to checkout</a>
     </div>`;
 

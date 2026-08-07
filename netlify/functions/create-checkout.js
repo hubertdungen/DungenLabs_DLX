@@ -23,9 +23,12 @@ function catalogueStatus() {
   }
 }
 
+// Os precos do catalogo ja incluem 4.90 EUR de correio registado nacional
+// (ver scripts/build-prices.py), por isso Portugal e gratuito aqui — cobrar
+// outra vez seria cobrar os portes duas vezes. A UE paga so a diferenca.
 const SHIPPING = [
-  { label: "Portugal — tracked", amount: 490, minDays: 2, maxDays: 4 },
-  { label: "European Union — tracked", amount: 1190, minDays: 4, maxDays: 8 }
+  { label: "Portugal — tracked, included", amount: 0, minDays: 2, maxDays: 4 },
+  { label: "European Union — tracked", amount: 700, minDays: 4, maxDays: 8 }
 ];
 
 const SHIP_TO = [
