@@ -37,6 +37,18 @@
   display: block;
 }
 
+.dlx-hero .hero-copy {
+  max-width: 950px;
+}
+
+.dlx-hero h1 {
+  max-width: 950px;
+}
+
+.dlx-hero .hero-copy p {
+  max-width: 700px;
+}
+
 /* --- Imagem do produto em destaque ------------------------
    O .flagship-media da DL e um <div> com background-image. Aqui leva um
    <img> com alt, por isso o fundo herdado sai e a imagem passa a
