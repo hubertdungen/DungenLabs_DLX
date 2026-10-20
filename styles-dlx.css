@@ -1108,3 +1108,162 @@ button.button {
 .legal-doc [lang="pt-PT"] {
   padding-top: 4px;
 }
+
+/* --- Revisao de aspecto (2026-10-20) ----------------------- */
+
+/* O atributo hidden tem de ganhar a classes com display proprio
+   (o resumo vazio da encomenda aparecia como imagem partida). */
+[hidden] {
+  display: none !important;
+}
+
+/* Hero em duas colunas: texto e uma foto real de um produto. */
+.dlx-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.dlx-hero-media {
+  display: block;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
+}
+
+.dlx-hero-media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .dlx-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dlx-hero-media {
+    display: none;
+  }
+}
+
+/* Passos: numero num circulo ao lado do titulo, tudo alinhado ao topo. */
+.steps-list {
+  align-items: start;
+}
+
+.steps-list li {
+  grid-template-columns: 36px 1fr;
+  column-gap: 14px;
+  row-gap: 4px;
+  align-content: start;
+}
+
+.steps-list li::before {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--deep-teal);
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.steps-list strong {
+  align-self: center;
+}
+
+/* Materiais em fundo branco, para alternar com os passos e o contacto. */
+.dlx-capability {
+  background: var(--white);
+}
+
+.dlx-capability .section-inner {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.machine h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.machine-spec {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+}
+
+.materials-table th[scope="row"] {
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+/* No telemovel cada material vira um bloco, em vez de uma tabela cortada. */
+@media (max-width: 640px) {
+  .materials-table {
+    min-width: 0;
+  }
+
+  .materials-table thead {
+    display: none;
+  }
+
+  .materials-table tr,
+  .materials-table th,
+  .materials-table td {
+    display: block;
+  }
+
+  .materials-table tr {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .materials-table th,
+  .materials-table td {
+    padding: 0;
+    border: 0;
+  }
+
+  .materials-table td {
+    margin-top: 4px;
+  }
+}
+
+/* Paginas de texto (envios, encomenda, legais): titulos de pagina, nao de cartaz. */
+.dlx-doc h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--deep-teal);
+}
+
+.dlx-doc h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+}
+
+/* Linha legal alinhada com as colunas do rodape. */
+.site-footer .footer-base {
+  margin-top: 28px;
+  padding: 18px 0 0;
+}
+
+.site-footer .footer-inner {
+  padding: 0 22px;
+}
+
+.site-footer .footer-base {
+  padding: 18px 22px 0;
+}
+
+.site-footer {
+  padding-left: 0;
+  padding-right: 0;
+}

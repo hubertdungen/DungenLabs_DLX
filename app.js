@@ -139,7 +139,8 @@ function productCard(product, categoryId) {
   const foot = createElement("div", "product-card-foot");
   const price = createElement("div", "product-card-price");
   price.append(createElement("strong", "", formatPrice(product.price) || t("shop.onRequest", "Price on request")));
-  price.append(createElement("span", "", statusLabel(product.status)));
+  // Quase tudo e feito por encomenda: no cartao so se diz quando nao e.
+  if (product.status !== "made-to-order") price.append(createElement("span", "", statusLabel(product.status)));
   foot.append(price);
   if (isSellable(product) && typeof product.price === "number") {
     foot.append(addButton(product, () => COLOURS[0], "button button-small"));
