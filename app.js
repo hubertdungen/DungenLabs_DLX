@@ -188,17 +188,31 @@ function renderDetail(product, categoryId) {
   back.href = getCategory(categoryId) ? `#${categoryId}` : "#all";
   shopRoot.append(back);
 
-  // Galeria: imagem grande + miniaturas que a trocam.
-  const images = [{ src: product.mainImage, alt: product.mainImageAlt }]
-    .concat((product.gallery || []).map((g) => ({ src: g.src, alt: g.alt })))
+  // Galeria: media grande + miniaturas que a trocam. Um item com "video"
+  // (mp4) mostra o video em loop, sem som; "src" e a capa dele.
+  const images = [{ src: product.mainImage, alt: product.mainImageAlt, video: product.mainVideo }]
+    .concat((product.gallery || []).map((g) => ({ src: g.src, alt: g.alt, video: g.video })))
     .filter((img, i, all) => img.src && all.findIndex((o) => o.src === img.src) === i);
 
   const gallery = createElement("div", "product-gallery");
-  const main = document.createElement("img");
-  main.className = "product-gallery-main";
-  main.src = `/${images[0].src}`;
-  main.alt = images[0].alt || localised(product, "title");
-  gallery.append(main);
+  let main = null;
+  const show = (item) => {
+    const next = document.createElement(item.video ? "video" : "img");
+    next.className = "product-gallery-main";
+    if (item.video) {
+      // Quem pede menos movimento ve a capa e carrega no play.
+      const calm = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      Object.assign(next, { src: `/${item.video}`, poster: `/${item.src}`, muted: true, loop: true, playsInline: true, autoplay: !calm, controls: Boolean(calm) });
+      next.setAttribute("aria-label", item.alt || "");
+    } else {
+      next.src = `/${item.src}`;
+      next.alt = item.alt || localised(product, "title");
+    }
+    if (main) main.replaceWith(next);
+    else gallery.append(next);
+    main = next;
+  };
+  show(images[0]);
 
   if (images.length > 1) {
     const thumbs = createElement("div", "product-thumbs");
@@ -213,8 +227,7 @@ function renderDetail(product, categoryId) {
       tImg.loading = "lazy";
       b.append(tImg);
       b.addEventListener("click", () => {
-        main.src = `/${img.src}`;
-        main.alt = img.alt || "";
+        show(img);
         thumbs.querySelectorAll("[aria-current]").forEach((n) => n.removeAttribute("aria-current"));
         b.setAttribute("aria-current", "true");
       });

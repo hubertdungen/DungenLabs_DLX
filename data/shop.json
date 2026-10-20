@@ -25,8 +25,8 @@
       "id": "tabletop",
       "title": "Tabletop & Gaming",
       "summary": "Rugged storage and playfield hardware for card and board games.",
-      "image": "images/products/mtg-box-render-open.png",
-      "imageAlt": "Rugged printed deck box open, holding sleeved cards and tokens",
+      "image": "images/products/deck-bunker-green.webp",
+      "imageAlt": "Green Deck Bunker deck box",
       "layout": "wide",
       "title_pt": "Jogos de Mesa",
       "summary_pt": "Armazenamento resistente e acessórios de jogo para cartas e jogos de tabuleiro."
@@ -53,6 +53,77 @@
     }
   ],
   "products": [
+    {
+      "stageLabel": "DL X / Tabletop",
+      "categoryIds": [
+        "tabletop"
+      ],
+      "status": "made-to-order",
+      "price": 15.9,
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "id": "deck-bunker",
+      "title": "Deck Bunker — Commander Deck Box (100+)",
+      "title_pt": "Deck Bunker — Caixa de Baralho Commander (100+)",
+      "summary": "Sci-fi ammo-crate deck box for a 100+ sleeved Commander deck, with a hinged lid.",
+      "summary_pt": "Caixa de baralho estilo caixa de munições sci-fi, para um Commander de 100+ cartas com bolsa, com tampa de dobradiça.",
+      "description": "A Commander deck box shaped like a sci-fi ammo crate: chamfered panels, a hinged lid that swings fully open, and a thumb notch at the front to lift the deck out. The hinge pin is a length of filament, so there is no metal and nothing to snap off. Holds a 100+ card Commander deck in sleeves.",
+      "description_pt": "Uma caixa de baralho Commander com a forma de uma caixa de munições sci-fi: painéis chanfrados, tampa de dobradiça que abre por completo e um entalhe à frente para tirar o baralho com o polegar. O pino da dobradiça é um troço de filamento, por isso não há metal nem nada que parta. Leva um baralho Commander de 100+ cartas com bolsa.",
+      "mainImage": "images/products/deck-bunker-opening.webp",
+      "mainVideo": "images/products/deck-bunker-opening.mp4",
+      "mainImageAlt": "A printed Deck Bunker opening to show a sleeved Commander deck inside",
+      "cardImage": "images/products/deck-bunker-green.webp",
+      "cardImageAlt": "Green Deck Bunker deck box, lid open",
+      "gallery": [
+        {
+          "src": "images/products/deck-bunker-green.webp",
+          "video": "images/products/deck-bunker-green.mp4",
+          "alt": "Green Deck Bunker, lid opening",
+          "ratio": "square"
+        },
+        {
+          "src": "images/products/deck-divider.webp",
+          "alt": "Optional divider with index tab inside the box",
+          "ratio": "square"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Holds",
+          "value": "100+ sleeved cards (Commander)"
+        },
+        {
+          "label": "Lid",
+          "value": "Hinged, filament pin"
+        },
+        {
+          "label": "Footprint",
+          "value": "approx. 76 × 124 mm"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "costing": {
+        "grams": 150,
+        "hours": 9,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 2.71
+      }
+    },
     {
       "id": "vw-polo-rear-panel",
       "title": "VW Polo Classic Mk3 Rear Panel",
@@ -167,6 +238,75 @@
         "material": "PETG",
         "margin": 0.35,
         "cultsUsd": 0.54
+      }
+    },
+    {
+      "stageLabel": "DL X / Tabletop",
+      "categoryIds": [
+        "tabletop"
+      ],
+      "status": "made-to-order",
+      "price": 11.9,
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "id": "deck-bunker-80",
+      "title": "Deck Bunker 80 — 60-Card Deck Box",
+      "title_pt": "Deck Bunker 80 — Caixa para Baralho de 60 Cartas",
+      "summary": "The compact Deck Bunker: a 60-card deck, 15-card sideboard and 5 tokens, sleeved.",
+      "summary_pt": "O Deck Bunker compacto: baralho de 60 cartas, sideboard de 15 e 5 fichas, com bolsa.",
+      "description": "The same ammo-crate design sized for constructed formats: 80 sleeved cards — a 60-card deck, a 15-card sideboard and 5 tokens — with a divider to keep them apart. Hinged lid on a filament pin.",
+      "description_pt": "O mesmo desenho de caixa de munições, à medida dos formatos construídos: 80 cartas com bolsa — baralho de 60, sideboard de 15 e 5 fichas — com um separador entre eles. Tampa de dobradiça com pino de filamento.",
+      "mainImage": "images/products/deck-bunker-80.webp",
+      "mainVideo": "images/products/deck-bunker-80.mp4",
+      "mainImageAlt": "Deck Bunker 80 render with a deck and divider inside",
+      "cardImage": "images/products/deck-bunker-80.webp",
+      "cardImageAlt": "Deck Bunker 80 deck box",
+      "gallery": [
+        {
+          "src": "images/products/deck-divider.webp",
+          "alt": "Divider with index tab separating deck and sideboard",
+          "ratio": "square"
+        }
+      ],
+      "specs": [
+        {
+          "label": "Holds",
+          "value": "80 sleeved cards (60 + 15 + 5)"
+        },
+        {
+          "label": "Includes",
+          "value": "1 divider"
+        },
+        {
+          "label": "Lid",
+          "value": "Hinged, filament pin"
+        },
+        {
+          "label": "Footprint",
+          "value": "approx. 76 × 84 mm"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "costing": {
+        "grams": 115,
+        "hours": 7,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 2.16
       }
     },
     {
@@ -489,6 +629,64 @@
         "material": "PETG",
         "margin": 0.35,
         "cultsUsd": 2.16
+      }
+    },
+    {
+      "stageLabel": "DL X / Tabletop",
+      "categoryIds": [
+        "tabletop"
+      ],
+      "status": "made-to-order",
+      "price": 4.9,
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "id": "deck-divider-pack",
+      "title": "Deck Dividers with Index Tab — Pack of 4",
+      "title_pt": "Separadores com Patilha — Pack de 4",
+      "summary": "1 mm card dividers with an index tab, sized for the Deck Bunker 80 and 100.",
+      "summary_pt": "Separadores de 1 mm com patilha de índice, à medida dos Deck Bunker 80 e 100.",
+      "description": "Thin 1 mm dividers with an index tab on top, to split a deck from its sideboard, tokens or a second deck inside a Deck Bunker. Sized for sleeved cards.",
+      "description_pt": "Separadores finos de 1 mm com patilha de índice em cima, para separar o baralho do sideboard, das fichas ou de um segundo baralho dentro de um Deck Bunker. À medida de cartas com bolsa.",
+      "mainImage": "images/products/deck-divider.webp",
+      "mainImageAlt": "Card divider with index tab inside a Deck Bunker box",
+      "cardImage": "images/products/deck-divider.webp",
+      "cardImageAlt": "Card divider with index tab",
+      "gallery": [],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "Deck Bunker 80 and 100"
+        },
+        {
+          "label": "Thickness",
+          "value": "1 mm"
+        },
+        {
+          "label": "Supplied as",
+          "value": "Pack of 4"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "costing": {
+        "grams": 14,
+        "hours": 1,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 0
       }
     },
     {
