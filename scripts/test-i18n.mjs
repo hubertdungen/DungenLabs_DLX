@@ -31,7 +31,7 @@ async function montar({ linguas = ["en-GB", "en"], guardada = null } = {}) {
   const dom = new JSDOM(
     `<!doctype html><html lang="en"><body>
        <nav><div id="nav-links"><a href="/">Home</a></div></nav>
-       <h1 data-i18n="hero.h1">The half of the lab that builds for itself.</h1>
+       <h1 data-i18n="hero.h1">Printed parts that fix things.</h1>
        <p data-i18n="chave.que.nao.existe">Untranslated on purpose.</p>
        <li data-i18n-html="shipping.s2html">Portugal: €4.90 tracked — <strong>free on orders over €30</strong>.</li>
        <button aria-label="Open navigation" data-i18n-attr="aria-label:nav.open">≡</button>
@@ -64,14 +64,14 @@ console.log("\nescolha da lingua:\n");
   const w = await montar({ linguas: ["en-GB", "en"] });
   diz(w.DLXi18n.language === "en", "browser ingles fica em ingles");
   diz(w.document.documentElement.lang === "en", "o atributo lang do documento acompanha");
-  diz(texto(w, "h1").startsWith("The half"), "o texto original mantem-se");
+  diz(texto(w, "h1").startsWith("Printed parts"), "o texto original mantem-se");
 }
 
 {
   const w = await montar({ linguas: ["pt-PT", "pt", "en"] });
   diz(w.DLXi18n.language === "pt", "browser portugues passa a portugues");
   diz(w.document.documentElement.lang === "pt", "e o lang do documento tambem");
-  diz(texto(w, "h1") === "A metade do laboratório que constrói para si própria.",
+  diz(texto(w, "h1") === "Peças impressas que resolvem problemas.",
       "o titulo aparece traduzido");
 }
 
@@ -120,11 +120,11 @@ console.log("\nbotao:\n");
   botao.dispatchEvent(new w.MouseEvent("click", { bubbles: true }));
   diz(w.DLXi18n.language === "pt", "carregar muda para portugues");
   diz(botao.textContent === "EN", "e o botao passa a dizer EN");
-  diz(texto(w, "h1").startsWith("A metade"), "o texto muda com o clique");
+  diz(texto(w, "h1").startsWith("Peças impressas"), "o texto muda com o clique");
   diz(w.localStorage.getItem("dlx.lang") === "pt", "a escolha fica guardada");
 
   botao.dispatchEvent(new w.MouseEvent("click", { bubbles: true }));
-  diz(texto(w, "h1").startsWith("The half"), "e volta atras sem restos");
+  diz(texto(w, "h1").startsWith("Printed parts"), "e volta atras sem restos");
 }
 
 console.log("\nordem de carregamento:\n");

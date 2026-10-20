@@ -40,53 +40,24 @@
       "nav.langLabel": "Mudar para inglês",
 
       /* ------------------------------------------------------- hero */
-      "hero.eyebrow": "Uma divisão DungenLabs",
-      "hero.h1": "A metade do laboratório que constrói para si própria.",
-      "hero.p": "A DungenLabs resolve problemas de engenharia de outros. A DL X é o sentido contrário — investigação, protótipos experimentais e equipamento que o laboratório desenha, detém e vende em nome próprio.",
+      "hero.eyebrow": "DL X · uma divisão DungenLabs",
+      "hero.h1": "Peças impressas que resolvem problemas.",
+      "hero.p": "Casa, carro, secretária e melhorias para impressoras — cada peça desenhada à volta de um problema real e impressa por encomenda em Lisboa.",
+      "hero.fact1": "Envio em 3–5 dias úteis",
+      "hero.fact2": "Portes grátis em Portugal acima de 30 €",
+      "hero.fact3": "Pagamento seguro com cartão",
+
+      "showcase.h2": "Na loja",
+      "showcase.all": "Ver todos os produtos →",
+      "steps.h2": "Como funciona a encomenda",
+      "steps.1.h": "Escolhe a peça e a cor",
+      "steps.1.p": "Pagas com cartão no checkout. Precisas de uma alteração? Pede antes um orçamento.",
+      "steps.2.h": "Entra no lote de impressão seguinte",
+      "steps.2.p": "Cada encomenda é impressa para ti em Lisboa, em PETG ou ASA salvo indicação em contrário.",
+      "steps.3.h": "Enviada em 3–5 dias úteis",
+      "steps.3.p": "Correio registado: 4,90 € em Portugal, grátis acima de 30 €. Resto da UE 11,90 €.",
       "hero.cta1": "Ver a loja",
-      "hero.cta2": "O que é a DL X?",
-
-      /* -------------------------------------------------- ecossistema */
-      "eco.eyebrow": "O ecossistema",
-      "eco.h2": "Duas maneiras de trabalhar, um laboratório.",
-      "eco.kicker": "A DungenLabs organiza-se em divisões que partilham bancada, ferramentas e identidade visual. O que muda entre elas é a quem pertence o trabalho.",
-      "eco.dl.h3": "Engenharia para clientes",
-      "eco.dl.p": "Trabalho por contrato: CAD, desenho de PCB, engenharia inversa e sistemas de campo, entregues sobre o caderno de encargos de um cliente. O problema vem de fora, e o prazo também.",
-      "eco.dl.cta": "Serviços de engenharia",
-      "eco.dlx.h3": "Investigação e produto próprio",
-      "eco.dlx.p": "Trabalho que o laboratório começa por iniciativa própria. Ninguém o encomenda, ninguém marca o prazo, e o que sair pertence à DL X — incluindo o direito de o fabricar e vender.",
-      "eco.dlx.cta": "Ver o que está à venda",
-
-      /* ------------------------------------------------------ pilares */
-      "pillars.eyebrow": "O que a DL X abrange",
-      "pillars.h2": "Quatro tipos de trabalho.",
-      "pillars.kicker": "A divisão existe para o que não cabe num projeto de cliente: ideias que vale a pena testar, ferramentas que vale a pena construir e equipamento que vale a pena possuir por inteiro.",
-      "pillars.proto.h3": "Protótipos experimentais",
-      "pillars.proto.p": "Feitos para responder a uma pergunta, não para satisfazer uma encomenda. A maioria fica na bancada — o objetivo é descobrir.",
-      "pillars.product.h3": "Produtos próprios",
-      "pillars.product.p": "Desenhos que o laboratório detém de ponta a ponta, fabricados em casa e vendidos diretamente, sem intermediário entre quem desenha e quem compra.",
-      "pillars.partner.h3": "Parcerias estratégicas",
-      "pillars.partner.p": "Desenvolvimento conjunto, em que a DL X traz capacidade de desenho, ferramenta e fabrico em pequena série para a ideia de outra pessoa.",
-      "pillars.future.h3": "Tecnologias futuras",
-      "pillars.future.p": "Trabalho de horizonte longo, sem cliente associado. A parte do laboratório que tem de se manter curiosa para se manter útil.",
-
-      /* ------------------------------------------------- como se faz */
-      "made.eyebrow": "Como é feito",
-      "made.h2": "Impresso depois de encomendares.",
-      "made.p1": "Não há armazém por trás desta loja. As encomendas entram no lote de impressão seguinte, e é por isso que os prazos são ditos em dias em vez de escondidos, e que variantes de cor ou gravação são uma conversa e não uma referência separada.",
-      "made.p2": "Também significa que o catálogo se pode manter honesto: um produto é listado quando a geometria está validada e as tolerâncias são conhecidas, não quando chega um contentor.",
-      "made.fact1": "dias úteis até ao envio",
-      "made.fact2": "polímeros de engenharia",
-      "made.fact3": "desenhado e impresso",
-
-      /* -------------------------------------------------- em destaque */
-      "featured.eyebrow": "Na loja agora",
-      "featured.h2": "Caixa de Baralho Commander",
-      "featured.p": "Uma abordagem de mala de campo ao armazenamento de cartas: casco chanfrado, protetores de canto, dobradiça impressa cativa e um fecho de atrito que sobrevive a uma mochila. Dimensionada para mais de 120 cartas com bolsa, com baía para tokens, em tampa com janela ou opaca.",
-      "featured.fact1": "cartas com bolsa",
-      "featured.fact2": "espessura de parede",
-      "featured.fact3": "feito por encomenda",
-      "featured.cta": "Ver o produto",
+      "hero.cta2": "Precisas de uma peça à medida?",
 
       /* -------------------------------------------------- capacidades */
       "cap.eyebrow": "Materiais e capacidades",
@@ -150,14 +121,6 @@
       "mat.resin.use": "Caixas pequenas, detalhe fino, modelos de apresentação",
 
       /* ------------------------------------------------------ oficina */
-      "shopcap.dfm.h3": "Desenho para fabrico",
-      "shopcap.dfm.p": "As peças são desenhadas em torno da orientação de impressão, da estratégia de suportes e da tolerância desde o início, e não adaptadas a isso depois.",
-      "shopcap.runs.h3": "Séries curtas",
-      "shopcap.runs.p": "Lotes de dezenas e não de milhares, com a mesma geometria e os mesmos parâmetros de cada vez.",
-      "shopcap.finish.h3": "Acabamento",
-      "shopcap.finish.p": "Remoção de suportes, lixagem, insertos térmicos, ferragem cativa e alisamento com solvente onde o material o permite.",
-      "shopcap.custom.h3": "Trabalho à medida",
-      "shopcap.custom.p": "Variantes de cor, gravação e dimensão em qualquer desenho DL X — orçamentadas a pedido.",
 
       /* ------------------------------------------------------ contacto */
       "contact.eyebrow": "Contacto",
@@ -168,8 +131,10 @@
       /* -------------------------------------------------------- rodape */
       "footer.dlx.p": "Investigação, desenvolvimento e produtos próprios. Uma divisão da DungenLabs, Lisboa.",
       "footer.shop": "Loja",
+      "footer.home": "Casa",
+      "footer.car": "Carro",
       "footer.tabletop": "Jogos de mesa",
-      "footer.workshop": "Oficina e secretária",
+      "footer.workshop": "Impressora e secretária",
       "footer.experimental": "Experimental",
       "footer.capabilities": "Materiais e capacidades",
       "footer.mainsite": "Site principal",
@@ -180,8 +145,8 @@
 
       /* --------------------------------------------------------- loja */
       "shop.eyebrow": "DL X — Loja",
-      "shop.h1": "Equipamento que saiu do laboratório.",
-      "shop.kicker": "A DL X é a divisão de investigação e desenvolvimento da DungenLabs. O que se prova na bancada é refinado, documentado e listado aqui — impresso por encomenda em Lisboa, em polímeros de engenharia, com as tolerâncias ditas à partida.",
+      "shop.h1": "Loja",
+      "shop.kicker": "Peças impressas que resolvem problemas reais — em casa, no carro, na secretária e na impressora. Feitas por encomenda em Lisboa, enviadas em 3–5 dias úteis.",
       "shop.viewTitle": "Loja",
       "shop.viewSummary": "Equipamento próprio da bancada DL X, impresso por encomenda em Lisboa.",
       "shop.allCategories": "Todas as secções",
@@ -197,6 +162,13 @@
       "shop.inStock": "Em stock",
       "shop.back": "Voltar",
       "shop.specs": "Características",
+      "shop.details": "Detalhes",
+      "shop.all": "Tudo",
+      "shop.filterLabel": "Filtrar por secção",
+      "shop.onRequest": "Preço sob consulta",
+      "shop.backToShop": "Todos os produtos",
+      "shop.notify": "Avisar-me",
+      "shop.buyNote": "Impresso por encomenda em Lisboa, enviado em 3–5 dias úteis. Portes 4,90 € em Portugal, grátis acima de 30 €.",
 
       /* ---------------------------------------------------- carrinho */
       "cart.button": "Carrinho",

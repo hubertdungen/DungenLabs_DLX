@@ -2,6 +2,26 @@
   "currency": "EUR",
   "categories": [
     {
+      "id": "home",
+      "title": "Home",
+      "title_pt": "Casa",
+      "summary": "Fixes for the kitchen, the furniture and the walls.",
+      "summary_pt": "Soluções para a cozinha, os móveis e as paredes.",
+      "image": "images/products/krups-drip-tray-top.webp",
+      "imageAlt": "",
+      "layout": "standard"
+    },
+    {
+      "id": "car",
+      "title": "Car",
+      "title_pt": "Carro",
+      "summary": "Replacement trim and interior fixes, printed in heat-tolerant ASA.",
+      "summary_pt": "Peças de substituição e soluções de interior, em ASA resistente ao calor.",
+      "image": "images/products/vw-polo-rear-panel.webp",
+      "imageAlt": "",
+      "layout": "standard"
+    },
+    {
       "id": "tabletop",
       "title": "Tabletop & Gaming",
       "summary": "Rugged storage and playfield hardware for card and board games.",
@@ -13,13 +33,13 @@
     },
     {
       "id": "workshop",
-      "title": "Workshop & Desk",
-      "summary": "Printer upgrades, mounts and bench utilities from the DL X bench.",
+      "title": "Printer & Desk",
+      "summary": "Printer upgrades, bench tools and desk stands.",
       "image": "images/products/adaptus-clamp.webp",
       "imageAlt": "Printed clamp with threaded pressure screw on the bench",
       "layout": "standard",
-      "title_pt": "Oficina e Secretária",
-      "summary_pt": "Melhorias para impressoras, suportes e utilitários de bancada saídos da DL X."
+      "title_pt": "Impressora e Secretária",
+      "summary_pt": "Melhorias para impressoras, ferramentas de bancada e suportes de secretária."
     },
     {
       "id": "experimental",
@@ -33,6 +53,444 @@
     }
   ],
   "products": [
+    {
+      "id": "vw-polo-rear-panel",
+      "title": "VW Polo Classic Mk3 Rear Panel",
+      "stageLabel": "DL X / Car",
+      "categoryIds": [
+        "car"
+      ],
+      "status": "made-to-order",
+      "price": 51.9,
+      "summary": "Re-engineered 2-piece replacement for the rear trim / licence-plate panel.",
+      "description": "A replacement for the rear trim and licence-plate panel of the VW Polo Classic Mk3, redrawn as two pieces so each half prints flat and fits a normal print bed. Printed in ASA, which stays stable in sun and heat on the back of a car. Supplied as a matched pair, ready to prime and paint.",
+      "mainImage": "images/products/vw-polo-rear-panel.webp",
+      "mainImageAlt": "Batch of printed VW Polo rear panel halves, primed grey",
+      "cardImage": "images/products/vw-polo-rear-panel.webp",
+      "cardImageAlt": "Batch of printed VW Polo rear panel halves, primed grey",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [
+        {
+          "src": "images/products/vw-polo-rear-panel-fitted.webp",
+          "alt": "The panel fitted on the car",
+          "ratio": "wide"
+        }
+      ],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "VW Polo Classic Mk3"
+        },
+        {
+          "label": "Supplied as",
+          "value": "2-piece pair"
+        },
+        {
+          "label": "Material",
+          "value": "ASA, UV-stable"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Painel Traseiro VW Polo Classic Mk3",
+      "summary_pt": "Substituto em 2 peças, redesenhado, para o painel traseiro / da matrícula.",
+      "description_pt": "Um substituto para o painel traseiro e da matrícula do VW Polo Classic Mk3, redesenhado em duas peças para cada metade imprimir deitada numa cama normal. Impresso em ASA, que aguenta sol e calor na traseira de um carro. Fornecido como par, pronto a primário e pintura.",
+      "costing": {
+        "grams": 320,
+        "hours": 16,
+        "material": "ASA",
+        "margin": 0.35,
+        "cultsUsd": 21.63
+      }
+    },
+    {
+      "id": "krups-drip-tray-top",
+      "title": "Krups Nespresso Compact Drip-Tray Top",
+      "stageLabel": "DL X / Home",
+      "categoryIds": [
+        "home"
+      ],
+      "status": "made-to-order",
+      "price": 4.9,
+      "summary": "A drip-tray top with a 4 mm rise, so tall mugs fit under the spout.",
+      "description": "Replaces the drip-tray top of a Krups Nespresso Compact. The 4 mm rise changes the clearance under the spout, so taller mugs fit without tilting. Drops into the original tray with no tools.",
+      "mainImage": "images/products/krups-drip-tray-top.webp",
+      "mainImageAlt": "Printed drip-tray top next to the original Krups tray",
+      "cardImage": "images/products/krups-drip-tray-top.webp",
+      "cardImageAlt": "Printed drip-tray top next to the original Krups tray",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [
+        {
+          "src": "images/products/krups-drip-tray-top-wide.webp",
+          "alt": "Printed tray top beside the original",
+          "ratio": "wide"
+        }
+      ],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "Krups Nespresso Compact"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Tampo de Tabuleiro Krups Nespresso Compact",
+      "summary_pt": "Tampo de tabuleiro com 4 mm de elevação, para as canecas altas caberem.",
+      "description_pt": "Substitui o tampo do tabuleiro de uma Krups Nespresso Compact. Os 4 mm de elevação mudam a folga debaixo do bico, para as canecas mais altas caberem sem inclinar. Encaixa no tabuleiro original, sem ferramentas.",
+      "costing": {
+        "grams": 45,
+        "hours": 2.5,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 0.54
+      }
+    },
+    {
+      "id": "soldering-iron-dock",
+      "title": "Soldering-Iron Toolkit Dock",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "made-to-order",
+      "price": 14.9,
+      "summary": "A stable base that holds the iron and organises the whole kit.",
+      "description": "A heavy-footprint dock for a soldering iron and its toolkit: the iron sits where it cannot roll, and tips, wire and accessories each get a slot. Keeps a hot tool and its bits in one place on the bench.",
+      "mainImage": "images/products/soldering-iron-dock.webp",
+      "mainImageAlt": "Soldering-iron toolkit dock",
+      "cardImage": "images/products/soldering-iron-dock.webp",
+      "cardImageAlt": "Soldering-iron toolkit dock",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [
+        {
+          "src": "images/products/soldering-iron-dock-cad.webp",
+          "alt": "CAD render of the dock",
+          "ratio": "wide"
+        }
+      ],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Use",
+          "value": "Soldering iron + toolkit"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Base para Kit de Ferro de Soldar",
+      "summary_pt": "Uma base estável que segura o ferro e arruma o kit todo.",
+      "description_pt": "Uma base de pegada larga para um ferro de soldar e o seu kit: o ferro fica onde não rola, e as pontas, o fio e os acessórios têm cada um o seu lugar. Mantém uma ferramenta quente e as suas peças num só sítio da bancada.",
+      "costing": {
+        "grams": 160,
+        "hours": 8,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 2.72
+      }
+    },
+    {
+      "id": "bmw-e46-cup-holder",
+      "title": "BMW E46 Cup Holder — 500 ml Can",
+      "stageLabel": "DL X / Car",
+      "categoryIds": [
+        "car"
+      ],
+      "status": "made-to-order",
+      "price": 11.9,
+      "summary": "Cup-holder insert for the BMW E46, sized for a 500 ml Monster can.",
+      "description": "An insert (coaster) for the BMW E46 cup holder, reshaped so a tall 500 ml can such as a Monster Energy sits upright and stops rattling. Printed in ASA so it does not soften in a hot car.",
+      "mainImage": "images/products/bmw-e46-cup-holder.webp",
+      "mainImageAlt": "Printed cup-holder insert in a BMW E46",
+      "cardImage": "images/products/bmw-e46-cup-holder.webp",
+      "cardImageAlt": "Printed cup-holder insert in a BMW E46",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "BMW E46 cup holder"
+        },
+        {
+          "label": "Holds",
+          "value": "500 ml can"
+        },
+        {
+          "label": "Material",
+          "value": "ASA, heat-tolerant"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Porta-Copos BMW E46 — Lata 500 ml",
+      "summary_pt": "Adaptador de porta-copos para o BMW E46, à medida de uma lata Monster de 500 ml.",
+      "description_pt": "Um adaptador (base) para o porta-copos do BMW E46, redesenhado para uma lata alta de 500 ml, como uma Monster Energy, ficar direita e deixar de chocalhar. Impresso em ASA para não amolecer com o carro ao sol.",
+      "costing": {
+        "grams": 70,
+        "hours": 4,
+        "material": "ASA",
+        "margin": 0.35,
+        "cultsUsd": 4.35
+      }
+    },
+    {
+      "id": "stealth-pillar",
+      "title": "Stealth-Pillar Furniture Support",
+      "stageLabel": "DL X / Home",
+      "categoryIds": [
+        "home"
+      ],
+      "status": "made-to-order",
+      "price": 5.9,
+      "summary": "A discreet support column for sagging shelves and furniture — no drilling.",
+      "description": "A support column that slides under a shelf, cabinet or tabletop that has started to sag and takes the load without screws or drilling. Shaped to stay out of sight once it is in place.",
+      "mainImage": "images/products/stealth-pillar.webp",
+      "mainImageAlt": "Stealth-Pillar support column",
+      "cardImage": "images/products/stealth-pillar.webp",
+      "cardImageAlt": "Stealth-Pillar support column",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [
+        {
+          "src": "images/products/stealth-pillar-installed.webp",
+          "alt": "In place under a cabinet",
+          "ratio": "wide"
+        }
+      ],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fixing",
+          "value": "None — no drilling"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Stealth-Pillar — Apoio para Móveis",
+      "summary_pt": "Coluna de apoio discreta para prateleiras e móveis que cedem — sem furar.",
+      "description_pt": "Uma coluna de apoio que entra por baixo de uma prateleira, armário ou tampo que começou a ceder e aguenta a carga sem parafusos nem furos. Desenhada para ficar fora da vista depois de colocada.",
+      "costing": {
+        "grams": 60,
+        "hours": 3,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 1.09
+      }
+    },
+    {
+      "id": "lack-filament-guide",
+      "title": "IKEA Lack Enclosure Filament Guide",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "made-to-order",
+      "price": 4.9,
+      "summary": "Filament guide with a dust cover for printers in an IKEA Lack enclosure.",
+      "description": "Brings the filament into an IKEA Lack enclosure through a clean, smooth entry instead of a raw hole, with a cover that keeps dust off the spool path.",
+      "mainImage": "images/products/lack-filament-guide.webp",
+      "mainImageAlt": "Filament guide with dust cover on an IKEA Lack enclosure",
+      "cardImage": "images/products/lack-filament-guide.webp",
+      "cardImageAlt": "Filament guide with dust cover on an IKEA Lack enclosure",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [
+        {
+          "src": "images/products/lack-filament-guide-inside.webp",
+          "alt": "Seen from inside the enclosure",
+          "ratio": "wide"
+        }
+      ],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "IKEA Lack enclosure"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Guia de Filamento para Caixa IKEA Lack",
+      "summary_pt": "Guia de filamento com tampa anti-pó para impressoras numa caixa IKEA Lack.",
+      "description_pt": "Faz entrar o filamento numa caixa IKEA Lack por uma entrada lisa e limpa, em vez de um furo em bruto, com uma tampa que mantém o pó longe do percurso da bobina.",
+      "costing": {
+        "grams": 30,
+        "hours": 2,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 1.41
+      }
+    },
+    {
+      "id": "tablet-stand",
+      "title": "Adjustable Tablet Stand",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "made-to-order",
+      "price": 12.9,
+      "summary": "For the Samsung Galaxy Tab S8+ and smaller, with a cable pass-through.",
+      "description": "A desk stand sized for the Samsung Galaxy Tab S8+ and anything smaller. The angle adjusts, and a channel lets the charging cable through so the tablet can stay plugged in while it stands.",
+      "mainImage": "images/products/tablet-stand.webp",
+      "mainImageAlt": "Adjustable tablet stand, black",
+      "cardImage": "images/products/tablet-stand.webp",
+      "cardImageAlt": "Adjustable tablet stand, black",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "Galaxy Tab S8+ and smaller"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Suporte Ajustável para Tablet",
+      "summary_pt": "Para o Samsung Galaxy Tab S8+ e mais pequenos, com passagem de cabo.",
+      "description_pt": "Um suporte de secretária à medida do Samsung Galaxy Tab S8+ e de qualquer tablet mais pequeno. O ângulo ajusta-se, e um canal deixa passar o cabo de carga para o tablet ficar ligado enquanto está de pé.",
+      "costing": {
+        "grams": 140,
+        "hours": 7,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 2.5
+      }
+    },
+    {
+      "id": "wipes-holder",
+      "title": "Wall-Mount Wipes Holder",
+      "stageLabel": "DL X / Home",
+      "categoryIds": [
+        "home"
+      ],
+      "status": "made-to-order",
+      "price": 8.9,
+      "summary": "Holds a pack of wipes on the wall — double-sided tape or magnets.",
+      "description": "A wall holder for a standard pack of wet wipes, so it stays where you reach for it instead of sliding around a counter. Mounts with double-sided tape, or with magnets on a metal surface.",
+      "mainImage": "images/products/wipes-holder.webp",
+      "mainImageAlt": "Wall-mounted wipes holder",
+      "cardImage": "images/products/wipes-holder.webp",
+      "cardImageAlt": "Wall-mounted wipes holder",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Mounting",
+          "value": "Double-sided tape or magnets"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Suporte de Parede para Toalhitas",
+      "summary_pt": "Segura um pacote de toalhitas na parede — fita dupla face ou ímanes.",
+      "description_pt": "Um suporte de parede para um pacote normal de toalhitas, para ficar onde se procura em vez de andar a deslizar pela bancada. Fixa com fita dupla face, ou com ímanes numa superfície metálica.",
+      "costing": {
+        "grams": 90,
+        "hours": 4,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 2.16
+      }
+    },
     {
       "id": "mtg-commander-box-windowed",
       "title": "Commander Deck Box — Windowed",
@@ -103,10 +561,10 @@
       "description_pt": "Uma abordagem de mala de campo ao armazenamento de cartas. O casco é chanfrado nas oito arestas e engrossa nos cantos, onde a caixa bate quando cai. A dobradiça é impressa no lugar, sem pinos nem parafusos, e o fecho é de atrito — aguenta a viagem numa mochila sem abrir. A janela na tampa deixa ver o baralho sem o tirar. Dimensionada para mais de 120 cartas com bolsa, com baía separada para tokens e contadores.",
       "costing": {
         "grams": 185,
-        "hours": 12.0,
+        "hours": 12,
         "material": "PETG",
         "margin": 0.35,
-        "cultsUsd": 0.0
+        "cultsUsd": 0
       }
     },
     {
@@ -178,10 +636,10 @@
       "description_pt": "A mesma caixa, sem a janela. A tampa fechada é mais rígida e mais rápida de imprimir, e protege as cartas da luz — o que conta se o baralho ficar arrumado à vista. Mesma dobradiça cativa, mesmo fecho de atrito, mesma capacidade para mais de 120 cartas com bolsa e baía para tokens.",
       "costing": {
         "grams": 175,
-        "hours": 11.0,
+        "hours": 11,
         "material": "PETG",
         "margin": 0.35,
-        "cultsUsd": 0.0
+        "cultsUsd": 0
       }
     },
     {
@@ -293,7 +751,7 @@
         "hours": 3.5,
         "material": "ASA",
         "margin": 0.4,
-        "cultsUsd": 0.0
+        "cultsUsd": 0
       }
     },
     {
@@ -346,10 +804,10 @@
       "description_pt": "Uma proteção que cobre o interruptor basculante sem o bloquear. Impede que salpicos de resina e de líquido de limpeza cheguem aos contactos — a falha silenciosa que dá origem a interruptores que colam ou deixam de funcionar. Encaixa por pressão, sem ferramenta.",
       "costing": {
         "grams": 15,
-        "hours": 1.0,
+        "hours": 1,
         "material": "PETG",
         "margin": 0.4,
-        "cultsUsd": 0.0
+        "cultsUsd": 0
       }
     },
     {
@@ -452,6 +910,114 @@
       "title_pt": "Adaptador VESA — HP 27fwa",
       "summary_pt": "Chapa VESA 100 aparafusável para monitores que vêm sem suporte.",
       "description_pt": "Uma chapa que dá um padrão VESA 100 a monitores que saem de fábrica sem ele. Aparafusa aos furos existentes da traseira e distribui a carga por uma área maior do que os quatro pontos originais. Ainda em validação — o ajuste está confirmado, a resistência a longo prazo com o monitor pendurado não."
+    },
+    {
+      "id": "tv-feet-riser",
+      "title": "TV Feet Riser — Philips 32\" PFS6805",
+      "stageLabel": "DL X / Home",
+      "categoryIds": [
+        "home"
+      ],
+      "status": "made-to-order",
+      "price": 11.9,
+      "summary": "Raises a Philips 32\" PFS6805 by 55 mm on its own feet.",
+      "description": "Risers that the feet of a Philips 32\" PFS6805 slot into, lifting the screen 55 mm — enough to clear a soundbar or bring it to eye height. Supplied as a pair.",
+      "mainImage": "images/products/tv-feet-riser.webp",
+      "mainImageAlt": "TV foot riser, black",
+      "cardImage": "images/products/tv-feet-riser.webp",
+      "cardImageAlt": "TV foot riser, black",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "Philips 32\" PFS6805"
+        },
+        {
+          "label": "Rise",
+          "value": "55 mm"
+        },
+        {
+          "label": "Supplied as",
+          "value": "Pair"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Elevadores de Pés para TV — Philips 32\" PFS6805",
+      "summary_pt": "Levanta uma Philips 32\" PFS6805 55 mm, nos próprios pés.",
+      "description_pt": "Elevadores onde encaixam os pés de uma Philips 32\" PFS6805, que levantam o ecrã 55 mm — o suficiente para passar por cima de uma barra de som ou ficar à altura dos olhos. Fornecidos aos pares.",
+      "costing": {
+        "grams": 120,
+        "hours": 6,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 2.17
+      }
+    },
+    {
+      "id": "ender-filament-guide",
+      "title": "Ender Filament Guide — EZRstruder Arm",
+      "stageLabel": "DL X / Workshop",
+      "categoryIds": [
+        "workshop"
+      ],
+      "status": "made-to-order",
+      "price": 4.9,
+      "summary": "A filament guide on a strong arm, for Ender printers with an EZRstruder.",
+      "description": "A filament guide on a stiff arm that feeds an EZRstruder on an Ender printer from the right angle, so the filament stops rubbing on the frame.",
+      "mainImage": "images/products/ender-filament-guide.webp",
+      "mainImageAlt": "Ender filament guide arm",
+      "cardImage": "images/products/ender-filament-guide.webp",
+      "cardImageAlt": "Ender filament guide arm",
+      "mediaRatio": "square",
+      "detailRatio": "square",
+      "gallery": [],
+      "tags": [
+        "FDM",
+        "Made to order"
+      ],
+      "specs": [
+        {
+          "label": "Fits",
+          "value": "Ender + EZRstruder"
+        },
+        {
+          "label": "Material",
+          "value": "PETG"
+        },
+        {
+          "label": "Lead time",
+          "value": "3–5 working days"
+        }
+      ],
+      "checkoutUrl": "",
+      "cryptoCheckoutUrl": "",
+      "layout": "standard",
+      "title_pt": "Guia de Filamento Ender — Braço EZRstruder",
+      "summary_pt": "Guia de filamento num braço reforçado, para impressoras Ender com EZRstruder.",
+      "description_pt": "Uma guia de filamento num braço rígido que alimenta um EZRstruder numa Ender pelo ângulo certo, para o filamento deixar de roçar na estrutura.",
+      "costing": {
+        "grams": 35,
+        "hours": 2.5,
+        "material": "PETG",
+        "margin": 0.35,
+        "cultsUsd": 0
+      }
     }
   ]
 }

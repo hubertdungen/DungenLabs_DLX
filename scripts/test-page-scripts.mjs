@@ -95,15 +95,16 @@ console.log("\na loja desenha:\n");
 
 {
   const { window, erros } = await abrir("shop.html");
-  const mosaico = window.document.querySelector("#shop-mosaic");
-  diz(Boolean(mosaico), "a grelha existe");
-  diz(mosaico && mosaico.children.length === catalogo.categories.length,
-      `desenha uma secção por categoria (${mosaico ? mosaico.children.length : 0} de ${catalogo.categories.length})`);
+  const loja = window.document.querySelector("#shop-grid");
+  const cartoes = loja ? loja.querySelectorAll(".product-card").length : 0;
+  diz(Boolean(loja), "a grelha existe");
+  diz(cartoes === catalogo.products.length,
+      `mostra todos os produtos logo à entrada (${cartoes} de ${catalogo.products.length})`);
   diz(erros.length === 0, "sem erros de JavaScript");
 
-  const texto = mosaico ? mosaico.textContent : "";
+  const texto = loja ? loja.querySelector(".shop-filters")?.textContent || "" : "";
   diz(catalogo.categories.every((c) => texto.includes(c.title)),
-      "todas as secções aparecem pelo nome");
+      "há um filtro para cada secção");
 }
 
 {
@@ -128,10 +129,11 @@ console.log("\na loja desenha:\n");
   window.document.dispatchEvent(new window.Event("DOMContentLoaded"));
   await new Promise((r) => setTimeout(r, 150));
 
-  const mosaico = window.document.querySelector("#shop-mosaic");
+  const loja = window.document.querySelector("#shop-grid");
   const esperados = catalogo.products.filter((p) => (p.categoryIds || []).includes("workshop"));
-  diz(mosaico && mosaico.children.length >= esperados.length,
-      `#workshop mostra os seus produtos (${mosaico ? mosaico.children.length : 0} azulejos, ${esperados.length} produtos)`);
+  const cartoes = loja ? loja.querySelectorAll(".product-card").length : 0;
+  diz(cartoes === esperados.length,
+      `#workshop mostra só os seus produtos (${cartoes} de ${esperados.length})`);
 }
 
 console.log(`\n${pass} passaram, ${fail} falharam\n`);
