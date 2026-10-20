@@ -34,14 +34,21 @@ if (toggle && navLinks) {
   });
 }
 
-const mosaicRoot = document.querySelector("#shop-mosaic");
-const viewTitle = document.querySelector("#shop-view-title");
-const viewSummary = document.querySelector("#shop-view-summary");
-const breadcrumb = document.querySelector("#shop-breadcrumb");
-const resetButton = document.querySelector("[data-shop-reset]");
-
-const shopState = { mode: "categories", categoryId: null, productId: null };
+/* --- Loja ---------------------------------------------------
+ *
+ * Uma grelha de produtos, como qualquer loja: tudo visivel a primeira,
+ * filtros por seccao, preco e "Adicionar" no proprio cartao. Clicar no
+ * cartao abre a pagina do produto no mesmo sitio. O estado vive no hash
+ * (#seccao ou #seccao/produto), para que qualquer vista seja partilhavel.
+ *
+ * O mesmo codigo desenha a montra da pagina inicial: <div data-shop-grid
+ * data-limit="8" data-link="/shop.html"> mostra os primeiros 8 sem filtros
+ * e manda os cliques para a loja.
+ */
+const shopRoot = document.querySelector("[data-shop-grid]");
+const isShowcase = Boolean(shopRoot?.dataset.link);
 let shop = null;
+let view = { categoryId: null, productId: null };
 
 function createElement(tagName, className, text) {
   const node = document.createElement(tagName);
@@ -50,36 +57,10 @@ function createElement(tagName, className, text) {
   return node;
 }
 
-function getCategory(categoryId) {
-  return shop.categories.find((item) => item.id === categoryId) || null;
-}
-
-function getProduct(productId) {
-  return shop.products.find((item) => item.id === productId) || null;
-}
-
-function getProductsForCategory(categoryId) {
-  return shop.products.filter((product) => (product.categoryIds || []).includes(categoryId));
-}
-
-function getLayoutClass(entry) {
-  const layout = entry.layout || "standard";
-  if (layout === "wide" || layout === "featured") return "span-wide";
-  if (layout === "tall") return "span-tall";
-  return "span-standard";
-}
-
 /** Traducao, se o i18n.js estiver carregado; senao fica o ingles. */
 const t = (key, fallback) => window.DLXi18n?.t(key, fallback) ?? fallback;
 
-/**
- * Campo do catalogo na lingua activa.
- *
- * O shop.json aceita um "_pt" ao lado de qualquer campo de texto —
- * title_pt, summary_pt, description_pt. Quando nao existe, fica o
- * ingles: um produto novo aparece nas duas linguas sem esperar pela
- * traducao, que e melhor do que aparecer em branco.
- */
+/** Campo do catalogo na lingua activa ("title_pt" ao lado de "title"); sem traducao fica o ingles. */
 function localised(entry, campo) {
   if (!entry) return "";
   const pt = window.DLXi18n?.language === "pt" ? entry[`${campo}_pt`] : null;
@@ -107,389 +88,229 @@ const statusLabel = (status) => {
   return par ? t(par[0], par[1]) : status;
 };
 
-function createMosaicTile({ key, className, image, imageAlt, label, title, summary, button = true }) {
-  const tile = document.createElement(button ? "button" : "article");
-  tile.className = `mosaic-tile ${className || ""}`.trim();
-  tile.setAttribute("data-mosaic-key", key);
-  if (button) tile.type = "button";
+const COLOURS = ["Deep Teal", "Coral", "Matte Black", "Light Grey"];
 
-  if (image) {
-    const media = document.createElement("img");
-    media.className = "mosaic-image";
-    media.src = image;
-    media.alt = imageAlt || "";
-    media.loading = "lazy";
-    tile.append(media);
-  }
+const getCategory = (id) => shop.categories.find((c) => c.id === id) || null;
+const getProduct = (id) => shop.products.find((p) => p.id === id) || null;
+const isSellable = (p) => p.status !== "coming-soon" && p.status !== "sold-out";
+const inCategory = (id) => shop.products.filter((p) => (p.categoryIds || []).includes(id));
 
-  if (label || title || summary) {
-    const overlay = createElement("span", "mosaic-overlay");
-    if (label) overlay.append(createElement("span", "mosaic-label", label));
-    if (title) overlay.append(createElement("strong", "", title));
-    if (summary) overlay.append(createElement("em", "", summary));
-    tile.append(overlay);
-  }
-
-  return tile;
+function productHref(product, categoryId) {
+  const hash = `#${categoryId || product.categoryIds?.[0] || "all"}/${product.id}`;
+  return isShowcase ? `${shopRoot.dataset.link}${hash}` : hash;
 }
 
-function createTags(tags) {
-  const row = createElement("span", "tag-row");
-  (Array.isArray(tags) ? tags : []).forEach((tag) => row.append(createElement("span", "tag", tag)));
-  return row;
-}
-
-function appendTags(tile, tags) {
-  tile.querySelector(".mosaic-overlay")?.append(createTags(tags));
-}
-
-/** Etiqueta de preco/estado que aparece no canto do cartao. */
-function appendPriceBadge(tile, product) {
-  const price = formatPrice(product.price);
-  const status = statusLabel(product.status);
-  if (!price && !status) return;
-
-  const badge = createElement("span", "price-badge");
-  if (price) badge.append(createElement("strong", "", price));
-  if (status) badge.append(createElement("span", "price-badge-status", status));
-  if (product.status === "coming-soon" || product.status === "sold-out") {
-    badge.classList.add("is-muted");
-  }
-  tile.append(badge);
-}
-
-function captureTileRects() {
-  const rects = new Map();
-  if (!mosaicRoot) return rects;
-  mosaicRoot.querySelectorAll("[data-mosaic-key]").forEach((tile) => {
-    rects.set(tile.getAttribute("data-mosaic-key"), tile.getBoundingClientRect());
+/** Botao que poe uma unidade no carrinho e abre o carrinho. */
+function addButton(product, colourOf, className = "button") {
+  const add = createElement("button", className, t("shop.addToCart", "Add to cart"));
+  add.type = "button";
+  add.addEventListener("click", () => {
+    window.DLXCart?.add(product.id, 1, colourOf());
+    add.textContent = `${t("shop.added", "Added")} ✓`;
+    setTimeout(() => { add.textContent = t("shop.addToCart", "Add to cart"); }, 1400);
+    window.DLXCart?.open();
   });
-  return rects;
+  return add;
 }
 
-function animateTiles(previousRects) {
-  if (!mosaicRoot || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+function productCard(product, categoryId) {
+  const card = createElement("article", "product-card");
+  const href = productHref(product, categoryId);
 
-  mosaicRoot.querySelectorAll("[data-mosaic-key]").forEach((tile) => {
-    const previous = previousRects.get(tile.getAttribute("data-mosaic-key"));
-    const current = tile.getBoundingClientRect();
-    tile.style.transformOrigin = "top left";
+  const media = createElement("a", "product-card-media");
+  media.href = href;
+  media.tabIndex = -1;
+  media.setAttribute("aria-hidden", "true");
+  const img = document.createElement("img");
+  img.src = `/${product.cardImage || product.mainImage}`.replace(/^\/+/, "/");
+  img.alt = "";
+  img.loading = "lazy";
+  img.width = 600;
+  img.height = 600;
+  media.append(img);
 
-    if (previous) {
-      tile.animate(
-        [
-          {
-            transform: `translate(${previous.left - current.left}px, ${previous.top - current.top}px) `
-              + `scale(${previous.width / Math.max(current.width, 1)}, ${previous.height / Math.max(current.height, 1)})`,
-            opacity: 0.82
-          },
-          { transform: "translate(0, 0) scale(1, 1)", opacity: 1 }
-        ],
-        { duration: 520, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" }
-      );
+  const body = createElement("div", "product-card-body");
+  const title = createElement("h3", "product-card-title");
+  const link = createElement("a", "", localised(product, "title"));
+  link.href = href;
+  title.append(link);
+  body.append(title, createElement("p", "product-card-summary", localised(product, "summary")));
+
+  const foot = createElement("div", "product-card-foot");
+  const price = createElement("div", "product-card-price");
+  price.append(createElement("strong", "", formatPrice(product.price) || t("shop.onRequest", "Price on request")));
+  price.append(createElement("span", "", statusLabel(product.status)));
+  foot.append(price);
+  if (isSellable(product) && typeof product.price === "number") {
+    foot.append(addButton(product, () => COLOURS[0], "button button-small"));
+  }
+  body.append(foot);
+
+  card.append(media, body);
+  return card;
+}
+
+function renderFilters(activeId) {
+  const bar = createElement("div", "shop-filters");
+  bar.setAttribute("role", "group");
+  bar.setAttribute("aria-label", t("shop.filterLabel", "Filter by section"));
+
+  const entries = [{ id: null, title: t("shop.all", "All"), count: shop.products.length }]
+    .concat(shop.categories.map((c) => ({ id: c.id, title: localised(c, "title"), count: inCategory(c.id).length })))
+    .filter((e) => e.count > 0);
+
+  entries.forEach((entry) => {
+    const chip = createElement("a", "shop-filter");
+    chip.href = entry.id ? `#${entry.id}` : "#all";
+    chip.append(document.createTextNode(entry.title), createElement("span", "shop-filter-count", String(entry.count)));
+    if (entry.id === activeId) chip.setAttribute("aria-current", "true");
+    bar.append(chip);
+  });
+  return bar;
+}
+
+function renderGrid(categoryId) {
+  const limit = Number(shopRoot.dataset.limit) || Infinity;
+  const products = (categoryId ? inCategory(categoryId) : shop.products).slice(0, limit);
+
+  if (!isShowcase) shopRoot.append(renderFilters(categoryId));
+
+  const grid = createElement("div", "product-grid");
+  products.forEach((p) => grid.append(productCard(p, categoryId)));
+  if (!products.length) grid.append(createElement("p", "shop-empty", t("shop.empty", "Nothing listed here yet.")));
+  shopRoot.append(grid);
+}
+
+function renderDetail(product, categoryId) {
+  const detail = createElement("article", "product-detail");
+
+  const back = createElement("a", "product-back", `← ${t("shop.backToShop", "All products")}`);
+  back.href = getCategory(categoryId) ? `#${categoryId}` : "#all";
+  shopRoot.append(back);
+
+  // Galeria: media grande + miniaturas que a trocam. Um item com "video"
+  // (mp4) mostra o video em loop, sem som; "src" e a capa dele.
+  const images = [{ src: product.mainImage, alt: product.mainImageAlt, video: product.mainVideo }]
+    .concat((product.gallery || []).map((g) => ({ src: g.src, alt: g.alt, video: g.video })))
+    .filter((img, i, all) => img.src && all.findIndex((o) => o.src === img.src) === i);
+
+  const gallery = createElement("div", "product-gallery");
+  let main = null;
+  const show = (item) => {
+    const next = document.createElement(item.video ? "video" : "img");
+    next.className = "product-gallery-main";
+    if (item.video) {
+      // Quem pede menos movimento ve a capa e carrega no play.
+      const calm = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      Object.assign(next, { src: `/${item.video}`, poster: `/${item.src}`, muted: true, loop: true, playsInline: true, autoplay: !calm, controls: Boolean(calm) });
+      next.setAttribute("aria-label", item.alt || "");
     } else {
-      tile.animate(
-        [
-          { transform: "translateY(18px) scale(0.96)", opacity: 0 },
-          { transform: "translateY(0) scale(1)", opacity: 1 }
-        ],
-        { duration: 420, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" }
-      );
+      next.src = `/${item.src}`;
+      next.alt = item.alt || localised(product, "title");
     }
-  });
-}
+    if (main) main.replaceWith(next);
+    else gallery.append(next);
+    main = next;
+  };
+  show(images[0]);
 
-/**
- * Reconstroi o rasto de navegacao com os niveis anteriores clicaveis.
- *
- * O ultimo segmento e onde estamos, por isso fica como texto — so os
- * anteriores sao botoes.
- */
-function renderBreadcrumb(trail) {
-  breadcrumb.replaceChildren();
-
-  trail.forEach((step, index) => {
-    if (index > 0) breadcrumb.append(createElement("span", "crumb-sep", "/"));
-
-    if (step.target) {
-      const link = createElement("button", "crumb-link", step.label);
-      link.type = "button";
-      link.addEventListener("click", () => transition(step.target));
-      breadcrumb.append(link);
-    } else {
-      breadcrumb.append(createElement("span", "crumb-current", step.label));
-    }
-  });
-}
-
-function updateChrome({ mode, category, product }) {
-  if (!viewTitle || !viewSummary || !breadcrumb) return;
-
-  if (mode === "categories") {
-    viewTitle.textContent = t("shop.viewTitle", "Shop");
-    viewSummary.textContent = t("shop.viewSummary", "Proprietary hardware from the DL X bench, printed to order in Lisbon.");
-    renderBreadcrumb([{ label: t("shop.viewTitle", "Shop") }]);
-  } else if (mode === "category" && category) {
-    viewTitle.textContent = localised(category, "title");
-    viewSummary.textContent = localised(category, "summary");
-    renderBreadcrumb([
-      { label: t("shop.viewTitle", "Shop"), target: { mode: "categories", categoryId: null, productId: null } },
-      { label: localised(category, "title") }
-    ]);
-  } else if (mode === "product" && category && product) {
-    viewTitle.textContent = localised(product, "title");
-    viewSummary.textContent = localised(product, "summary");
-    renderBreadcrumb([
-      { label: t("shop.viewTitle", "Shop"), target: { mode: "categories", categoryId: null, productId: null } },
-      { label: localised(category, "title"), target: { mode: "category", categoryId: category.id, productId: null } },
-      { label: localised(product, "title") }
-    ]);
+  if (images.length > 1) {
+    const thumbs = createElement("div", "product-thumbs");
+    images.forEach((img, i) => {
+      const b = createElement("button", "product-thumb");
+      b.type = "button";
+      b.setAttribute("aria-label", img.alt || `Image ${i + 1}`);
+      if (i === 0) b.setAttribute("aria-current", "true");
+      const tImg = document.createElement("img");
+      tImg.src = `/${img.src}`;
+      tImg.alt = "";
+      tImg.loading = "lazy";
+      b.append(tImg);
+      b.addEventListener("click", () => {
+        show(img);
+        thumbs.querySelectorAll("[aria-current]").forEach((n) => n.removeAttribute("aria-current"));
+        b.setAttribute("aria-current", "true");
+      });
+      thumbs.append(b);
+    });
+    gallery.append(thumbs);
   }
 
-  if (resetButton) resetButton.hidden = mode === "categories";
-}
+  const info = createElement("div", "product-info");
+  info.append(createElement("p", "eyebrow", localised(getCategory(categoryId) || getCategory(product.categoryIds?.[0]), "title")));
+  info.append(createElement("h1", "product-title", localised(product, "title")));
+  info.append(createElement("p", "product-summary", localised(product, "summary")));
 
-function renderCategoriesView() {
-  mosaicRoot.dataset.mode = "categories";
+  const priceRow = createElement("p", "product-price");
+  priceRow.append(createElement("strong", "", formatPrice(product.price) || t("shop.onRequest", "Price on request")));
+  priceRow.append(createElement("span", "", statusLabel(product.status)));
+  info.append(priceRow);
 
-  shop.categories.forEach((category) => {
-    const count = getProductsForCategory(category.id).length;
-    const tile = createMosaicTile({
-      key: `category-${category.id}`,
-      className: `category-card ${getLayoutClass(category)}`,
-      image: category.image,
-      imageAlt: category.imageAlt,
-      label: count === 1 ? "1 item" : `${count} items`,
-      title: localised(category, "title"),
-      summary: localised(category, "summary")
-    });
-    tile.addEventListener("click", () =>
-      transition({ mode: "category", categoryId: category.id, productId: null })
-    );
-    mosaicRoot.append(tile);
-  });
-}
-
-function renderCategoryView(categoryId) {
-  const category = getCategory(categoryId);
-  if (!category) return renderCategoriesView();
-
-  mosaicRoot.dataset.mode = "category";
-
-  const feature = createMosaicTile({
-    key: `category-${category.id}`,
-    className: "category-card-feature span-wide",
-    image: category.image,
-    imageAlt: category.imageAlt,
-    label: "Category",
-    title: localised(category, "title"),
-    summary: localised(category, "summary"),
-    button: false
-  });
-  mosaicRoot.append(feature);
-
-  const products = getProductsForCategory(categoryId);
-
-  if (!products.length) {
-    const empty = createMosaicTile({
-      key: `empty-${category.id}`,
-      className: "project-copy-tile span-standard",
-      title: "Nothing listed yet",
-      summary: "This category is being prepared. Get in touch if you need something specific.",
-      button: false
-    });
-    mosaicRoot.append(empty);
-  }
-
-  products.forEach((product) => {
-    const tile = createMosaicTile({
-      key: `product-${product.id}`,
-      className: `project-card-mosaic ${getLayoutClass(product)}`,
-      image: product.cardImage || product.mainImage,
-      imageAlt: product.cardImageAlt || product.mainImageAlt,
-      label: product.stageLabel || "Product",
-      title: localised(product, "title"),
-      summary: localised(product, "summary")
-    });
-    appendTags(tile, product.tags);
-    appendPriceBadge(tile, product);
-    tile.addEventListener("click", () =>
-      transition({ mode: "product", categoryId: category.id, productId: product.id })
-    );
-    mosaicRoot.append(tile);
-  });
-
-  const back = createMosaicTile({
-    key: "back-to-categories",
-    className: "project-copy-tile span-standard",
-    title: t("shop.allCategories", "All categories"),
-    summary: "Back to the full DL X catalogue."
-  });
-  back.addEventListener("click", () =>
-    transition({ mode: "categories", categoryId: category.id, productId: null })
-  );
-  mosaicRoot.append(back);
-}
-
-/** Painel de compra: precos, estado e os botoes de checkout do produto. */
-function createBuyPanel(product) {
-  const panel = createElement("article", "buy-panel");
-  panel.setAttribute("data-mosaic-key", `buy-${product.id}`);
-
-  const price = formatPrice(product.price);
-  panel.append(createElement("span", "mosaic-label", statusLabel(product.status)));
-  panel.append(createElement("strong", "buy-price", price || "Price on request"));
-
-  if (Array.isArray(product.specs) && product.specs.length) {
-    const list = createElement("dl", "buy-specs");
-    product.specs.forEach((spec) => {
-      list.append(createElement("dt", "", spec.label));
-      list.append(createElement("dd", "", spec.value));
-    });
-    panel.append(list);
-  }
-
-  const sellable = product.status !== "coming-soon" && product.status !== "sold-out";
-
-  if (sellable) {
+  if (isSellable(product)) {
     const colourRow = createElement("div", "buy-colour");
-    const colourLabel = createElement("label", "", "Colour");
+    const colourLabel = createElement("label", "", t("shop.colour", "Colour"));
     colourLabel.htmlFor = `colour-${product.id}`;
     const colour = document.createElement("select");
     colour.id = `colour-${product.id}`;
-    ["Deep Teal", "Coral", "Matte Black", "Light Grey"].forEach((name) => {
-      const option = document.createElement("option");
-      option.textContent = name;
-      colour.append(option);
-    });
+    COLOURS.forEach((name) => colour.append(new Option(name)));
     colourRow.append(colourLabel, colour);
-    panel.append(colourRow);
+    info.append(colourRow);
 
     const actions = createElement("div", "buy-actions");
-
-    const add = createElement("button", "button", t("shop.addToCart", "Add to cart"));
-    add.type = "button";
-    add.addEventListener("click", () => {
-      window.DLXCart?.add(product.id, 1, colour.value);
-      add.textContent = `${t("shop.added", "Added")} \u2713`;
-      setTimeout(() => { add.textContent = t("shop.addToCart", "Add to cart"); }, 1400);
-      window.DLXCart?.open();
-    });
-
-    const request = createElement("a", "button secondary", t("shop.requestQuote", "Request a quote"));
-    request.href = `/order.html?product=${encodeURIComponent(product.id)}`;
-
-    actions.append(add, request);
-    panel.append(actions);
-    panel.append(createElement("p", "buy-note",
-      "Printed to order in Lisbon. Card and crypto accepted at checkout; shipping added there."));
+    if (typeof product.price === "number") actions.append(addButton(product, () => colour.value));
+    const quote = createElement("a", "button secondary", t("shop.requestQuote", "Request a quote"));
+    quote.href = `/order.html?product=${encodeURIComponent(product.id)}`;
+    actions.append(quote);
+    info.append(actions);
+    info.append(createElement("p", "buy-note", t("shop.buyNote",
+      "Printed to order in Lisbon, dispatched in 3–5 working days. Shipping €4.90 in Portugal, free over €30.")));
   } else {
     const actions = createElement("div", "buy-actions");
-    const notify = createElement("a", "button", "Notify me");
+    const notify = createElement("a", "button", t("shop.notify", "Notify me"));
     notify.href = `mailto:info@dungenlabs.com?subject=${encodeURIComponent(`DL X — ${product.title}`)}`;
     actions.append(notify);
-    panel.append(actions);
-    panel.append(createElement("p", "buy-note", "Not on sale yet — email to be told when it is."));
+    info.append(actions);
   }
-
-  return panel;
-}
-
-function renderProductView(categoryId, productId) {
-  const category = getCategory(categoryId);
-  const product = getProduct(productId);
-  if (!category || !product) return renderCategoryView(categoryId);
-
-  mosaicRoot.dataset.mode = "product";
-
-  const hero = createMosaicTile({
-    key: `product-${product.id}`,
-    className: "project-detail-hero span-wide",
-    image: product.mainImage,
-    imageAlt: product.mainImageAlt,
-    label: product.stageLabel || "Product",
-    title: localised(product, "title"),
-    summary: localised(product, "summary"),
-    button: false
-  });
-  appendTags(hero, product.tags);
-  mosaicRoot.append(hero);
-
-  mosaicRoot.append(createBuyPanel(product));
 
   if (product.description) {
-    const copy = createMosaicTile({
-      key: `copy-${product.id}`,
-      className: "project-copy-tile span-standard",
-      title: "Details",
-      summary: localised(product, "description"),
-      button: false
-    });
-    mosaicRoot.append(copy);
+    info.append(createElement("h2", "product-subhead", t("shop.details", "Details")));
+    info.append(createElement("p", "product-description", localised(product, "description")));
   }
 
-  (product.gallery || []).forEach((item, index) => {
-    const tile = createMosaicTile({
-      key: `gallery-${product.id}-${index}`,
-      className: `project-card-mosaic ${item.ratio === "wide" ? "span-wide" : "span-standard"}`,
-      image: item.src,
-      imageAlt: item.alt,
-      summary: item.caption || "",
-      button: false
+  if (Array.isArray(product.specs) && product.specs.length) {
+    info.append(createElement("h2", "product-subhead", t("shop.specs", "Specifications")));
+    const list = createElement("dl", "buy-specs");
+    product.specs.forEach((spec) => {
+      list.append(createElement("dt", "", spec.label), createElement("dd", "", spec.value));
     });
-    mosaicRoot.append(tile);
-  });
+    info.append(list);
+  }
 
-  const back = createMosaicTile({
-    key: "back-to-category",
-    className: "project-copy-tile span-standard",
-    title: `${t("shop.back", "Back to")} ${localised(category, "title")}`,
-    summary: "Return to the category listing."
-  });
-  back.addEventListener("click", () =>
-    transition({ mode: "category", categoryId: category.id, productId: null })
-  );
-  mosaicRoot.append(back);
+  detail.append(gallery, info);
+  shopRoot.append(detail);
 }
 
 function render() {
-  if (!mosaicRoot || !shop) return;
-  mosaicRoot.replaceChildren();
-
-  if (shopState.mode === "product") renderProductView(shopState.categoryId, shopState.productId);
-  else if (shopState.mode === "category") renderCategoryView(shopState.categoryId);
-  else renderCategoriesView();
-
-  updateChrome({
-    mode: shopState.mode,
-    category: getCategory(shopState.categoryId),
-    product: getProduct(shopState.productId)
-  });
-}
-
-function transition(nextState) {
-  const previousRects = captureTileRects();
-  Object.assign(shopState, nextState);
-  render();
-  animateTiles(previousRects);
-  syncHash();
-}
-
-/** O estado da galeria vive no hash, para que qualquer produto seja partilhavel por link. */
-function syncHash() {
-  const { mode, categoryId, productId } = shopState;
-  const hash = mode === "product" ? `#${categoryId}/${productId}` : mode === "category" ? `#${categoryId}` : "";
-  history.replaceState(null, "", hash || window.location.pathname);
+  if (!shopRoot || !shop) return;
+  shopRoot.replaceChildren();
+  const product = !isShowcase && getProduct(view.productId);
+  // Na pagina do produto o titulo e o do produto; o cabecalho da loja sai.
+  const head = document.querySelector(".shop-head");
+  if (head) head.hidden = Boolean(product);
+  if (product) {
+    renderDetail(product, view.categoryId);
+    document.title = `${localised(product, "title")} | DL X`;
+  } else {
+    renderGrid(isShowcase ? null : view.categoryId);
+  }
 }
 
 function readHash() {
-  const raw = window.location.hash.replace(/^#/, "");
-  if (!raw) return { mode: "categories", categoryId: null, productId: null };
-
-  const [categoryId, productId] = raw.split("/");
-  if (productId && getProduct(productId)) return { mode: "product", categoryId, productId };
-  if (getCategory(categoryId)) return { mode: "category", categoryId, productId: null };
-  return { mode: "categories", categoryId: null, productId: null };
+  const [categoryId, productId] = window.location.hash.replace(/^#/, "").split("/");
+  return {
+    categoryId: getCategory(categoryId) ? categoryId : null,
+    productId: productId && getProduct(productId) ? productId : null
+  };
 }
 
 /**
@@ -553,38 +374,31 @@ async function initOrderForm() {
 initOrderForm();
 
 async function init() {
-  if (!mosaicRoot) return;
+  if (!shopRoot) return;
 
   try {
     const response = await fetch("/data/shop.json", { cache: "no-cache" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     shop = await response.json();
   } catch (error) {
-    mosaicRoot.append(
-      createMosaicTile({
-        key: "load-error",
-        className: "project-copy-tile span-wide",
-        title: "Catalogue unavailable",
-        summary: "The product list could not be loaded. Please refresh, or email info@dungenlabs.com.",
-        button: false
-      })
-    );
+    shopRoot.append(createElement("p", "shop-empty",
+      "The product list could not be loaded. Please refresh, or email info@dungenlabs.com."));
     console.error("DL X shop: failed to load catalogue", error);
     return;
   }
 
-  Object.assign(shopState, readHash());
+  view = readHash();
   render();
-  animateTiles(new Map());
 
-  resetButton?.addEventListener("click", () =>
-    transition({ mode: "categories", categoryId: null, productId: null })
-  );
-  window.addEventListener("hashchange", () => transition(readHash()));
+  window.addEventListener("hashchange", () => {
+    view = readHash();
+    render();
+    // Abrir um produto leva ao topo dele; voltar a grelha fica onde estava.
+    if (view.productId) shopRoot.scrollIntoView({ block: "start" });
+  });
 
-  // Mudar de lingua muda os rotulos de estado, os botoes e o formato do
-  // preco, todos escritos em codigo. Desenhar outra vez e mais simples
-  // — e menos fragil — do que ir la corrigir cada um.
+  // Mudar de lingua muda rotulos, botoes e o formato do preco, todos
+  // escritos em codigo: desenhar outra vez e o mais simples.
   document.addEventListener("dlx:lang-changed", () => render());
 }
 

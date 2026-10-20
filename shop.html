@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DL X Shop | Proprietary Hardware from DungenLabs R&amp;D</title>
-  <meta name="description" content="Buy hardware developed inside DL X, the DungenLabs research and development division. Rugged printed parts, made to order in Lisbon.">
+  <title>Shop | DL X — printed parts, made to order in Lisbon</title>
+  <meta name="description" content="3D-printed parts that fix real problems — home, car, desk and printer upgrades. Designed and printed to order in Lisbon by DL X, a DungenLabs division.">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#12373F">
   <link rel="canonical" href="https://dlx.dungenlabs.com/shop.html">
@@ -13,10 +13,7 @@
   <meta property="og:description" content="Proprietary hardware from the DungenLabs R&amp;D bench, printed to order.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dlx.dungenlabs.com/shop.html">
-  <meta property="og:image" content="https://dlx.dungenlabs.com/images/products/mtg-box-render-open.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <meta property="og:image" content="https://dlx.dungenlabs.com/images/products/vw-polo-rear-panel-fitted.webp">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/styles-dlx.css">
 </head>
@@ -41,27 +38,14 @@
     </nav>
   </header>
 
-  <main class="workbench-page" id="main">
-    <section class="workbench-page-hero" aria-labelledby="shop-page-title">
-      <div class="section-inner">
-        <p class="eyebrow" data-i18n="shop.eyebrow">DL X — Shop</p>
-        <h1 id="shop-page-title" data-i18n="shop.h1">Hardware that came out of the lab.</h1>
-        <p class="section-kicker" data-i18n="shop.kicker">DL X is the DungenLabs research and development division. What proves itself on the bench gets refined, documented and listed here — printed to order in Lisbon, in engineering polymers, with the tolerances stated up front.</p>
-
-        <div class="workbench-board">
-          <div class="workbench-board-head">
-            <div>
-              <p class="workbench-breadcrumb" id="shop-breadcrumb">Shop</p>
-              <h2 id="shop-view-title" data-i18n="shop.viewTitle">Shop</h2>
-              <p id="shop-view-summary">Proprietary hardware from the DL X bench, printed to order in Lisbon.</p>
-            </div>
-            <button class="board-reset" type="button" data-shop-reset hidden data-i18n="shop.allCategories">All categories</button>
-          </div>
-
-          <div class="workbench-mosaic" id="shop-mosaic" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
+  <main class="shop-page" id="main">
+    <div class="section-inner">
+      <header class="shop-head">
+        <h1 id="shop-page-title" data-i18n="shop.h1">Shop</h1>
+        <p data-i18n="shop.kicker">Printed parts that fix real problems — at home, in the car, on the desk and on the printer. Made to order in Lisbon, dispatched in 3–5 working days.</p>
+      </header>
+      <div class="shop" id="shop-grid" data-shop-grid aria-live="polite"></div>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -72,9 +56,10 @@
       </div>
       <div>
         <strong data-i18n="footer.shop">Shop</strong>
+        <a href="/shop.html#home" data-i18n="footer.home">Home</a>
+        <a href="/shop.html#car" data-i18n="footer.car">Car</a>
         <a href="/shop.html#tabletop" data-i18n="footer.tabletop">Tabletop &amp; Gaming</a>
-        <a href="/shop.html#workshop" data-i18n="footer.workshop">Workshop &amp; Desk</a>
-        <a href="/shop.html#experimental" data-i18n="footer.experimental">Experimental</a>
+        <a href="/shop.html#workshop" data-i18n="footer.workshop">Printer &amp; Desk</a>
         <a href="/#capabilities" data-i18n="footer.capabilities">Materials &amp; capabilities</a>
       </div>
       <div>
@@ -89,6 +74,7 @@
         <a href="/shipping.html" data-i18n="footer.shipping">Shipping &amp; returns</a>
       </div>
     </div>
+    <p class="footer-base">&copy; 2026 DungenLabs &middot; Lisbon, Portugal &middot; <a href="/terms">Conditions of sale</a> &middot; <a href="/privacy">Privacy policy</a> &middot; <a href="/legal">Legal notice</a> &middot; <a href="https://www.livroreclamacoes.pt/">Livro de Reclama&ccedil;&otilde;es</a></p>
   </footer>
 
   <script src="/i18n.js" defer></script>
