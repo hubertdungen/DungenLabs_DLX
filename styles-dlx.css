@@ -1022,14 +1022,18 @@ html.cart-open body {
   }
 }
 
-/* O .button.secondary da DL e para fundos escuros; na loja o fundo e branco. */
-.product-info .button.secondary {
-  color: var(--coral);
+/* O .button.secondary da DL tem texto branco, feito para fundos escuros.
+   A DL X e quase toda em fundo claro (carrinho, produto, 404, obrigado),
+   onde ficava branco sobre branco. Aqui o padrao e texto escuro; o hero,
+   que e escuro, repoe o branco em .dlx-hero .button.secondary. */
+.button.secondary {
+  color: var(--deep-teal);
 }
 
-.product-info .button.secondary:hover,
-.product-info .button.secondary:focus-visible {
-  color: var(--deep-teal);
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  background: var(--coral);
+  color: var(--white);
 }
 
 /* Titulos de seccao mais contidos que os da DL: isto e uma loja. */
