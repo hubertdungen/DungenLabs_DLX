@@ -103,8 +103,11 @@ console.log("\na loja desenha:\n");
   diz(erros.length === 0, "sem erros de JavaScript");
 
   const texto = loja ? loja.querySelector(".shop-filters")?.textContent || "" : "";
-  diz(catalogo.categories.every((c) => texto.includes(c.title)),
-      "há um filtro para cada secção");
+  // Secções sem produtos não ganham filtro: um filtro que dá zero é um beco.
+  const comProdutos = catalogo.categories.filter((c) =>
+    catalogo.products.some((p) => (p.categoryIds || []).includes(c.id)));
+  diz(comProdutos.every((c) => texto.includes(c.title)),
+      "há um filtro para cada secção com produtos");
 }
 
 {
