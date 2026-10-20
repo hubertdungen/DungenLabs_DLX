@@ -1041,3 +1041,13 @@ html.cart-open body {
 .dlx-contact h2 {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
 }
+
+/* <button> nao herda o tipo de letra da pagina; os <a class="button"> sim. */
+button.button {
+  font: inherit;
+  font-weight: 700;
+}
+
+.button.button-small {
+  font-size: 0.86rem;
+}
