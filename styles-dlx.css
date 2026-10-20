@@ -1,3 +1,21 @@
+/* Fontes servidas do proprio dominio, como no dungenlabs.com: as Google
+   Fonts mandavam o IP de cada visitante para a Google. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/inter-latin-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Orbitron";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/fonts/orbitron-latin-var.woff2") format("woff2");
+}
+
 /* ============================================================
    DL X — camada sobre a folha de estilos da DungenLabs.
    O manual de normas (secao 11) exige que as submarcas
@@ -1050,4 +1068,43 @@ button.button {
 
 .button.button-small {
   font-size: 0.86rem;
+}
+
+/* --- Rodape legal e paginas legais ------------------------ */
+
+.footer-base {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px 22px 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-base a {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.legal-doc h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--deep-teal);
+}
+
+.legal-doc h2 {
+  font-size: 1.25rem;
+}
+
+.legal-doc h3 {
+  margin-top: 18px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.legal-updated {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.legal-doc [lang="pt-PT"] {
+  padding-top: 4px;
 }

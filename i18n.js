@@ -194,6 +194,7 @@
       "cart.freeShipping": "Envio gratuito e seguido em Portugal.",
       // {amount} e o valor dos portes, {short} o que falta para serem gratis.
       "cart.paidShipping": "{amount} de portes em Portugal — faltam {short} para envio gratuito.",
+      "cart.termsHtml": 'Ao pagar aceitas as <a href="/terms#pt">condições de venda</a>. Os dados da encomenda são tratados segundo a <a href="/privacy#pt">política de privacidade</a>.',
       "cart.paymentNote": "Os pagamentos com cartão passam pela Stripe. Em cripto aceitam-se Bitcoin, Ethereum, Litecoin, Monero e várias centenas de outras — a moeda escolhe-se na página de pagamento. Nenhum dos dois guarda dados de cartão ou de carteira neste site. As encomendas em cripto são cobradas com portes de UE porque não é recolhida morada à partida; se estiveres em Portugal, ou se a encomenda tiver direito a envio gratuito, a diferença é devolvida.",
       "cart.quoteNoteHtml": 'Preferes ser orçamentado primeiro, ou precisas de gravação ou de uma cor especial? <a href="/order.html">Envia antes um pedido de encomenda</a>.',
 
@@ -214,9 +215,9 @@
       "shipping.s6": "O seguimento é enviado por email assim que a encomenda é entregue aos correios.",
       "shipping.returns": "Devoluções",
       "shipping.ret1html": 'Se um artigo chegar danificado, defeituoso ou diferente do descrito, escreve para <a href="mailto:info@dungenlabs.com">info@dungenlabs.com</a> no prazo de 14 dias após a entrega e será substituído ou reembolsado, portes de devolução incluídos.',
-      "shipping.ret2": "Ao abrigo do direito de consumo da UE, o direito de livre resolução de 14 dias não se aplica a bens feitos segundo especificações do consumidor ou claramente personalizados. Artigos feitos por encomenda e gravados não podem, por isso, ser devolvidos por simples mudança de ideias — mas se houver defeito, o parágrafo acima aplica-se por inteiro.",
+      "shipping.ret2html": 'Também podes resolver a compra de artigos do catálogo no prazo de 14 dias após a entrega, sem indicar motivo — os portes da devolução ficam a teu cargo e o reembolso inclui os portes do envio. Ficam de fora os artigos feitos segundo as tuas especificações (cores, medidas ou gravação à medida). Detalhes nas <a href="/terms#pt">condições de venda</a>.',
       "shipping.warranty": "Garantia",
-      "shipping.war1": "As peças impressas têm 2 anos de cobertura contra defeitos de fabrico, em linha com a garantia legal de conformidade da UE. Desgaste normal, danos por má utilização e deformação por calor — deixar peças ao sol ou dentro de um carro — não estão cobertos.",
+      "shipping.war1": "Todos os artigos têm a garantia legal de conformidade de 3 anos, nos termos da lei portuguesa. Desgaste normal, danos por má utilização e deformação por calor (ao sol ou dentro de um carro) não estão cobertos.",
       "shipping.contact": "Contacto",
       "shipping.conhtml": 'Dúvidas sobre uma encomenda, um prazo ou uma variante à medida: <a href="mailto:info@dungenlabs.com">info@dungenlabs.com</a>.',
       "shipping.back": "Voltar à loja",

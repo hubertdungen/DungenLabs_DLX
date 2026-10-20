@@ -154,6 +154,10 @@ function customerEmail(order) {
         Something wrong with the order? Reply to this email, or write to
         <a href="mailto:info@dungenlabs.com" style="color:${TEAL};">info@dungenlabs.com</a>, quoting ${esc(orderId)}.
       </p>
+      <p style="margin:12px 0 0;font:12px/1.6 Helvetica,Arial,sans-serif;color:${MUTED};">
+        You can withdraw from catalogue items within 14 days of delivery, and every item has the 3-year legal guarantee.
+        Full terms: <a href="${SITE}/terms" style="color:${TEAL};">${SITE.replace("https://", "")}/terms</a>.
+      </p>
     </td></tr>`;
 
   const text = [
@@ -166,6 +170,7 @@ function customerEmail(order) {
     `Total: ${money(totals.total, currency)}`,
     "",
     "Made to order — allow 3-5 working days before dispatch.",
+    "14-day withdrawal on catalogue items and a 3-year legal guarantee: " + `${SITE}/terms`,
     "DL X, a division of DungenLabs, Lisbon — info@dungenlabs.com"
   ].join("\n");
 

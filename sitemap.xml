@@ -15,4 +15,6 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url><loc>https://dlx.dungenlabs.com/terms</loc></url>
+  <url><loc>https://dlx.dungenlabs.com/privacy</loc></url>
 </urlset>
