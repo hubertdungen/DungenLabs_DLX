@@ -30,7 +30,7 @@ function scriptsDe(html) {
  * Abre a pagina com os scripts injectados como <script> reais, para
  * partilharem o escopo global tal como no browser.
  */
-async function abrir(ficheiro) {
+async function abrir(ficheiro, reducedMotion = false) {
   const html = readFileSync(ficheiro, "utf8");
   const scripts = scriptsDe(html);
 
@@ -51,7 +51,8 @@ async function abrir(ficheiro) {
     }
     return { ok: false, status: 404, json: async () => ({}) };
   };
-  window.matchMedia = () => ({ matches: false, addEventListener() {} });
+  window.matchMedia = () => ({ matches: reducedMotion, addEventListener() {} });
+  window.HTMLMediaElement.prototype.pause = () => {};
   // O jsdom nao tem Web Animations API; o browser tem.
   window.Element.prototype.animate = () => ({ finished: Promise.resolve(), cancel() {} });
 
@@ -101,6 +102,14 @@ console.log("\na loja desenha:\n");
   diz(cartoes === catalogo.products.length,
       `mostra todos os produtos logo à entrada (${cartoes} de ${catalogo.products.length})`);
   diz(erros.length === 0, "sem erros de JavaScript");
+  diz(loja.querySelectorAll(".product-card-media video").length ===
+      catalogo.products.filter((p) => p.cardVideo || p.mainVideo).length,
+      "os cartões dos produtos animados usam vídeo");
+  const video = loja.querySelector(".product-card-media video");
+  const media = video.parentElement;
+  video.dispatchEvent(new window.Event("error"));
+  diz(media.querySelector("img")?.src === video.poster,
+      "um vídeo indisponível volta à fotografia do produto");
 
   const texto = loja ? loja.querySelector(".shop-filters")?.textContent || "" : "";
   // Secções sem produtos não ganham filtro: um filtro que dá zero é um beco.
@@ -108,6 +117,15 @@ console.log("\na loja desenha:\n");
     catalogo.products.some((p) => (p.categoryIds || []).includes(c.id)));
   diz(comProdutos.every((c) => texto.includes(c.title)),
       "há um filtro para cada secção com produtos");
+}
+
+{
+  const { window, erros } = await abrir("index.html", true);
+  diz(window.document.querySelectorAll(".product-card-media video").length === 0,
+      "movimento reduzido mantém os cartões estáticos");
+  const hero = window.document.querySelector(".dlx-hero-media video");
+  diz(!hero.autoplay && hero.controls && erros.length === 0,
+      "movimento reduzido desativa autoplay do hero e permite play manual");
 }
 
 {
