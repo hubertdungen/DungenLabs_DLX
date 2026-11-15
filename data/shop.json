@@ -133,8 +133,8 @@
       ],
       "status": "made-to-order",
       "price": 175,
-      "summary": "Re-engineered 2-piece replacement for the rear trim / licence-plate panel.",
-      "description": "A replacement for the rear trim and licence-plate panel of the VW Polo Classic Mk3, redrawn as two pieces so each half prints flat and fits a normal print bed. Printed in ASA, which stays stable in sun and heat on the back of a car. Supplied as a matched pair, ready to prime and paint.",
+      "summary": "Re-engineered replacement for the rear trim / licence-plate panel, delivered as one assembled piece.",
+      "description": "A replacement for the rear trim and licence-plate panel of the VW Polo Classic Mk3, redrawn as two pieces so each half prints flat and fits a normal print bed. Printed in ASA, which stays stable in sun and heat on the back of a car. The two halves are bonded into a single piece and sprayed with high-build filler primer, so you receive one complete panel, ready to sand and paint. The price is for the complete assembled panel.",
       "mainImage": "images/products/vw-polo-rear-panel.webp",
       "mainImageAlt": "Batch of printed VW Polo rear panel halves, primed grey",
       "cardImage": "images/products/vw-polo-rear-panel.webp",
@@ -159,7 +159,7 @@
         },
         {
           "label": "Supplied as",
-          "value": "2-piece pair"
+          "value": "1 assembled panel (printed in 2 parts)"
         },
         {
           "label": "Material",
@@ -174,8 +174,8 @@
       "cryptoCheckoutUrl": "",
       "layout": "standard",
       "title_pt": "Painel Traseiro VW Polo Classic Mk3",
-      "summary_pt": "Substituto em 2 peças, redesenhado, para o painel traseiro / da matrícula.",
-      "description_pt": "Um substituto para o painel traseiro e da matrícula do VW Polo Classic Mk3, redesenhado em duas peças para cada metade imprimir deitada numa cama normal. Impresso em ASA, que aguenta sol e calor na traseira de um carro. Fornecido como par, pronto a primário e pintura."
+      "summary_pt": "Substituto redesenhado para o painel traseiro / da matrícula, entregue numa só peça montada.",
+      "description_pt": "Um substituto para o painel traseiro e da matrícula do VW Polo Classic Mk3, redesenhado em duas peças para cada metade imprimir deitada numa cama normal. Impresso em ASA, que aguenta sol e calor na traseira de um carro. As duas metades são coladas numa só peça e levam primário de alto enchimento em spray: recebes um painel completo, pronto a lixar e pintar. O preço é pelo painel completo montado."
     },
     {
       "id": "krups-drip-tray-top",
