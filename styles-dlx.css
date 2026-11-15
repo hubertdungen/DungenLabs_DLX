@@ -794,6 +794,8 @@ html.cart-open body {
   height: 100%;
   object-fit: cover;
   display: block;
+  /* As fotografias originais ficam lavadas no fundo claro dos cartoes. */
+  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 .product-card-body {
@@ -887,6 +889,7 @@ html.cart-open body {
   background: var(--surface);
   border: 1px solid var(--line);
   display: block;
+  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 .product-thumbs {
@@ -1131,12 +1134,15 @@ button.button {
   clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
 }
 
-.dlx-hero-media img {
+.dlx-hero-media img,
+.dlx-hero-media video {
   width: 100%;
   height: auto;
   aspect-ratio: 5 / 4;
   object-fit: cover;
   display: block;
+  /* Mantem a cor e a leitura do produto sem escurecer o hero. */
+  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 @media (max-width: 860px) {
@@ -1277,3 +1283,6 @@ button.button {
 .partner-list a:hover, .partner-list a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
 .partner-list img { width: 28px; height: 28px; object-fit: contain; }
 .partner-tools { margin: 0; font-size: .875rem; color: var(--muted, #607174); line-height: 1.6; }
+/* Hover do logótipo: as cores trocam, legíveis sobre o teal do cabeçalho. */
+.brand-dlx:hover .brand-mark-dlx,
+.brand-dlx:focus-visible .brand-mark-dlx { content: url("/images/brand/dlx-mark-hover.svg"); }
