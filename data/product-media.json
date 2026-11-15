@@ -1,0 +1,242 @@
+{
+  "pillow": "13.0.0",
+  "recipe": {
+    "luminanceCutoffPercent": 0.2,
+    "contrast": 1.04,
+    "brightness": 1.03,
+    "colour": 1.1,
+    "webpQuality": 85,
+    "unsharpMask": {
+      "radius": 0.6,
+      "percent": 35,
+      "threshold": 3
+    }
+  },
+  "files": [
+    {
+      "path": "images/products/adaptus-clamp.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "31434abf91057c8210d40f162eeb8bb424b137febab2fb9657cc13cc9e37b971",
+      "sha256": "f44324968b02e78117e85a911df493e6bbdd4be9c64bbc7907af3a31d8ca6e59",
+      "bytes": 82166,
+      "width": 516,
+      "height": 516
+    },
+    {
+      "path": "images/products/bmw-e46-cup-holder.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "1b721785d66b600a11edae6eba5dbb249c0cf3357219e15b19609edb7b5505e8",
+      "sha256": "886f3faf9aba50af2b815bde836a031a73d6ee7aa431d465bc88e78bde3084fe",
+      "bytes": 92506,
+      "width": 960,
+      "height": 961
+    },
+    {
+      "path": "images/products/deck-bunker-80.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "dea36e4f942efc9bce5c31cdfa35389eef179d3cdc9de6b162ee4d915641e726",
+      "sha256": "7e6b57735cea266f03ccc18dceebce3f13a1a95bceb0f82f5f4bf394fdd6845a",
+      "bytes": 17582,
+      "width": 640,
+      "height": 640
+    },
+    {
+      "path": "images/products/deck-bunker-green.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "def8b011f8bf592d29b18ce6243ddc1b03f66a99e86c2b22e3646451e6a2a8c3",
+      "sha256": "4994ae2fb86ddc71c762d888064eecf5859969215770687cea5fb71d9683409b",
+      "bytes": 65392,
+      "width": 640,
+      "height": 640
+    },
+    {
+      "path": "images/products/deck-bunker-opening.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "be874e89f5d7131d8448572859e0e044cdbb304cd3db73421466a9865ec7c440",
+      "sha256": "383bbc6d9193ff3b7ff6ad2697a6796cc34828dde7daee3154c9320e1940d5e1",
+      "bytes": 47112,
+      "width": 960,
+      "height": 768
+    },
+    {
+      "path": "images/products/deck-divider.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "eaa1647fc1b763ec206d3ef8b3a6e9f272aec19e896342038a87f967f6220f07",
+      "sha256": "e7da90fa3090f63f4733c12f4091d898e003f9190792a73a141aa37fa9adce71",
+      "bytes": 10882,
+      "width": 640,
+      "height": 640
+    },
+    {
+      "path": "images/products/ender-filament-guide.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "8b5f3e1aced75c3e2b6aa75a8e0dab34621c69fb0fbc0e2ba40d8beab1548aea",
+      "sha256": "45c1a07c93f403dad6c3bdb370a8a1788367963c84eb680ec2b15e7ddfdccbdc",
+      "bytes": 86290,
+      "width": 855,
+      "height": 854
+    },
+    {
+      "path": "images/products/krups-drip-tray-top-wide.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "90dce06f0b311c814e2da82d1a9f42ad7ad8fa790c40cb46d8e1c8aa498548ec",
+      "sha256": "aee4c8eb9f95317259182f18b2efbd321b52947e6cc1e1baf18d100338e14019",
+      "bytes": 130302,
+      "width": 1280,
+      "height": 591
+    },
+    {
+      "path": "images/products/krups-drip-tray-top.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "de079d46db2c92389bed7a8d2bdb23e6de4f58a8805bf51ad3afbfe948866d59",
+      "sha256": "3233dc23ca695a20c37d9f6684cf39c42851a5da017eed73a89a7c4ffea3c7ac",
+      "bytes": 73982,
+      "width": 591,
+      "height": 591
+    },
+    {
+      "path": "images/products/lack-filament-guide-inside.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "f0abad4b1ca76061882cf2fee506afb8e3c25dfa0e8dcc092f9f36e55d70331f",
+      "sha256": "4444ca4b1aba851a4d9a843fc206c67f0e1fbec8832df6fe3722fe744ab8808c",
+      "bytes": 79416,
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "path": "images/products/lack-filament-guide.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "7875044c2f16351b47b4a1ab44797492d998fdcd485da9191965ed4445be3a6d",
+      "sha256": "a00876f510efe06c380f2a0e155924739cdb33038d3609032a905494e4fc9f4b",
+      "bytes": 98994,
+      "width": 1280,
+      "height": 1280
+    },
+    {
+      "path": "images/products/qidi-exhaust-elbow.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "463aabdfdabdc8b4ad663d0914389495d7849eb01205e91ce12a22de799c2dd8",
+      "sha256": "dd8f5d9aa9bf782d6b885b317cbc8b748b2ec45e56296ca645657f19775562f8",
+      "bytes": 8392,
+      "width": 516,
+      "height": 516
+    },
+    {
+      "path": "images/products/qidi-power-switch-cover.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "b8044e08299e5ab2aa58895aaa077a4af4d83658e9835ec3fbb311dd1e1dd613",
+      "sha256": "31d394863bc8fee24d774296ecda808e0e88adef600b7f70e46afe34e82dec2f",
+      "bytes": 20664,
+      "width": 516,
+      "height": 516
+    },
+    {
+      "path": "images/products/qidi-ptfe-aligner.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "851b788d53e5415df81c877d36ee07309d04697a07fc5b411d90eb90b33ed244",
+      "sha256": "6e757693ce773ee7a89d596f4e961c2d43d596da9b63dc5efa6dc37e6ba0466c",
+      "bytes": 49310,
+      "width": 516,
+      "height": 516
+    },
+    {
+      "path": "images/products/soldering-iron-dock-cad.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "7bc56712bee501577371a88b959324599becd7c4254c2e713ddd23d90cf33c29",
+      "sha256": "bf6fe6ef5f2fb419abb2ce3985a52521bb7c8249ba3b243c51d01faeb35a6975",
+      "bytes": 21762,
+      "width": 1280,
+      "height": 883
+    },
+    {
+      "path": "images/products/soldering-iron-dock.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "fc3391c3195909628564cadd4b583beeb8b1d65ce309710895da1108fa7c2413",
+      "sha256": "bcc592743731a588d27d9d70bd2924e7a902a321c703c75d23aad66445631ff8",
+      "bytes": 30174,
+      "width": 1280,
+      "height": 1280
+    },
+    {
+      "path": "images/products/stealth-pillar-installed.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "40c84950f9302d56759142e49c5d96f85a15c268f7c2d51aa59d069cf3b8f08b",
+      "sha256": "eb046cf55b1f9c834d073dc8cea66740307f9754a9c848ccf0c22bebe3b153b4",
+      "bytes": 76662,
+      "width": 1180,
+      "height": 1475
+    },
+    {
+      "path": "images/products/stealth-pillar.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "dbc57221d6ffa59c3fbdd3151b9e5ff5a25b5d3e3129d7901a2d7e0501101517",
+      "sha256": "dcc3865287f1ad5bc898ef98ee237fcdc630e4d4a0c8027eebc2325b655229f3",
+      "bytes": 43036,
+      "width": 1180,
+      "height": 1180
+    },
+    {
+      "path": "images/products/tablet-stand.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "3745604fe0fce329f33da3ac257ed2c6e1d571431eada02a1504fa47b893633b",
+      "sha256": "0955bd1cf084c6bcac04937a4b701de396b41e3105cc45d8b04243ed87dd21a9",
+      "bytes": 14776,
+      "width": 1280,
+      "height": 1280
+    },
+    {
+      "path": "images/products/tv-feet-riser.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "f9543f4a4e32bb54e88e6443cb939cad2ab3be4c1a091c5c17e7151f380d8624",
+      "sha256": "56cee2389db5aac46e424a1451d3b2bf95080848fea3c5fdce84663ded9390cb",
+      "bytes": 12884,
+      "width": 1280,
+      "height": 1280
+    },
+    {
+      "path": "images/products/vw-polo-rear-panel-fitted.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "3952af5c32889de331995768b415cf4fa0f16b7b781f5b9115b922471d46114a",
+      "sha256": "e719fe6130a309d7fe842d1fb03aa011e40fb4c50715bdddcc81963e0532ae2c",
+      "bytes": 56394,
+      "width": 1280,
+      "height": 544
+    },
+    {
+      "path": "images/products/vw-polo-rear-panel.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "85c4028c01c19e78021739fc72955b3d768fbce9525fee9520500da9253a7480",
+      "sha256": "73a9812d2cb762617fbef1f3c4edab41b2e9f832c5df5d9e26798dcfdbc469e6",
+      "bytes": 156548,
+      "width": 960,
+      "height": 960
+    },
+    {
+      "path": "images/products/wipes-holder.webp",
+      "sourceRevision": "75d3fdd5007132c015353605a17b6957b6fdac6e",
+      "sourceSha256": "0c24b46e9c05f5c0be69de522f64ba92e88df58abd3e3aa77bdae7c5d912d68f",
+      "sha256": "e32e2719a2c919428a1fb1a2c3c6f033568e991ada1231c2e3a40416dbe5db5e",
+      "bytes": 67070,
+      "width": 1280,
+      "height": 1280
+    },
+    {
+      "path": "images/products/deck-bunker-opening.mp4",
+      "source": "hubert-portfolio/public/assets/cults-2026/deck-bunker-commander-opening-960x768.mp4",
+      "sha256": "767a75856c8f6cd883432cf4697986183e473aed8f1249cc6ab17941b420dde4",
+      "bytes": 1027965
+    },
+    {
+      "path": "images/products/deck-bunker-80.mp4",
+      "source": "hubert-portfolio/public/assets/cults-2026/deck-bunker-80-animated-square-640.mp4",
+      "sha256": "e7679b888abb01410c84d1b47f17e71fdf819a2ec2d1ff20923c10ad529eaa16",
+      "bytes": 108163
+    },
+    {
+      "path": "images/products/deck-bunker-green.mp4",
+      "source": "hubert-portfolio/public/assets/cults-2026/deck-bunker-green-square-640.mp4",
+      "sha256": "d2edf1c49e64e1bd2e1eacfe6b649c08fbe78a3b67566122079f0594836a4c90",
+      "bytes": 465184
+    }
+  ]
+}

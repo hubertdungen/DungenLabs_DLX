@@ -789,13 +789,12 @@ html.cart-open body {
   overflow: hidden;
 }
 
-.product-card-media img {
+.product-card-media img,
+.product-card-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  /* As fotografias originais ficam lavadas no fundo claro dos cartoes. */
-  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 .product-card-body {
@@ -889,7 +888,6 @@ html.cart-open body {
   background: var(--surface);
   border: 1px solid var(--line);
   display: block;
-  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 .product-thumbs {
@@ -1141,8 +1139,6 @@ button.button {
   aspect-ratio: 5 / 4;
   object-fit: cover;
   display: block;
-  /* Mantem a cor e a leitura do produto sem escurecer o hero. */
-  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 @media (max-width: 860px) {
@@ -1151,7 +1147,9 @@ button.button {
   }
 
   .dlx-hero-media {
-    display: none;
+    width: 100%;
+    max-width: 560px;
+    justify-self: center;
   }
 }
 

@@ -60,6 +60,26 @@ function createElement(tagName, className, text) {
 /** Traducao, se o i18n.js estiver carregado; senao fica o ingles. */
 const t = (key, fallback) => window.DLXi18n?.t(key, fallback) ?? fallback;
 
+const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+// Keep the hero available on mobile and let reduced-motion users start it manually.
+document.querySelectorAll(".dlx-hero-media video").forEach((video) => {
+  if (reducedMotion?.matches) {
+    video.autoplay = false;
+    video.pause();
+    video.controls = true;
+  }
+});
+
+// Only fetch/play card animations while they are near the viewport.
+const cardMotion = typeof IntersectionObserver === "function" ? new IntersectionObserver((entries) => {
+  entries.forEach(({ target: video, isIntersecting }) => {
+    if (isIntersecting) {
+      if (!video.src) video.src = video.dataset.src;
+      video.play()?.catch(() => {}); // The poster remains if autoplay is unavailable.
+    } else video.pause();
+  });
+}, { rootMargin: "150px" }) : null;
+
 /** Campo do catalogo na lingua activa ("title_pt" ao lado de "title"); sem traducao fica o ingles. */
 function localised(entry, campo) {
   if (!entry) return "";
@@ -129,7 +149,20 @@ function productCard(product, categoryId) {
   img.loading = "lazy";
   img.width = 600;
   img.height = 600;
-  media.append(img);
+  const videoSrc = product.cardVideo || product.mainVideo;
+  if (videoSrc && !reducedMotion?.matches) {
+    const video = document.createElement("video");
+    Object.assign(video, { poster: img.src, muted: true, loop: true, playsInline: true, preload: "none" });
+    video.dataset.src = `/${videoSrc}`.replace(/^\/+/, "/");
+    video.setAttribute("aria-hidden", "true");
+    video.addEventListener("error", () => {
+      cardMotion?.unobserve(video);
+      video.replaceWith(img);
+    }, { once: true });
+    media.append(video);
+    if (cardMotion) cardMotion.observe(video);
+    else { video.src = video.dataset.src; video.autoplay = true; }
+  } else media.append(img);
 
   const body = createElement("div", "product-card-body");
   const title = createElement("h3", "product-card-title");
@@ -205,8 +238,9 @@ function renderDetail(product, categoryId) {
     if (item.video) {
       // Quem pede menos movimento ve a capa e carrega no play.
       const calm = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-      Object.assign(next, { src: `/${item.video}`, poster: `/${item.src}`, muted: true, loop: true, playsInline: true, autoplay: !calm, controls: Boolean(calm) });
+      Object.assign(next, { src: `/${item.video}`, poster: `/${item.src}`, muted: true, loop: true, playsInline: true, preload: "metadata", autoplay: !calm, controls: true });
       next.setAttribute("aria-label", item.alt || "");
+      next.addEventListener("error", () => show({ src: item.src, alt: item.alt }), { once: true });
     } else {
       next.src = `/${item.src}`;
       next.alt = item.alt || localised(product, "title");
@@ -294,6 +328,7 @@ function renderDetail(product, categoryId) {
 }
 
 function render() {
+  cardMotion?.disconnect();
   if (!shopRoot || !shop) return;
   shopRoot.replaceChildren();
   const product = !isShowcase && getProduct(view.productId);
