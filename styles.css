@@ -1416,8 +1416,7 @@ h3 {
   overflow: hidden;
   color: var(--white);
   background:
-    linear-gradient(115deg, rgba(5, 6, 6, 0.94), rgba(18, 55, 63, 0.9)),
-    url("images/next/almond-pi-detail.jpg") center / cover;
+    linear-gradient(115deg, rgba(5, 6, 6, 0.94), rgba(18, 55, 63, 0.9));
   border-top: 8px solid var(--coral);
 }
 

@@ -22,12 +22,12 @@ needs — it never redefines colours, type or grid.
 
 ```
 index.html          DL X landing page
-shop.html           Catalogue — category → product → detail gallery
+shop.html           Catalogue — product grid with section filters → product page
 shipping.html       Shipping, returns and warranty
 thank-you.html      Post-checkout landing (Stripe success URL)
 404.html
 
-app.js              Nav + gallery engine, reads /data/shop.json
+app.js              Nav + shop grid, reads /data/shop.json
 styles.css          Inherited from dungenlabs.com — do not fork, re-copy
 styles-dlx.css      DL X layer only
 
@@ -37,8 +37,13 @@ netlify/functions/  GitHub OAuth for the CMS
 images/             brand/, products/, categories/
 ```
 
-The gallery deliberately mirrors the DungenLabs Workbench: same class names,
-same mosaic grid, same FLIP transitions. Restyling one restyles both.
+The shop is a plain product grid: every product visible on arrival, section
+filters as chips, price and *Add to cart* on each card, and a product page with
+a photo gallery. No tile animations. The same code draws the homepage showcase
+— `<div data-shop-grid data-limit="8" data-link="/shop.html">` shows the first
+eight products, so **the order in `shop.json` is the order on the homepage**.
+State lives in the hash (`#section` or `#section/product-id`), so any view can
+be linked.
 
 ## Editing the catalogue
 
@@ -190,13 +195,19 @@ functions and will not authenticate locally.
 
 ## Known gaps
 
-- **Prices are placeholders.** `39.90` and `34.90` were assumed, not costed.
-- **`checkoutUrl` is empty on every product**, so buy buttons currently fall
-  back to email enquiry. Fill them in once the Stripe links exist.
-- **Product renders are 1.3 MB PNGs.** They were downscaled with a pure-Python
-  script because this build host has no image tooling. Install `webp` and
-  re-export to get them to roughly 150 KB.
+- **Stripe is still in test mode.** `/api/checkout` answers with a
+  `cs_test_…` session, so no real card can pay. Switch `STRIPE_SECRET_KEY`
+  (and `STRIPE_WEBHOOK_SECRET`, from a live-mode webhook) to the live keys.
+- **Netlify Forms is disabled on the site**, so `/order.html` submissions are
+  dropped. Enable it under Netlify → Forms, then redeploy so the form is
+  detected.
+- **Crypto checkout is not configured** (`NOWPAYMENTS_API_KEY` missing); the
+  button falls back to the quote form.
+- **Costings for the Cults3D products are estimates** (grams and hours from
+  the size of the part). Replace them with slicer numbers in `/admin` and the
+  price recomputes.
+- Six Cults3D designs are not listed yet for lack of a photo here: Tata vase,
+  balcony rail holders, AOC monitor riser, filament drying chart and the two
+  Oral-B cases.
 - **The VESA adapter is a placeholder listing** — geometry exists, photography
   and pricing do not.
-- Other DL X candidates not yet listed: filament turner, paper towel holder,
-  power connector cover.
