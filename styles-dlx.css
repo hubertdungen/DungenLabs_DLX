@@ -1286,3 +1286,12 @@ button.button {
 /* Hover do logótipo: as cores trocam, legíveis sobre o teal do cabeçalho. */
 .brand-dlx:hover .brand-mark-dlx,
 .brand-dlx:focus-visible .brand-mark-dlx { content: url("/images/brand/dlx-mark-hover.svg"); }
+
+/* Partner logos: grayscale row, colour on hover (professional logo wall). */
+.partner-logos { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px 56px; }
+.partner-logos a { display: inline-flex; align-items: center; gap: 10px; color: #142226; text-decoration: none; filter: grayscale(1); opacity: .85; transition: filter .2s, opacity .2s, transform .2s; }
+.partner-logos a:hover, .partner-logos a:focus-visible { filter: none; opacity: 1; transform: translateY(-2px); }
+.partner-logos img { height: 44px; width: auto; max-width: 160px; object-fit: contain; }
+.partner-word { font-size: 1.25rem; letter-spacing: -.01em; font-weight: 500; }
+.partner-word b { font-weight: 800; }
+@media (max-width: 600px) { .partner-logos { gap: 16px 32px; } .partner-logos img { height: 36px; } }
