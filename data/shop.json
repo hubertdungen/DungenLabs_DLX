@@ -132,7 +132,7 @@
         "car"
       ],
       "status": "made-to-order",
-      "price": 51.9,
+      "price": null,
       "summary": "Re-engineered 2-piece replacement for the rear trim / licence-plate panel.",
       "description": "A replacement for the rear trim and licence-plate panel of the VW Polo Classic Mk3, redrawn as two pieces so each half prints flat and fits a normal print bed. Printed in ASA, which stays stable in sun and heat on the back of a car. Supplied as a matched pair, ready to prime and paint.",
       "mainImage": "images/products/vw-polo-rear-panel.webp",
@@ -176,13 +176,10 @@
       "title_pt": "Painel Traseiro VW Polo Classic Mk3",
       "summary_pt": "Substituto em 2 peças, redesenhado, para o painel traseiro / da matrícula.",
       "description_pt": "Um substituto para o painel traseiro e da matrícula do VW Polo Classic Mk3, redesenhado em duas peças para cada metade imprimir deitada numa cama normal. Impresso em ASA, que aguenta sol e calor na traseira de um carro. Fornecido como par, pronto a primário e pintura.",
-      "costing": {
-        "grams": 320,
-        "hours": 16,
-        "material": "ASA",
-        "margin": 0.35,
-        "cultsUsd": 21.63
-      }
+      "priceRange": [
+        150,
+        200
+      ]
     },
     {
       "id": "krups-drip-tray-top",
