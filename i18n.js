@@ -106,6 +106,7 @@
       /* ------------------------------------------------------ oficina */
 
       /* ------------------------------------------------------ contacto */
+      "shop.perUnit": "por unidade",
       "partners.eyebrow": "Parceiros",
       "partners.tools": "Ferramentas que usamos:",
       "contact.eyebrow": "Contacto",

@@ -68,12 +68,14 @@ function localised(entry, campo) {
 }
 
 /** Formata o preco na moeda definida no shop.json; null significa "sem preco publicado". */
-function formatPrice(value) {
-  if (typeof value !== "number") return null;
-  return new Intl.NumberFormat(window.DLXi18n?.language === "pt" ? "pt-PT" : "en-IE", {
+function formatPrice(value, range) {
+  const fmt = new Intl.NumberFormat(window.DLXi18n?.language === "pt" ? "pt-PT" : "en-IE", {
     style: "currency",
-    currency: shop.currency || "EUR"
-  }).format(value);
+    currency: shop.currency || "EUR",
+    maximumFractionDigits: range ? 0 : 2
+  });
+  if (Array.isArray(range) && range.length === 2) return `${fmt.format(range[0])}–${fmt.format(range[1])} ${t("shop.perUnit", "each")}`;
+  return typeof value === "number" ? fmt.format(value) : null;
 }
 
 const STATUS_KEYS = {
@@ -138,7 +140,7 @@ function productCard(product, categoryId) {
 
   const foot = createElement("div", "product-card-foot");
   const price = createElement("div", "product-card-price");
-  price.append(createElement("strong", "", formatPrice(product.price) || t("shop.onRequest", "Price on request")));
+  price.append(createElement("strong", "", formatPrice(product.price, product.priceRange) || t("shop.onRequest", "Price on request")));
   // Quase tudo e feito por encomenda: no cartao so se diz quando nao e.
   if (product.status !== "made-to-order") price.append(createElement("span", "", statusLabel(product.status)));
   foot.append(price);
@@ -243,7 +245,7 @@ function renderDetail(product, categoryId) {
   info.append(createElement("p", "product-summary", localised(product, "summary")));
 
   const priceRow = createElement("p", "product-price");
-  priceRow.append(createElement("strong", "", formatPrice(product.price) || t("shop.onRequest", "Price on request")));
+  priceRow.append(createElement("strong", "", formatPrice(product.price, product.priceRange) || t("shop.onRequest", "Price on request")));
   priceRow.append(createElement("span", "", statusLabel(product.status)));
   info.append(priceRow);
 
@@ -402,6 +404,9 @@ async function init() {
   // escritos em codigo: desenhar outra vez e o mais simples.
   document.addEventListener("dlx:lang-changed", () => render());
 }
+
+// Hero: quem pede menos movimento fica com a capa parada.
+if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) document.querySelector(".dlx-hero-media video")?.removeAttribute("autoplay");
 
 init();
 })();
