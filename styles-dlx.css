@@ -1131,7 +1131,8 @@ button.button {
   clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
 }
 
-.dlx-hero-media img {
+.dlx-hero-media img,
+.dlx-hero-media video {
   width: 100%;
   height: auto;
   aspect-ratio: 5 / 4;
@@ -1277,3 +1278,7 @@ button.button {
 .partner-list a:hover, .partner-list a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
 .partner-list img { width: 28px; height: 28px; object-fit: contain; }
 .partner-tools { margin: 0; font-size: .875rem; color: var(--muted, #607174); line-height: 1.6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dlx-hero-media video { animation: none; }
+}
