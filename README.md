@@ -193,6 +193,34 @@ Then open `http://localhost:8080`. The catalogue loads over `fetch`, so opening
 `index.html` as a `file://` URL will not work. `/admin` needs the deployed
 functions and will not authenticate locally.
 
+## Product media
+
+`scripts/prepare-product-media.py` regenerates all 23 WebP photos, renders and
+posters from git revision `75d3fdd5007132c015353605a17b6957b6fdac6e`, before
+the previous colour correction. It adjusts luminance without stretching RGB
+channels independently, applies modest contrast/colour/sharpness, preserves
+dimensions and exports metadata-free WebP at quality 85. CSS adds no further
+colour filter. `data/product-media.json` records the recipe, Pillow version,
+source hashes, output hashes and sizes.
+
+With Pillow installed (the reviewed outputs used Pillow 13.0.0), run:
+
+```sh
+python3 scripts/prepare-product-media.py --portfolio ../hubert-portfolio
+```
+
+The three Deck Bunker MP4s are copied byte for byte from the portfolio's
+`public/assets/cults-2026/` directory; the source filenames are in the script
+and manifest. These are the portfolio's existing animations. The hero and
+product detail have playback controls; animated cards load near the viewport.
+Reduced-motion users get static cards and manual playback for hero/detail.
+Card/detail video errors fall back to their WebP images.
+
+Local browser review on 2026-11-15 covered the homepage, shop and all 18 product
+galleries at 390px and 1280px, including actual playback, reduced motion and
+blocked-video fallback. No broken media, JavaScript errors or horizontal
+overflow were observed. This review does not represent a production deploy.
+
 ## Known gaps
 
 - **Stripe is still in test mode.** `/api/checkout` answers with a

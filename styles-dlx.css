@@ -789,13 +789,12 @@ html.cart-open body {
   overflow: hidden;
 }
 
-.product-card-media img {
+.product-card-media img,
+.product-card-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  /* As fotografias originais ficam lavadas no fundo claro dos cartoes. */
-  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 .product-card-body {
@@ -889,7 +888,6 @@ html.cart-open body {
   background: var(--surface);
   border: 1px solid var(--line);
   display: block;
-  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 .product-thumbs {
@@ -1142,8 +1140,6 @@ button.button {
   aspect-ratio: 5 / 4;
   object-fit: cover;
   display: block;
-  /* Mantem a cor e a leitura do produto sem escurecer o hero. */
-  filter: saturate(1.14) contrast(1.08) brightness(1.02);
 }
 
 .dlx-hero-tag {
@@ -1165,7 +1161,9 @@ button.button {
   }
 
   .dlx-hero-media {
-    display: none;
+    width: 100%;
+    max-width: 560px;
+    justify-self: center;
   }
 }
 
@@ -1309,3 +1307,16 @@ button.button {
 .partner-word { font-size: 1.25rem; letter-spacing: -.01em; font-weight: 500; }
 .partner-word b { font-weight: 800; }
 @media (max-width: 600px) { .partner-logos { gap: 16px 32px; } .partner-logos img { height: 36px; } }
+
+/* Partners: larger logos; tools shown with their logos */
+.partners .section-inner { padding-top: 48px; padding-bottom: 48px; }
+.partner-logos { gap: 28px 72px; }
+.partner-logos img { height: 72px; max-width: 220px; }
+.partner-logos img[width] { width: 72px; }
+.partner-logos .partner-word { font-size: 1.75rem; }
+.partner-tools-label { margin: 28px 0 14px; font-size: .875rem; color: var(--muted, #607174); }
+.tool-logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 36px; }
+.tool-logos a { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: #142226; text-decoration: none; opacity: .85; transition: opacity .2s, transform .2s; }
+.tool-logos a:hover, .tool-logos a:focus-visible { opacity: 1; transform: translateY(-2px); }
+.tool-logos img { width: 32px; height: 32px; object-fit: contain; }
+@media (max-width: 600px) { .partner-logos { gap: 20px 40px; } .partner-logos img { height: 56px; } .partner-logos img[width] { width: 56px; } .partner-logos .partner-word { font-size: 1.4rem; } }
