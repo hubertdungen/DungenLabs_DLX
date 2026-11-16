@@ -223,20 +223,20 @@
     {
       "path": "images/products/deck-bunker-opening.mp4",
       "source": "hubert-portfolio/public/assets/cults-2026/deck-bunker-commander-opening-960x768.mp4",
-      "sha256": "173c8941b1dbf09fda9945797b23060395beb9292a3ac709ae0e261564fae0e5",
-      "bytes": 1027965
+      "sha256": "cff83b554901b91c215d0c53c13fc0a89c20df261d29d0ea4bfd85587355ca18",
+      "bytes": 1652144
     },
     {
       "path": "images/products/deck-bunker-80.mp4",
       "source": "hubert-portfolio/public/assets/cults-2026/deck-bunker-80-animated-square-640.mp4",
-      "sha256": "50569a6def120f135d4e18ba277ff673527be635a8b2ebb80e835d1c49e302ec",
-      "bytes": 108163
+      "sha256": "0d9b090a39da1f499c55da6bacad090c846f328d0851ca3848655b700a417efe",
+      "bytes": 228340
     },
     {
       "path": "images/products/deck-bunker-green.mp4",
       "source": "hubert-portfolio/public/assets/cults-2026/deck-bunker-green-square-640.mp4",
-      "sha256": "315fbc49029df58f28e326b1fc772de74e785cc9782597ac990d5f4c214dbe09",
-      "bytes": 465184
+      "sha256": "eb9d0086e787ab6e5a9e9b63f46ed810793e7d6a29de61f0be5b4f10de7f2320",
+      "bytes": 836802
     }
   ]
 }

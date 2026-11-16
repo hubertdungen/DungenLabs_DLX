@@ -68,11 +68,13 @@ def main():
     for target, source in ANIMATIONS.items():
         src = source_assets / f"{source}.mp4"
         path = output / f"{target}.mp4"
-        # Sources are tagged BT.2020/PQ (HDR) but hold SDR pixels: Firefox then
-        # renders them washed out. Retag as BT.709 without re-encoding.
-        subprocess.check_call(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-c", "copy", "-bsf:v",
-                               "h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1",
-                               "-movflags", "+faststart", str(path)])
+        # Sources are flat (luma ~48-185, low saturation) and tagged BT.2020/PQ.
+        # Stretch levels, boost saturation, tag BT.709 (Firefox washed them out).
+        subprocess.check_call(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-vf",
+                               "lutyuv=y='clip((val-48)*219/137+16,16,235)',eq=saturation=1.35:gamma=0.95",
+                               "-c:v", "libx264", "-preset", "slow", "-crf", "21", "-pix_fmt", "yuv420p",
+                               "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
+                               "-color_range", "tv", "-an", "-movflags", "+faststart", str(path)])
         records.append({"path": path.relative_to(ROOT).as_posix(),
                         "source": f"hubert-portfolio/public/assets/cults-2026/{source}.mp4",
                         "sha256": digest(path.read_bytes()), "bytes": path.stat().st_size})
