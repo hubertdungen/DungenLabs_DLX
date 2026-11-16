@@ -1151,8 +1151,8 @@ button.button {
   left: 0;
   bottom: 0;
   padding: 8px 14px;
-  background: var(--accent, #e8806a);
-  color: #10282e;
+  background: var(--coral);
+  color: var(--deep-teal);
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.06em;
