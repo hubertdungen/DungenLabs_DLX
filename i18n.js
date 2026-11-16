@@ -109,7 +109,7 @@
       /* ------------------------------------------------------ contacto */
       "shop.perUnit": "por unidade",
       "partners.eyebrow": "Parceiros",
-      "partners.tools": "Ferramentas que usamos:",
+      "partners.tools": "Ferramentas que usamos",
       "contact.eyebrow": "Contacto",
       "contact.h2": "Precisas de algo que não está listado?",
       "contact.kicker": "Cores à medida, gravação, uma variante de uma peça existente ou algo novo — envia um pedido e recebes um orçamento por email antes de qualquer pagamento.",
