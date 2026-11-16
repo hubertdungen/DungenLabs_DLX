@@ -1127,6 +1127,7 @@ button.button {
 }
 
 .dlx-hero-media {
+  position: relative;
   display: block;
   overflow: hidden;
   clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
@@ -1139,6 +1140,19 @@ button.button {
   aspect-ratio: 5 / 4;
   object-fit: cover;
   display: block;
+}
+
+.dlx-hero-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 8px 14px;
+  background: var(--coral);
+  color: var(--deep-teal);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 860px) {
