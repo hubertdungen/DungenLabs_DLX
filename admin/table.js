@@ -146,7 +146,7 @@
       // Alguem gravou pelo Decap entretanto. Escrever por cima apagava
       // o trabalho dessa pessoa em silencio.
       $("#estado").textContent =
-        "O catálogo mudou noutro sítio entretanto. Recarrega a página e repete — para não apagar o que lá está.";
+        "O catálogo mudou noutro sítio entretanto. Recarrega a página e repete, para não apagar o que lá está.";
       $("#estado").className = "erro";
       return;
     }
@@ -159,7 +159,7 @@
 
     sha = (await r.json()).content.sha;
     sujo = false;
-    $("#estado").textContent = "gravado — o site reconstrói em cerca de um minuto";
+    $("#estado").textContent = "gravado, o site reconstrói em cerca de um minuto";
     $("#estado").className = "ok";
   }
 

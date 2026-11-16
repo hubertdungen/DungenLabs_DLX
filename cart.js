@@ -49,7 +49,7 @@ function shippingNote(subtotal, currency = "EUR") {
   if (subtotal === 0) return "";
   const falta = FREE_NATIONAL_ABOVE - subtotal;
   if (falta <= 0) return t("cart.freeShipping", "Free tracked delivery in Portugal.");
-  return t("cart.paidShipping", "{amount} shipping in Portugal — add {short} for free delivery.")
+  return t("cart.paidShipping", "{amount} shipping in Portugal, add {short} for free delivery.")
     .replace("{amount}", money(NATIONAL_SHIPPING, currency))
     .replace("{short}", money(falta, currency));
 }

@@ -40,9 +40,13 @@
       "nav.langLabel": "Mudar para inglês",
 
       /* ------------------------------------------------------- hero */
+      "research.eyebrow": "Investigação e desenvolvimento",
+      "research.h2": "A oficina por trás das peças.",
+      "research.p": "A DL X desenvolve projetos físicos: objetos 3D, melhorias de equipamento, acessórios de airsoft, drones e hardware experimental. A loja leva as peças impressas até ti.",
+      "research.forge": "Procuras o nosso software e jogos? Visita a DL Forge →",
       "hero.eyebrow": "DL X · uma divisão DungenLabs",
       "hero.h1": "Peças impressas que resolvem problemas.",
-      "hero.p": "Casa, carro, secretária e melhorias para impressoras — cada peça desenhada à volta de um problema real e impressa por encomenda em Lisboa.",
+      "hero.p": "Casa, carro, secretária e melhorias para impressoras, cada peça desenhada à volta de um problema real e impressa por encomenda em Lisboa.",
       "hero.fact1": "Envio em 3–5 dias úteis",
       "hero.fact2": "Portes grátis em Portugal acima de 30 €",
       "hero.tag": "Jogos de mesa · Deck Bunker",
@@ -75,7 +79,7 @@
       "cap.eng.spec": "Até 300 mm · camadas de 0,1–0,3 mm",
       "cap.fib.spec": "Até 250 mm · CF, GF, TPU, PLA",
       "cap.res.spec": "Camadas a partir de 0,01 mm",
-      "cap.res.p": "Superfícies lisas e pormenores pequenos demais para filamento — caixas pequenas, modelos de encaixe e peças de apresentação.",
+      "cap.res.p": "Superfícies lisas e pormenores finos para caixas pequenas, modelos de encaixe e peças de apresentação.",
 
       /* ---------------------------------------------------- materiais */
       "mat.h3": "Materiais em uso corrente",
@@ -112,7 +116,7 @@
       "partners.tools": "Ferramentas que usamos",
       "contact.eyebrow": "Contacto",
       "contact.h2": "Precisas de algo que não está listado?",
-      "contact.kicker": "Cores à medida, gravação, uma variante de uma peça existente ou algo novo — envia um pedido e recebes um orçamento por email antes de qualquer pagamento.",
+      "contact.kicker": "Cores à medida, gravação, uma variante de uma peça existente ou algo novo? Envia um pedido e recebes um orçamento por email antes de qualquer pagamento.",
       "contact.cta": "Iniciar um projeto",
       "contact.cta1": "Pedir uma peça à medida",
 
@@ -132,9 +136,9 @@
       "footer.shipping": "Envios e devoluções",
 
       /* --------------------------------------------------------- loja */
-      "shop.eyebrow": "DL X — Loja",
+      "shop.eyebrow": "DL X · Loja",
       "shop.h1": "Loja",
-      "shop.kicker": "Peças impressas que resolvem problemas reais — em casa, no carro, na secretária e na impressora. Feitas por encomenda em Lisboa, enviadas em 3–5 dias úteis.",
+      "shop.kicker": "Peças impressas que resolvem problemas reais, em casa, no carro, na secretária e na impressora. Feitas por encomenda em Lisboa, enviadas em 3–5 dias úteis.",
       "shop.viewTitle": "Loja",
       "shop.viewSummary": "Equipamento próprio da bancada DL X, impresso por encomenda em Lisboa.",
       "shop.allCategories": "Todas as secções",
@@ -177,13 +181,13 @@
       "cart.increase": "Aumentar quantidade",
       "cart.decrease": "Diminuir quantidade",
       "cart.loadError": "Não foi possível carregar o catálogo.",
-      "cart.cancelled": "O pagamento foi cancelado — não foi cobrado nada, e o carrinho está intacto.",
+      "cart.cancelled": "O pagamento foi cancelado. Não foi cobrado nada e o carrinho está intacto.",
       "cart.shippingAtCheckout": "Portes calculados no pagamento.",
       "cart.freeShipping": "Envio gratuito e seguido em Portugal.",
       // {amount} e o valor dos portes, {short} o que falta para serem gratis.
-      "cart.paidShipping": "{amount} de portes em Portugal — faltam {short} para envio gratuito.",
+      "cart.paidShipping": "{amount} de portes em Portugal, faltam {short} para envio gratuito.",
       "cart.termsHtml": 'Ao pagar aceitas as <a href="/terms#pt">condições de venda</a>. Os dados da encomenda são tratados segundo a <a href="/privacy#pt">política de privacidade</a>.',
-      "cart.paymentNote": "Os pagamentos com cartão passam pela Stripe. Em cripto aceitam-se Bitcoin, Ethereum, Litecoin, Monero e várias centenas de outras — a moeda escolhe-se na página de pagamento. Nenhum dos dois guarda dados de cartão ou de carteira neste site. As encomendas em cripto são cobradas com portes de UE porque não é recolhida morada à partida; se estiveres em Portugal, ou se a encomenda tiver direito a envio gratuito, a diferença é devolvida.",
+      "cart.paymentNote": "Os pagamentos com cartão passam pela Stripe. Em cripto aceitam-se Bitcoin, Ethereum, Litecoin, Monero e várias centenas de outras, a moeda escolhe-se na página de pagamento. Nenhum dos dois guarda dados de cartão ou de carteira neste site. As encomendas em cripto são cobradas com portes de UE porque não é recolhida morada à partida; se estiveres em Portugal, ou se a encomenda tiver direito a envio gratuito, a diferença é devolvida.",
       "cart.quoteNoteHtml": 'Preferes ser orçamentado primeiro, ou precisas de gravação ou de uma cor especial? <a href="/order.html">Envia antes um pedido de encomenda</a>.',
 
       /* -------------------------------------------------------- envios */
@@ -196,14 +200,14 @@
       "shipping.prod3": "Cores especiais, gravação ou variantes: orçamentadas caso a caso.",
       "shipping.h2": "Portes",
       "shipping.s1": "As encomendas são enviadas de Lisboa, Portugal.",
-      "shipping.s2html": "Portugal: 4,90 € com seguimento — <strong>grátis em encomendas acima de 30 €</strong>.",
+      "shipping.s2html": "Portugal: 4,90 € com seguimento, <strong>grátis em encomendas acima de 30 €</strong>.",
       "shipping.s3": "Resto da UE: 11,90 € com seguimento.",
       "shipping.s4": "Os portes são cobrados uma vez por encomenda, e não por artigo, sejam quantas peças forem na embalagem.",
       "shipping.s5": "As encomendas em cripto são cobradas à taxa da UE à partida, por não ser recolhida morada antes do pagamento. Se estiveres em Portugal, ou se a encomenda tiver direito a envio gratuito, a diferença é devolvida assim que a morada for conhecida.",
       "shipping.s6": "O seguimento é enviado por email assim que a encomenda é entregue aos correios.",
       "shipping.returns": "Devoluções",
       "shipping.ret1html": 'Se um artigo chegar danificado, defeituoso ou diferente do descrito, escreve para <a href="mailto:info@dungenlabs.com">info@dungenlabs.com</a> no prazo de 14 dias após a entrega e será substituído ou reembolsado, portes de devolução incluídos.',
-      "shipping.ret2html": 'Também podes resolver a compra de artigos do catálogo no prazo de 14 dias após a entrega, sem indicar motivo — os portes da devolução ficam a teu cargo e o reembolso inclui os portes do envio. Ficam de fora os artigos feitos segundo as tuas especificações (cores, medidas ou gravação à medida). Detalhes nas <a href="/terms#pt">condições de venda</a>.',
+      "shipping.ret2html": 'Também podes resolver a compra de artigos do catálogo no prazo de 14 dias após a entrega, sem indicar motivo, os portes da devolução ficam a teu cargo e o reembolso inclui os portes do envio. Ficam de fora os artigos feitos segundo as tuas especificações (cores, medidas ou gravação à medida). Detalhes nas <a href="/terms#pt">condições de venda</a>.',
       "shipping.warranty": "Garantia",
       "shipping.war1": "Todos os artigos têm a garantia legal de conformidade de 3 anos, nos termos da lei portuguesa. Desgaste normal, danos por má utilização e deformação por calor (ao sol ou dentro de um carro) não estão cobertos.",
       "shipping.contact": "Contacto",
@@ -223,13 +227,13 @@
       "order.notes": "Notas",
       "order.notesHint": "(gravação, variantes, prazos)",
       "order.submit": "Enviar pedido",
-      "order.privacyHtml": 'Os teus dados servem só para responder a este pedido — ver a <a href="/privacy#pt">política de privacidade</a>.',
+      "order.privacyHtml": 'Os teus dados servem só para responder a este pedido, ver a <a href="/privacy#pt">política de privacidade</a>.',
       "order.note": "Recebes uma resposta com o total, portes incluídos, antes de haver qualquer pagamento. As ligações de pagamento por cartão e cripto seguem com a confirmação.",
-      "order.colourOther": "Outra — ver notas",
+      "order.colourOther": "Outra (ver notas)",
 
       /* ------------------------------------------------------ obrigado */
       "thanks.eyebrow": "Encomenda recebida",
-      "thanks.h1": "Obrigado — já está na bancada.",
+      "thanks.h1": "Obrigado, já está na bancada.",
       "thanks.kicker": "O pagamento passou e a encomenda entrou na fila. Recebes em breve um email de confirmação com o recibo.",
       "thanks.next": "O que acontece a seguir",
       "thanks.next1": "A peça entra no lote de impressão seguinte, normalmente no prazo de um dia útil.",
@@ -237,7 +241,7 @@
       "thanks.next3": "Recebes um segundo email com o seguimento assim que a encomenda for enviada.",
       "thanks.wrong": "Algo errado?",
       "thanks.wrongP": "Se precisares de mudar a cor, a morada ou outra coisa qualquer, responde ao email de confirmação ou escreve para",
-      "thanks.wrongP2": "— as alterações são fáceis antes de o lote começar.",
+      "thanks.wrongP2": "; as alterações são fáceis antes de o lote começar.",
       "thanks.back": "Voltar à loja",
 
       /* ----------------------------------------------------------- 404 */
