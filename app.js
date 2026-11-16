@@ -304,7 +304,7 @@ function renderDetail(product, categoryId) {
   } else {
     const actions = createElement("div", "buy-actions");
     const notify = createElement("a", "button", t("shop.notify", "Notify me"));
-    notify.href = `mailto:info@dungenlabs.com?subject=${encodeURIComponent(`DL X — ${product.title}`)}`;
+    notify.href = `mailto:info@dungenlabs.com?subject=${encodeURIComponent(`DL X: ${product.title}`)}`;
     actions.append(notify);
     info.append(actions);
   }
@@ -390,7 +390,7 @@ async function initOrderForm() {
   field.value = product.title;
 
   const heading = document.querySelector("#order-heading");
-  if (heading) heading.textContent = `Order — ${product.title}`;
+  if (heading) heading.textContent = `Order: ${product.title}`;
   document.title = `Order ${product.title} | DL X`;
 
   const summary = document.querySelector("#order-summary");

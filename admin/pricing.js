@@ -53,7 +53,7 @@
     precoMinimo: 4.9
   };
 
-  /** Arredonda para o .90 do mesmo euro — convencao de retalho. */
+  /** Arredonda para o .90 do mesmo euro, convencao de retalho. */
   function arredonda(valor) {
     return Math.floor(valor) + 0.9;
   }
