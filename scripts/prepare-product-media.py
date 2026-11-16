@@ -68,7 +68,11 @@ def main():
     for target, source in ANIMATIONS.items():
         src = source_assets / f"{source}.mp4"
         path = output / f"{target}.mp4"
-        shutil.copyfile(src, path)
+        # Sources are tagged BT.2020/PQ (HDR) but hold SDR pixels: Firefox then
+        # renders them washed out. Retag as BT.709 without re-encoding.
+        subprocess.check_call(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-c", "copy", "-bsf:v",
+                               "h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1",
+                               "-movflags", "+faststart", str(path)])
         records.append({"path": path.relative_to(ROOT).as_posix(),
                         "source": f"hubert-portfolio/public/assets/cults-2026/{source}.mp4",
                         "sha256": digest(path.read_bytes()), "bytes": path.stat().st_size})
