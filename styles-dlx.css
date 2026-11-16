@@ -1129,6 +1129,7 @@ button.button {
 }
 
 .dlx-hero-media {
+  position: relative;
   display: block;
   overflow: hidden;
   clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
@@ -1143,6 +1144,19 @@ button.button {
   display: block;
   /* Mantem a cor e a leitura do produto sem escurecer o hero. */
   filter: saturate(1.14) contrast(1.08) brightness(1.02);
+}
+
+.dlx-hero-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 8px 14px;
+  background: var(--accent, #e8806a);
+  color: #10282e;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 860px) {

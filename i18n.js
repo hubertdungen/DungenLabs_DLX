@@ -45,6 +45,7 @@
       "hero.p": "Casa, carro, secretária e melhorias para impressoras — cada peça desenhada à volta de um problema real e impressa por encomenda em Lisboa.",
       "hero.fact1": "Envio em 3–5 dias úteis",
       "hero.fact2": "Portes grátis em Portugal acima de 30 €",
+      "hero.tag": "Jogos de mesa · Deck Bunker",
       "hero.fact3": "Pagamento seguro com cartão",
 
       "showcase.h2": "Na loja",
