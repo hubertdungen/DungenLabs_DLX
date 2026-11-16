@@ -1314,7 +1314,8 @@ button.button {
 .partner-logos img { height: 72px; max-width: 220px; }
 .partner-logos img[width] { width: 72px; }
 .partner-logos .partner-word { font-size: 1.75rem; }
-.partner-tools-label { margin: 28px 0 14px; font-size: .875rem; color: var(--muted, #607174); }
+/* Mesmo título que «Partners» (.eyebrow: Orbitron, coral, maiúsculas); aqui só o espaçamento. */
+.partners .partner-tools-label { margin: 32px 0 16px; }
 .tool-logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 36px; }
 .tool-logos a { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: #142226; text-decoration: none; opacity: .85; transition: opacity .2s, transform .2s; }
 .tool-logos a:hover, .tool-logos a:focus-visible { opacity: 1; transform: translateY(-2px); }
